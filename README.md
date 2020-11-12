@@ -2,7 +2,7 @@
 
 **/!\ Still under development**
 
-![free5gc-cli](https://img.shields.io/badge/Golang-5G%20gNB-blue?logo=go)
+![free5gc-cli](https://img.shields.io/badge/Golang-freecli-blue?logo=go)
 
 - [Disclaimer](#disclaimer)
 - [Installation](#installation)
