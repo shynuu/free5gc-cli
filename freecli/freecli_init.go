@@ -1,4 +1,4 @@
-package main
+package freecli
 
 import (
 	"free5gc-cli/parser"
@@ -6,10 +6,11 @@ import (
 	"github.com/c-bata/go-prompt"
 )
 
-// load configuration file.yaml
-// load ue file.yaml
+func Init() {
 
-func main() {
+}
+
+func Run() {
 	p := prompt.New(
 		parser.Executor,
 		parser.Completer,
