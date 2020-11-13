@@ -4,3 +4,15 @@
 [submodule "MongoDBLibrary"]
 	path = MongoDBLibrary
 	url = https://github.com/free5gc/MongoDBLibrary.git
+[submodule "lib/MongoDBLibrary"]
+	path = lib/MongoDBLibrary
+	url = https://github.com/free5gc/MongoDBLibrary.git
+[submodule "lib/openapi"]
+	path = lib/openapi
+	url = https://github.com/free5gc/openapi.git
+[submodule "lib/logger_conf"]
+	path = lib/logger_conf
+	url = https://github.com/free5gc/logger_conf.git
+[submodule "lib/logger_util"]
+	path = lib/logger_util
+	url = https://github.com/free5gc/logger_util.git

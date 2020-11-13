@@ -1,6 +1,6 @@
 # A Simple CLI tool for free5GC
 
-**/!\ Still under development**
+**/!\ Still under development, use it at your own risks, no support provided yet**
 
 ![free5gc-cli](https://img.shields.io/badge/Golang-free5cli-blue?logo=go)
 
@@ -16,13 +16,13 @@ This project provides an unofficial repository for the free5gc project as the of
 
 ## Installation
 
-Follow the installation instructions provided by free5gc repository, but instead of clonine the project: `https://github.com/free5gc/free5gc.git`. Clone this forked version of the project `https://github.com/rrajdax/free5gc`.
-
-The compilation and installation procedure of the gNB is the same as the other free5gc core functions, you can compile the functions using 
+The cli works as a standalone CLI. Clone the repository and build the cli
 
 ``` bash
-cd ~/free5gc
-go build -o bin/freecli -x src/free5gc-cli/freecli.go
+git clone --recursive https://github.com/Srajdax/free5gc-cli.git
+cd free5gc-cli
+go mod download
+go build -o freecli -x freecli.go
 ```
 
 ## Configuration
