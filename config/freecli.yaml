@@ -6,3 +6,5 @@ configuration:
   mongodb:
     name: free5gc
     url: mongodb://localhost:27017
+  subscriberData:
+   - d

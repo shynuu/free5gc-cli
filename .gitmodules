@@ -1,0 +1,6 @@
+[submodule "openapi"]
+	path = openapi
+	url = https://github.com/free5gc/openapi.git
+[submodule "MongoDBLibrary"]
+	path = MongoDBLibrary
+	url = https://github.com/free5gc/MongoDBLibrary.git

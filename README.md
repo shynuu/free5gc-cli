@@ -2,7 +2,7 @@
 
 **/!\ Still under development**
 
-![free5gc-cli](https://img.shields.io/badge/Golang-5G%20gNB-blue?logo=go)
+![free5gc-cli](https://img.shields.io/badge/Golang-free5cli-blue?logo=go)
 
 - [Disclaimer](#disclaimer)
 - [Installation](#installation)
@@ -12,7 +12,7 @@
 
 ## Disclaimer
 
-This project provides an unofficial repository for the free5gc project as the official webconsole does not cover all use-cases. free5gc-cli is a simple cli utility to interact with free5gc. I use it mainly to add or delete subscriber to the database when I can't have access to the WEBUI. This CLI is based on the webconsole and rely on free5gc lib. It is also subject to changes and further evolutions.
+This project provides an unofficial repository for the free5gc project as the official webconsole does not cover all use-cases. free5gc-cli is a simple cli utility to interact with free5gc. I use it mainly to manage subscribers when I can't have access to the WEBUI. This CLI is based on the webconsole and rely on free5gc lib. It is also subject to changes and further evolutions.
 
 ## Installation
 
@@ -43,7 +43,7 @@ configuration:
 ## Usage
 
 ``` bash
-cd bin
+
 ```
 
 ### Subscriber management
