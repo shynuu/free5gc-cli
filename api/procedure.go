@@ -10,7 +10,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-// GetSubscribers returns all subscribers
+// GetSubscribers returns subscriber list
 func GetSubscribers() {
 
 	logger.FreecliLog.Infoln("Get All Subscribers List")
@@ -29,8 +29,8 @@ func GetSubscribers() {
 
 }
 
-// Get subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
-func GetSubscriberByID(ueId string, servingPlmnId string) {
+// GetSubscriberByID returns the subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
+func GetSubscriberByID(ueId string, servingPlmnId string) custom.SubsData {
 
 	logger.FreecliLog.Infoln("Getting subscriber information", ueId)
 
@@ -70,6 +70,96 @@ func GetSubscriberByID(ueId string, servingPlmnId string) {
 		SmPolicyData:                      smPolicyData,
 	}
 
+	return subsData
+
+}
+
+// PostSubscriberByID subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
+func PostSubscriberByID(ueId string, servingPlmnId string) {
+
+	logger.FreecliLog.Infoln("Registering a new user...")
+
+	var subsData custom.SubsData
+
+	filterUeIdOnly := bson.M{"ueId": ueId}
+	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
+
+	authSubsBsonM := toBsonM(subsData.AuthenticationSubscription)
+	authSubsBsonM["ueId"] = ueId
+	amDataBsonM := toBsonM(subsData.AccessAndMobilitySubscriptionData)
+	amDataBsonM["ueId"] = ueId
+	amDataBsonM["servingPlmnId"] = servingPlmnId
+	smDataBsonM := toBsonM(subsData.SessionManagementSubscriptionData)
+	smDataBsonM["ueId"] = ueId
+	smDataBsonM["servingPlmnId"] = servingPlmnId
+	smfSelSubsBsonM := toBsonM(subsData.SmfSelectionSubscriptionData)
+	smfSelSubsBsonM["ueId"] = ueId
+	smfSelSubsBsonM["servingPlmnId"] = servingPlmnId
+	amPolicyDataBsonM := toBsonM(subsData.AmPolicyData)
+	amPolicyDataBsonM["ueId"] = ueId
+	smPolicyDataBsonM := toBsonM(subsData.SmPolicyData)
+	smPolicyDataBsonM["ueId"] = ueId
+
+	MongoDBLibrary.RestfulAPIPost(authSubsDataColl, filterUeIdOnly, authSubsBsonM)
+	MongoDBLibrary.RestfulAPIPost(amDataColl, filter, amDataBsonM)
+	MongoDBLibrary.RestfulAPIPost(smDataColl, filter, smDataBsonM)
+	MongoDBLibrary.RestfulAPIPost(smfSelDataColl, filter, smfSelSubsBsonM)
+	MongoDBLibrary.RestfulAPIPost(amPolicyDataColl, filterUeIdOnly, amPolicyDataBsonM)
+	MongoDBLibrary.RestfulAPIPost(smPolicyDataColl, filterUeIdOnly, smPolicyDataBsonM)
+
+}
+
+// PatchSubscriberByID subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
+func PatchSubscriberByID(ueId string, servingPlmnId string) custom.SubsData {
+	logger.FreecliLog.Infoln("Updating Subscriber Data", ueId)
+
+	var subsData custom.SubsData
+
+	filterUeIdOnly := bson.M{"ueId": ueId}
+	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
+
+	authSubsBsonM := toBsonM(subsData.AuthenticationSubscription)
+	authSubsBsonM["ueId"] = ueId
+	amDataBsonM := toBsonM(subsData.AccessAndMobilitySubscriptionData)
+	amDataBsonM["ueId"] = ueId
+	amDataBsonM["servingPlmnId"] = servingPlmnId
+	smDataBsonM := toBsonM(subsData.SessionManagementSubscriptionData)
+	smDataBsonM["ueId"] = ueId
+	smDataBsonM["servingPlmnId"] = servingPlmnId
+	smfSelSubsBsonM := toBsonM(subsData.SmfSelectionSubscriptionData)
+	smfSelSubsBsonM["ueId"] = ueId
+	smfSelSubsBsonM["servingPlmnId"] = servingPlmnId
+	amPolicyDataBsonM := toBsonM(subsData.AmPolicyData)
+	amPolicyDataBsonM["ueId"] = ueId
+	smPolicyDataBsonM := toBsonM(subsData.SmPolicyData)
+	smPolicyDataBsonM["ueId"] = ueId
+
+	MongoDBLibrary.RestfulAPIMergePatch(authSubsDataColl, filterUeIdOnly, authSubsBsonM)
+	MongoDBLibrary.RestfulAPIMergePatch(amDataColl, filter, amDataBsonM)
+	MongoDBLibrary.RestfulAPIMergePatch(smDataColl, filter, smDataBsonM)
+	MongoDBLibrary.RestfulAPIMergePatch(smfSelDataColl, filter, smfSelSubsBsonM)
+	MongoDBLibrary.RestfulAPIMergePatch(amPolicyDataColl, filterUeIdOnly, amPolicyDataBsonM)
+	MongoDBLibrary.RestfulAPIMergePatch(smPolicyDataColl, filterUeIdOnly, smPolicyDataBsonM)
+
+	return subsData
+
+}
+
+// DeleteSubscriberByID deletes a subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
+func DeleteSubscriberByID(ueId string, servingPlmnId string) bool {
+	logger.FreecliLog.Infoln("Delete One Subscriber Data")
+
+	filterUeIdOnly := bson.M{"ueId": ueId}
+	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
+
+	MongoDBLibrary.RestfulAPIDeleteOne(authSubsDataColl, filterUeIdOnly)
+	MongoDBLibrary.RestfulAPIDeleteOne(amDataColl, filter)
+	MongoDBLibrary.RestfulAPIDeleteOne(smDataColl, filter)
+	MongoDBLibrary.RestfulAPIDeleteOne(smfSelDataColl, filter)
+	MongoDBLibrary.RestfulAPIDeleteOne(amPolicyDataColl, filterUeIdOnly)
+	MongoDBLibrary.RestfulAPIDeleteOne(smPolicyDataColl, filterUeIdOnly)
+
+	return true
 }
 
 func TestData() custom.SubsData {

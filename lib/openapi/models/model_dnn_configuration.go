@@ -12,10 +12,10 @@ package models
 type DnnConfiguration struct {
 	PduSessionTypes                *PduSessionTypes      `json:"pduSessionTypes" yaml:"pduSessionTypes" bson:"pduSessionTypes" mapstructure:"PduSessionTypes"`
 	SscModes                       *SscModes             `json:"sscModes" yaml:"sscModes" bson:"sscModes" mapstructure:"SscModes"`
-	IwkEpsInd                      bool                  `json:"iwkEpsInd,omitempty" yaml:"iwkEpsInd" bson:"iwkEpsInd" mapstructure:"IwkEpsInd"`
-	Var5gQosProfile                *SubscribedDefaultQos `json:"5gQosProfile,omitempty" yaml:"5gQosProfile" bson:"5gQosProfile" mapstructure:"Var5gQosProfile"`
-	SessionAmbr                    *Ambr                 `json:"sessionAmbr,omitempty" yaml:"sessionAmbr" bson:"sessionAmbr" mapstructure:"SessionAmbr"`
-	Var3gppChargingCharacteristics string                `json:"3gppChargingCharacteristics,omitempty" yaml:"3gppChargingCharacteristics" bson:"3gppChargingCharacteristics" mapstructure:"Var3gppChargingCharacteristics"`
-	StaticIpAddress                []IpAddress           `json:"staticIpAddress,omitempty" yaml:"staticIpAddress" bson:"staticIpAddress" mapstructure:"StaticIpAddress"`
-	UpSecurity                     *UpSecurity           `json:"upSecurity,omitempty" yaml:"upSecurity" bson:"upSecurity" mapstructure:"UpSecurity"`
+	IwkEpsInd                      bool                  `json:"iwkEpsInd,omitempty" yaml:"iwkEpsInd,omitempty" bson:"iwkEpsInd" mapstructure:"IwkEpsInd"`
+	Var5gQosProfile                *SubscribedDefaultQos `json:"5gQosProfile,omitempty" yaml:"5gQosProfile,omitempty" bson:"5gQosProfile" mapstructure:"Var5gQosProfile"`
+	SessionAmbr                    *Ambr                 `json:"sessionAmbr,omitempty" yaml:"sessionAmbr,omitempty" bson:"sessionAmbr" mapstructure:"SessionAmbr"`
+	Var3gppChargingCharacteristics string                `json:"3gppChargingCharacteristics,omitempty" yaml:"3gppChargingCharacteristics,omitempty" bson:"3gppChargingCharacteristics" mapstructure:"Var3gppChargingCharacteristics"`
+	StaticIpAddress                []IpAddress           `json:"staticIpAddress,omitempty" yaml:"staticIpAddress,omitempty" bson:"staticIpAddress" mapstructure:"StaticIpAddress"`
+	UpSecurity                     *UpSecurity           `json:"upSecurity,omitempty" yaml:"upSecurity,omitempty" bson:"upSecurity" mapstructure:"UpSecurity"`
 }

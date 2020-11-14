@@ -30,6 +30,5 @@ func InitConfigFactory(f string) {
 
 	err = yaml.Unmarshal([]byte(content), &FreecliConfig)
 	checkErr(err)
-
 	logger.InitLog.Infof("Successfully initialize configuration %s", f)
 }
