@@ -1,14 +1,10 @@
 package logger
 
 import (
-	"os"
 	"time"
 
 	formatter "github.com/antonfisher/nested-logrus-formatter"
 	"github.com/sirupsen/logrus"
-
-	"free5gc/lib/logger_conf"
-	"free5gc/lib/logger_util"
 )
 
 var log *logrus.Logger
@@ -24,17 +20,6 @@ func init() {
 		NoFieldsSpace:   true,
 		HideKeys:        true,
 		FieldsOrder:     []string{"component", "category"},
-	}
-
-	free5gcLogHook, err := logger_util.NewFileHook(logger_conf.Free5gcLogFile, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
-	if err == nil {
-		log.Hooks.Add(free5gcLogHook)
-	}
-
-	selfLogHook, err := logger_util.NewFileHook(logger_conf.LibLogDir+"mongodb_library.log",
-		os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
-	if err == nil {
-		log.Hooks.Add(selfLogHook)
 	}
 
 	MongoDBLog = log.WithFields(logrus.Fields{"component": "LIB", "category": "MongoDB"})

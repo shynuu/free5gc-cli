@@ -3,7 +3,7 @@ package MongoDBLibrary
 import (
 	"context"
 	"encoding/json"
-	"free5gc/lib/MongoDBLibrary/logger"
+	"free5gc-cli/lib/MongoDBLibrary/logger"
 	"time"
 
 	jsonpatch "github.com/evanphx/json-patch"
