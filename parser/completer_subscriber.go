@@ -64,6 +64,9 @@ func completerSubscriber(in prompt.Document) []prompt.Suggest {
 		if v == "update" {
 			return completerUpdate(in)
 		}
+		if v == "refresh" {
+			return []prompt.Suggest{}
+		}
 		return prompt.FilterHasPrefix(subscriberSuggestion, v, true)
 	}
 	return prompt.FilterHasPrefix(subscriberSuggestion, w, true)

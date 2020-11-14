@@ -43,7 +43,7 @@ configuration:
 ## Usage
 
 ``` bash
-
+./freecli
 ```
 
 ### Subscriber management
