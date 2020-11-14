@@ -1,13 +1,24 @@
 package freecli
 
 import (
+	"free5gc-cli/factory"
+	"free5gc-cli/lib/MongoDBLibrary"
 	"free5gc-cli/parser"
 
 	"github.com/c-bata/go-prompt"
 )
 
-func Init() {
+// Initialize freeCli
+func Initialize() {
 
+	DefaultWebUIConfigPath := "config/freecli.yaml"
+	factory.InitConfigFactory(DefaultWebUIConfigPath)
+
+	// get config file info from WebUIConfig
+	mongodb := factory.FreecliConfig.Configuration.Mongodb
+
+	// Connect to MongoDB
+	MongoDBLibrary.SetMongoDB(mongodb.Name, mongodb.Url)
 }
 
 func Run() {

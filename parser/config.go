@@ -36,30 +36,38 @@ func Executor(in string) {
 	}
 }
 
+func completerConfiguration(in prompt.Document) []prompt.Suggest {
+	a := in.GetWordBeforeCursorWithSpace()
+	a = strings.TrimSpace(a)
+	if strings.HasPrefix(a, "load") || strings.HasPrefix(a, "show") {
+		return []prompt.Suggest{}
+	}
+	if a == "configuration" {
+		return configurationSuggestion
+	}
+	return prompt.FilterHasPrefix(configurationSuggestion, a, true)
+}
+
+func completerSubscriber(in prompt.Document) []prompt.Suggest {
+	a := in.GetWordBeforeCursorWithSpace()
+	a = strings.TrimSpace(a)
+	if strings.HasPrefix(a, "register") || strings.HasPrefix(a, "remove") || strings.HasPrefix(a, "update") {
+		return []prompt.Suggest{}
+	}
+	if a == "subscriber" {
+		return subscriberSuggestion
+	}
+	return prompt.FilterHasPrefix(subscriberSuggestion, a, true)
+}
+
 // Completer is responsible for the autocompletion of the CLI
 func Completer(in prompt.Document) []prompt.Suggest {
 	w := in.TextBeforeCursor()
 	if strings.HasPrefix(w, "configuration") {
-		a := in.GetWordBeforeCursorWithSpace()
-		a = strings.TrimSpace(a)
-		if strings.HasPrefix(a, "load") || strings.HasPrefix(a, "show") {
-			return []prompt.Suggest{}
-		}
-		if a == "configuration" {
-			return configurationSuggestion
-		}
-		return prompt.FilterHasPrefix(configurationSuggestion, a, true)
+		return completerConfiguration(in)
 	}
 	if strings.HasPrefix(w, "subscriber") {
-		a := in.GetWordBeforeCursorWithSpace()
-		a = strings.TrimSpace(a)
-		if strings.HasPrefix(a, "register") || strings.HasPrefix(a, "remove") || strings.HasPrefix(a, "update") {
-			return []prompt.Suggest{}
-		}
-		if a == "subscriber" {
-			return subscriberSuggestion
-		}
-		return prompt.FilterHasPrefix(subscriberSuggestion, a, true)
+		return completerSubscriber(in)
 	}
 	return prompt.FilterHasPrefix(mainSuggestion, w, true)
 }

@@ -1,0 +1,2 @@
+time="2020-11-14T01:01:51+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T01:01:57+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
