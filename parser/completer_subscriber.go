@@ -10,6 +10,7 @@ var subscriberSuggestion = []prompt.Suggest{
 	{Text: "add", Description: "Add a new subscriber"},
 	{Text: "refresh", Description: "Refresh the list of registered UE in memory"},
 	{Text: "remove", Description: "Remove an exising UE"},
+	{Text: "show", Description: "Show the configuration of UE"},
 	{Text: "update", Description: "Update an exisiting UE"},
 }
 

@@ -38,3 +38,15 @@ time="2020-11-14T02:19:37+01:00" level=info msg="Successfully initialize configu
 time="2020-11-14T02:21:29+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
 time="2020-11-14T02:22:33+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
 time="2020-11-14T02:28:56+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T02:48:44+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T02:49:11+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T02:50:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T15:11:40+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T15:11:54+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T15:11:55+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
+time="2020-11-14T15:15:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T15:23:06+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
+time="2020-11-14T15:23:08+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T15:24:24+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
+time="2020-11-14T15:24:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-14T15:24:30+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli

@@ -11,5 +11,5 @@ package models
 
 // Contains the AM policy data for a given subscriber.
 type AmPolicyData struct {
-	SubscCats []string `json:"subscCats,omitempty" bson:"subscCats"`
+	SubscCats []string `json:"subscCats,omitempty" bson:"subscCats" yaml:"subscCats,omitempty"`
 }
