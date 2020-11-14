@@ -2,8 +2,31 @@ package process
 
 import (
 	"free5gc-cli/custom"
+	"free5gc-cli/lib/MongoDBLibrary"
 	"free5gc-cli/lib/openapi/models"
+	"free5gc-cli/logger"
+
+	"go.mongodb.org/mongo-driver/bson"
 )
+
+// Get all subscribers list
+func GetSubscribers() {
+
+	logger.FreecliLog.Infoln("Get All Subscribers List")
+
+	var subsList []custom.SubsListIE = make([]custom.SubsListIE, 0)
+	amDataList := MongoDBLibrary.RestfulAPIGetMany(amDataColl, bson.M{})
+	for _, amData := range amDataList {
+		ueId := amData["ueId"]
+		servingPlmnId := amData["servingPlmnId"]
+		var tmp = custom.SubsListIE{
+			PlmnID: servingPlmnId.(string),
+			UeId:   ueId.(string),
+		}
+		subsList = append(subsList, tmp)
+	}
+
+}
 
 func TestData() custom.SubsData {
 	var subsData custom.SubsData
