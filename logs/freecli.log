@@ -1,253 +1,53 @@
-time="2020-11-14T01:01:51+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:01:57+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:19:24+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:28:02+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:31:51+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:32:26+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:33:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:34:21+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:35:50+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:41:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:42:03+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:42:15+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:42:41+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:48:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:48:56+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:50:25+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:51:21+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:52:00+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:52:52+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:53:45+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:54:19+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:55:42+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:56:03+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:56:23+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:57:39+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:58:58+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T01:59:55+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:00:17+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:05:35+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:11:12+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:11:33+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:12:31+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:12:53+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:13:16+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:14:19+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:14:44+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:19:37+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:21:29+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:22:33+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:28:56+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:48:44+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:49:11+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T02:50:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:11:40+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:11:54+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:11:55+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T15:15:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:23:06+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T15:23:08+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:24:24+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T15:24:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:24:30+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T15:54:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:54:52+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T15:55:01+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T15:55:32+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T16:52:38+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T16:54:56+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T16:54:59+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T16:58:08+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T16:58:11+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T16:58:50+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T16:58:53+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T16:59:12+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T16:59:18+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T16:59:19+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T18:11:04+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T18:11:55+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T18:11:57+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T18:13:56+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T18:13:59+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T18:15:47+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T18:28:34+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T18:28:36+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T18:31:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T18:35:41+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T18:35:45+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T20:55:16+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T20:55:20+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T20:55:32+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T20:56:04+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:15:23+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:22:39+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:22:48+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:22:55+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:23:01+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:44:30+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:44:39+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:45:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:48:17+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:48:19+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:48:24+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:48:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:48:41+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:48:45+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:52:41+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:52:43+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:52:45+01:00" level=info msg="Loading subscriber module..." category=App component=Freecli
-time="2020-11-14T22:52:56+01:00" level=info msg="Loading configuration module..." category=App component=Freecli
-time="2020-11-14T22:53:40+01:00" level=info msg="Loading subscriber module..." category=App component=Freecli
-time="2020-11-14T22:53:49+01:00" level=info msg="Loading configuration module..." category=App component=Freecli
-time="2020-11-14T22:57:30+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:57:32+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:57:34+01:00" level=info msg="Loading g-nb module..." category=App component=Freecli
-time="2020-11-14T22:59:42+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T22:59:44+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T22:59:46+01:00" level=info msg="Loading subscriber module..." category=App component=Freecli
-time="2020-11-14T23:00:48+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T23:00:53+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:00:55+01:00" level=info msg="Loading subscriber module..." category=App component=Freecli
-time="2020-11-14T23:03:41+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T23:03:44+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:03:46+01:00" level=info msg="Loading subscriber module..." category=App component=Freecli
-time="2020-11-14T23:03:48+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T23:04:35+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:04:38+01:00" level=info msg="Loading configuration module..." category=App component=Freecli
-time="2020-11-14T23:04:41+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T23:04:44+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:04:46+01:00" level=info msg="Loading configuration module..." category=App component=Freecli
-time="2020-11-14T23:05:09+01:00" level=info msg="Exiting Freecli..." category=App component=Freecli
-time="2020-11-14T23:05:14+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:05:15+01:00" level=info msg="Loading configuration module..." category=Freecli component=Freecli
-time="2020-11-14T23:05:36+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-14T23:05:38+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:05:40+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
-time="2020-11-14T23:05:41+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:05:41+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-14T23:31:51+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:44:22+01:00" level=info msg="Loading configuration module..." category=Freecli component=Freecli
-time="2020-11-14T23:44:24+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:44:26+01:00" level=info msg="Loading configuration module..." category=Freecli component=Freecli
-time="2020-11-14T23:44:34+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:45:36+01:00" level=info msg="Loading g-nb module..." category=Freecli component=Freecli
-time="2020-11-14T23:45:37+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:45:39+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
-time="2020-11-14T23:45:40+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:45:43+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-14T23:45:47+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:46:01+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
-time="2020-11-14T23:46:39+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:46:40+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-14T23:46:43+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:46:48+01:00" level=info msg="Loading g-nb module..." category=Freecli component=Freecli
-time="2020-11-14T23:46:53+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:46:56+01:00" level=info msg="Loading g-nb module..." category=Freecli component=Freecli
-time="2020-11-14T23:47:00+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:47:07+01:00" level=info msg="Loading configuration module..." category=Freecli component=Freecli
-time="2020-11-14T23:47:11+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:47:13+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
-time="2020-11-14T23:48:12+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:48:14+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
-time="2020-11-14T23:48:30+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-14T23:48:30+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-14T23:49:29+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-14T23:49:44+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-14T23:49:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T11:58:03+01:00" level=info msg="Loading g-nb module..." category=Freecli component=Freecli
-time="2020-11-16T11:58:04+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-16T11:58:06+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T12:52:08+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T12:52:10+01:00" level=info msg="Loading g-nb module..." category=Freecli component=Freecli
-time="2020-11-16T13:07:33+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-16T13:07:34+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T14:46:02+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T14:46:07+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T14:46:16+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T14:46:38+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T14:57:31+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T14:57:43+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T14:57:45+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T14:58:26+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T14:58:28+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T14:58:49+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T14:58:51+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T14:59:52+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T14:59:55+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:00:53+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:05:22+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:17:58+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:18:01+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:18:30+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:18:32+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:18:49+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:18:59+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:31:22+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:31:24+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:33:14+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:33:17+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:35:46+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:35:48+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:36:12+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:36:19+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:37:01+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:37:03+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:38:52+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:38:56+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:40:28+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:40:30+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:41:20+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:41:23+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:42:37+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:42:39+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:43:59+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:44:01+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:45:49+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:45:51+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:47:48+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:47:50+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:48:40+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:48:42+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:50:26+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:50:29+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:51:24+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:51:27+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:54:12+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:54:14+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:54:39+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:54:41+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:56:21+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:56:23+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:56:45+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:56:47+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:57:05+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:57:07+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T15:58:00+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T15:58:02+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:29:28+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:29:32+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:36:53+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
-time="2020-11-16T16:36:54+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-16T16:36:56+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:37:00+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:37:46+01:00" level=info msg="Loading configuration module..." category=Freecli component=Freecli
-time="2020-11-16T16:37:52+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-16T16:38:00+01:00" level=info msg="Loading configuration module..." category=Freecli component=Freecli
-time="2020-11-16T16:38:03+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-16T16:38:10+01:00" level=info msg="Loading g-nb module..." category=Freecli component=Freecli
-time="2020-11-16T16:38:18+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
-time="2020-11-16T16:38:20+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:54:13+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:55:32+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:56:04+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:56:07+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:56:23+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:56:26+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:56:28+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:56:29+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:56:31+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:56:32+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:56:37+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:56:39+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
-time="2020-11-16T16:56:43+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
-time="2020-11-16T16:56:45+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T18:22:37+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T18:22:41+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T18:31:52+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T19:54:05+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T19:54:08+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T19:55:57+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T19:56:00+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:03:14+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:03:18+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:03:53+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:03:56+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:04:15+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:04:18+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:04:54+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:04:57+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:05:25+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:05:33+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:05:46+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:05:49+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:07:04+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:07:06+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:10:10+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:11:05+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:11:45+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:11:47+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:12:00+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:12:02+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:14:08+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:14:13+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T20:14:14+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T20:45:55+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:41:05+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:42:35+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:42:53+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:43:13+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:43:31+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:43:34+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:44:43+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:44:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:45:22+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:45:25+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:47:51+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:47:53+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:48:43+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:48:46+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:50:32+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-16T23:50:37+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-16T23:59:58+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-17T00:00:05+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-17T00:00:45+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-17T00:00:47+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli
+time="2020-11-17T00:01:10+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-17T00:01:12+01:00" level=info msg="Successfully initialize configuration config/freecli.yaml" category=Init component=Freecli

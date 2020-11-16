@@ -1,13 +1,31 @@
 package u32
 
 import (
-	"bytes"
-	"encoding/binary"
+	"encoding/hex"
+	"fmt"
 	"net"
+	"strconv"
+	"strings"
 )
 
+type IPV4Fields struct {
+	Version        bool
+	IHL            bool
+	DSCP           bool
+	ECN            bool
+	TotalLength    bool
+	Identification bool
+	Flags          bool
+	FragmentOffset bool
+	TTL            bool
+	Protocol       bool
+	HeaderChecksum bool
+	Source         bool
+	Destination    bool
+}
+
 type IPV4Header struct {
-	Offset uint
+	Offset int
 
 	Version        uint8
 	IHL            uint8
@@ -22,35 +40,19 @@ type IPV4Header struct {
 	HeaderChecksum uint16
 	Source         string
 	Destination    string
+	Set            IPV4Fields
 }
 
 func (ipv4 *IPV4Header) HeaderLength() int {
 	return 20
 }
 
-func (ipv4 *IPV4Header) GetOffset() uint {
+func (ipv4 *IPV4Header) GetOffset() int {
 	return ipv4.Offset
 }
 
-func (ipv4 *IPV4Header) SetOffset(offset uint) {
+func (ipv4 *IPV4Header) SetOffset(offset int) {
 	ipv4.Offset = offset
-}
-
-func (ipv4 *IPV4Header) BuildMatches(packet []byte) string {
-
-	matches := ""
-
-	return matches
-}
-
-func Uint16ToUint8(value uint16) []byte {
-
-	buf := new(bytes.Buffer)
-	err := binary.Write(buf, binary.BigEndian, value)
-	if err == nil {
-		return buf.Bytes()
-	}
-	return buf.Bytes()
 }
 
 func (ipv4 *IPV4Header) Marshall() []byte {
@@ -81,4 +83,124 @@ func (ipv4 *IPV4Header) Marshall() []byte {
 
 	return bytes
 
+}
+
+func (ipv4 *IPV4Header) BuildMatches() string {
+
+	packet := ipv4.Marshall()
+	matches := []string{}
+
+	var i int = ipv4.Offset
+	fmt.Println(len(packet))
+	for i < len(packet) {
+
+		match := ""
+		mask := "0x"
+
+		for index := 0; index < 4; index++ {
+
+			msk, mtch := ipv4.GetMask(i+index-ipv4.Offset, packet[i+index])
+			mask += msk
+			match += strings.ToUpper(hex.EncodeToString([]byte{mtch}))
+		}
+
+		if mask != "0x00000000" {
+			match = strconv.Itoa(i) + "&" + mask + "=0x" + match
+			matches = append(matches, match)
+		}
+
+		i += 4
+
+	}
+
+	fmt.Println(matches)
+	fmt.Println(packet)
+	return strings.Join(matches, " && ")
+}
+
+func (ipv4 *IPV4Header) GetMask(offset int, value byte) (string, byte) {
+	if offset == 0 {
+		if ipv4.Set.Version && ipv4.Set.IHL {
+			return "FF", 0xFF & value
+		} else if ipv4.Set.Version {
+			return "0F", 0x0F & value
+		} else if ipv4.Set.IHL {
+			return "F0", 0xF0 & value
+		}
+		return "00", 00
+
+	}
+	if offset == 1 {
+		if ipv4.Set.ECN && ipv4.Set.DSCP {
+			return "FF", 0xFF & value
+		} else if ipv4.Set.ECN {
+			return "03", 0x0F & value
+		} else if ipv4.Set.DSCP {
+			return "FC", 0xF0 & value
+		}
+		return "00", 00
+
+	}
+	if offset == 2 || offset == 3 {
+		if ipv4.Set.TotalLength {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+
+	}
+	if offset == 4 || offset == 5 {
+		if ipv4.Set.Identification {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+
+	}
+	if offset == 6 {
+		if ipv4.Set.Flags && ipv4.Set.FragmentOffset {
+			return "FF", 0xFF & value
+		} else if ipv4.Set.Flags {
+			return "E0", 0xE0 & value
+		} else if ipv4.Set.FragmentOffset {
+			return "1F", 0x1F & value
+		}
+		return "00", 00
+	}
+	if offset == 7 {
+		if ipv4.Set.FragmentOffset {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+	}
+	if offset == 8 {
+		if ipv4.Set.TTL {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+	}
+	if offset == 9 {
+		if ipv4.Set.Protocol {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+	}
+	if offset == 10 || offset == 11 {
+		if ipv4.Set.TTL {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+	}
+	if offset == 12 || offset == 13 || offset == 14 || offset == 15 {
+		if ipv4.Set.Source {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+	}
+	if offset == 16 || offset == 17 || offset == 18 || offset == 19 {
+		if ipv4.Set.Destination {
+			return "FF", 0xFF & value
+		}
+		return "00", 00
+	}
+
+	return "", 00
 }
