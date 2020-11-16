@@ -9,10 +9,10 @@ import (
 var SubscriberSuggestion = []prompt.Suggest{
 	{Text: "add", Description: "Add a new subscriber"},
 	{Text: "flush", Description: "Remove all the subscribers from the database"},
-	{Text: "refresh", Description: "Refresh the list of registered UE in memory"},
+	{Text: "refresh", Description: "Refresh the list of registered subscribers in memory"},
 	{Text: "remove", Description: "Remove an exising subscriber"},
-	{Text: "show", Description: "Show the configuration of UE"},
-	{Text: "update", Description: "Update an exisiting UE"},
+	{Text: "list", Description: "List all the subscribers"},
+	{Text: "update", Description: "Update an exisiting subscribers"},
 	{Text: "exit", Description: "Exit the module"},
 }
 
