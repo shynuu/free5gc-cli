@@ -24,7 +24,7 @@ type IPV4Fields struct {
 }
 
 type IPV4Header struct {
-	Offset string
+	Offset *Offset
 
 	Version        uint8
 	IHL            uint8
@@ -39,24 +39,24 @@ type IPV4Header struct {
 	HeaderChecksum uint16
 	Source         string
 	Destination    string
-	Set            IPV4Fields
+	Set            *IPV4Fields
 }
 
-// GetOffset() string
-// SetOffset(start string)
-// BuildMatches() string
-// GetNextHeader() string
-
-func (ipv4 *IPV4Header) GetNextHeader() string {
-	return "0>>22&0x3C"
+func (ipv4 *IPV4Header) NextHeader() string {
+	return strconv.Itoa(ipv4.Offset.Offset) + ">>22&0x3C@"
 }
 
-func (ipv4 *IPV4Header) GetOffset() string {
-	return ipv4.Offset
+func (ipv4 *IPV4Header) GetOffset() Offset {
+	return *ipv4.Offset
 }
 
-func (ipv4 *IPV4Header) SetOffset(offset string) {
-	ipv4.Offset = offset
+func (ipv4 *IPV4Header) SetOffset(offset *Offset) {
+	ipv4.Offset = &Offset{Offset: offset.Offset, U32Offset: offset.U32Offset}
+}
+
+func (ipv4 *IPV4Header) MoveOffset(offset *Offset) {
+	offset.Offset = 0
+	offset.U32Offset += ipv4.NextHeader()
 }
 
 func (ipv4 *IPV4Header) Marshall() []byte {
@@ -116,7 +116,7 @@ func (ipv4 *IPV4Header) BuildMatches() string {
 		}
 
 		if mask != "0x00000000" {
-			match = ipv4.Offset + strconv.Itoa(i) + "&" + mask + "=0x" + match
+			match = ipv4.Offset.U32Offset + strconv.Itoa(ipv4.Offset.Offset+i) + "&" + mask + "=0x" + match
 			matches = append(matches, match)
 		}
 
