@@ -11,14 +11,10 @@ import (
 // match = U32.BuildMatch
 
 type Protocol interface {
-	HeaderLength() int
-	GetOffset() int
-	SetOffset(start int)
+	GetOffset() string
+	SetOffset(start string)
 	BuildMatches() string
-}
-
-type Field interface {
-	Length() int
+	GetNextHeader() string
 }
 
 func Uint16ToUint8(value uint16) []byte {

@@ -10,18 +10,18 @@ type U32 struct {
 	Matches   string
 }
 
-func (u32 *U32) BuildPacket(protocols ...Protocol) {
-	offset := 0
-	for i := 0; i < len(protocols); i++ {
-		protocols[i].SetOffset(offset)
-		offset += protocols[i].HeaderLength()
+func (u32 U32) BuildPacket() {
+	offset := ""
+	for i := 0; i < len(u32.Protocols); i++ {
+		u32.Protocols[i].SetOffset(offset)
+		offset = offset + u32.Protocols[i].GetNextHeader() + " @ "
 	}
 }
 
-func (u32 *U32) BuildMatches(protocols ...Protocol) string {
+func (u32 U32) BuildMatches() string {
 	var matches []string
-	for i := 0; i < len(protocols); i++ {
-		match := protocols[i].BuildMatches()
+	for i := 0; i < len(u32.Protocols); i++ {
+		match := u32.Protocols[i].BuildMatches()
 		if match != "" {
 			matches = append(matches, match)
 		}

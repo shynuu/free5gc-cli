@@ -2,7 +2,6 @@ package u32
 
 import (
 	"encoding/hex"
-	"fmt"
 	"net"
 	"strconv"
 	"strings"
@@ -25,7 +24,7 @@ type IPV4Fields struct {
 }
 
 type IPV4Header struct {
-	Offset int
+	Offset string
 
 	Version        uint8
 	IHL            uint8
@@ -43,15 +42,20 @@ type IPV4Header struct {
 	Set            IPV4Fields
 }
 
-func (ipv4 *IPV4Header) HeaderLength() int {
-	return 20
+// GetOffset() string
+// SetOffset(start string)
+// BuildMatches() string
+// GetNextHeader() string
+
+func (ipv4 *IPV4Header) GetNextHeader() string {
+	return "0>>22&0x3C"
 }
 
-func (ipv4 *IPV4Header) GetOffset() int {
+func (ipv4 *IPV4Header) GetOffset() string {
 	return ipv4.Offset
 }
 
-func (ipv4 *IPV4Header) SetOffset(offset int) {
+func (ipv4 *IPV4Header) SetOffset(offset string) {
 	ipv4.Offset = offset
 }
 
@@ -77,7 +81,15 @@ func (ipv4 *IPV4Header) Marshall() []byte {
 
 	bytes = append(bytes, Uint16ToUint8(ipv4.HeaderChecksum)...)
 
+	if ipv4.Source == "" {
+		ipv4.Source = "0.0.0.0"
+	}
+
 	bytes = append(bytes, net.ParseIP(ipv4.Source).To4()...)
+
+	if ipv4.Destination == "" {
+		ipv4.Destination = "0.0.0.0"
+	}
 
 	bytes = append(bytes, net.ParseIP(ipv4.Destination).To4()...)
 
@@ -90,8 +102,7 @@ func (ipv4 *IPV4Header) BuildMatches() string {
 	packet := ipv4.Marshall()
 	matches := []string{}
 
-	var i int = ipv4.Offset
-	fmt.Println(len(packet))
+	var i int = 0
 	for i < len(packet) {
 
 		match := ""
@@ -99,13 +110,13 @@ func (ipv4 *IPV4Header) BuildMatches() string {
 
 		for index := 0; index < 4; index++ {
 
-			msk, mtch := ipv4.GetMask(i+index-ipv4.Offset, packet[i+index])
+			msk, mtch := ipv4.GetMask(i+index, packet[i+index])
 			mask += msk
 			match += strings.ToUpper(hex.EncodeToString([]byte{mtch}))
 		}
 
 		if mask != "0x00000000" {
-			match = strconv.Itoa(i) + "&" + mask + "=0x" + match
+			match = ipv4.Offset + strconv.Itoa(i) + "&" + mask + "=0x" + match
 			matches = append(matches, match)
 		}
 
@@ -113,8 +124,6 @@ func (ipv4 *IPV4Header) BuildMatches() string {
 
 	}
 
-	fmt.Println(matches)
-	fmt.Println(packet)
 	return strings.Join(matches, " && ")
 }
 

@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"free5gc-cli/freecli"
 	"free5gc-cli/u32"
 )
 
@@ -11,23 +10,32 @@ import (
 
 func main() {
 
-	var ipv4 = u32.IPV4Header{
-		Source:      "216.58.215.35",
-		Destination: "216.58.215.35",
-		Set: u32.IPV4Fields{
-			Destination: true,
+	var U32 = u32.U32{Protocols: []u32.Protocol{
+		&u32.IPV4Header{
+			Destination: "216.58.215.35",
+			Set: u32.IPV4Fields{
+				Destination: true,
+			},
 		},
-	}
-	fmt.Println(ipv4.BuildMatches())
-
-	var i = u32.IPV4Header{
-		Protocol: 0x11,
-		Set: u32.IPV4Fields{
-			Protocol: true,
+		&u32.IPV4Header{
+			Destination: "216.58.215.36",
+			Set: u32.IPV4Fields{
+				Destination: true,
+			},
 		},
+		&u32.IPV4Header{
+			Destination: "216.58.215.36",
+			Set: u32.IPV4Fields{
+				Destination: true,
+			},
+		},
+	},
 	}
-	fmt.Println(i.BuildMatches())
 
-	freecli.Initialize()
-	freecli.Run()
+	U32.BuildPacket()
+	result := U32.BuildMatches()
+	fmt.Println(result)
+
+	// freecli.Initialize()
+	// freecli.Run()
 }
