@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"free5gc-cli/u32"
+	"free5gc-cli/lib/u32"
 )
 
 // load configuration file.yaml
