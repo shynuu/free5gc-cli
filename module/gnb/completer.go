@@ -1,4 +1,4 @@
-package completer
+package gnb
 
 import "github.com/c-bata/go-prompt"
 

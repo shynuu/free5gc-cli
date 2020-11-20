@@ -1,4 +1,4 @@
-package completer
+package freecli
 
 import (
 	"strings"

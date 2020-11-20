@@ -13,6 +13,7 @@ var log *logrus.Logger
 var AppLog *logrus.Entry
 var InitLog *logrus.Entry
 var FreecliLog *logrus.Entry
+var SubscriberLog *logrus.Entry
 
 func init() {
 	log = logrus.New()
@@ -35,6 +36,7 @@ func init() {
 	AppLog = log.WithFields(logrus.Fields{"component": "Freecli", "category": "App"})
 	InitLog = log.WithFields(logrus.Fields{"component": "Freecli", "category": "Init"})
 	FreecliLog = log.WithFields(logrus.Fields{"component": "Freecli", "category": "Freecli"})
+	SubscriberLog = log.WithFields(logrus.Fields{"component": "Freecli", "category": "Subscriber Module"})
 }
 
 func SetLogLevel(level logrus.Level) {

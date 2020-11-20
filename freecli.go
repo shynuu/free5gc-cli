@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"free5gc-cli/freecli"
 	"free5gc-cli/lib/u32"
 )
 
@@ -14,9 +15,11 @@ func main() {
 		&u32.IPV4Header{
 			Source:      "10.200.200.1",
 			Destination: "10.200.200.102",
+			Protocol:    u32.PROTO_UDP,
 			Set: &u32.IPV4Fields{
 				Source:      true,
 				Destination: true,
+				Protocol:    true,
 			},
 		},
 		&u32.UDPHeader{
@@ -31,27 +34,13 @@ func main() {
 			TEID: 1,
 			Set:  &u32.GTPv1Fields{TEID: true},
 		},
-		&u32.IPV4Header{
-			Protocol: u32.PROTO_TCP,
-			Set: &u32.IPV4Fields{
-				Protocol: true,
-			},
-		},
-		&u32.TCPHeader{
-			DestinationPort: 80,
-			Flags:           0b100000001,
-			Set: &u32.TCPFields{
-				DestinationPort: true,
-				Flags:           true,
-			},
-		},
 	},
 	}
 
 	U32.BuildPacket()
 	result := U32.BuildCommand()
-	fmt.Println(result)
+	fmt.Println("sudo iptables -t mangle -A POSTROUTING " + result + " -j DSCP --set-dscp 63")
 
-	// freecli.Initialize()
-	// freecli.Run()
+	freecli.Initialize()
+	freecli.Run()
 }

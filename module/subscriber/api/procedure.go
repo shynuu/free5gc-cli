@@ -2,7 +2,6 @@ package api
 
 import (
 	"encoding/json"
-	"free5gc-cli/custom"
 	"free5gc-cli/lib/MongoDBLibrary"
 	"free5gc-cli/lib/openapi/models"
 	"free5gc-cli/logger"
@@ -11,30 +10,29 @@ import (
 )
 
 // GetSubscribers returns subscriber list
-func GetSubscribers() {
+func GetSubscribers() []SubsListIE {
 
-	logger.FreecliLog.Infoln("Get All Subscribers List")
-
-	var subsList []custom.SubsListIE = make([]custom.SubsListIE, 0)
+	var subsList []SubsListIE = make([]SubsListIE, 0)
 	amDataList := MongoDBLibrary.RestfulAPIGetMany(amDataColl, bson.M{})
 	for _, amData := range amDataList {
 		ueId := amData["ueId"]
 		servingPlmnId := amData["servingPlmnId"]
-		var tmp = custom.SubsListIE{
+		var tmp = SubsListIE{
 			PlmnID: servingPlmnId.(string),
 			UeId:   ueId.(string),
 		}
 		subsList = append(subsList, tmp)
 	}
 
+	return subsList
 }
 
 // GetSubscriberByID returns the subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
-func GetSubscriberByID(ueId string, servingPlmnId string) custom.SubsData {
+func GetSubscriberByID(ueId string, servingPlmnId string) SubsData {
 
 	logger.FreecliLog.Infoln("Getting subscriber information", ueId)
 
-	var subsData custom.SubsData
+	var subsData SubsData
 
 	filterUeIdOnly := bson.M{"ueId": ueId}
 	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
@@ -59,7 +57,7 @@ func GetSubscriberByID(ueId string, servingPlmnId string) custom.SubsData {
 	var smPolicyData models.SmPolicyData
 	json.Unmarshal(mapToByte(smPolicyDataInterface), &smPolicyData)
 
-	subsData = custom.SubsData{
+	subsData = SubsData{
 		PlmnID:                            servingPlmnId,
 		UeId:                              ueId,
 		AuthenticationSubscription:        authSubsData,
@@ -75,11 +73,9 @@ func GetSubscriberByID(ueId string, servingPlmnId string) custom.SubsData {
 }
 
 // PostSubscriberByID subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
-func PostSubscriberByID(ueId string, servingPlmnId string) {
+func PostSubscriberByID(ueId string, servingPlmnId string, subsData SubsData) {
 
-	logger.FreecliLog.Infoln("Registering a new user...")
-
-	var subsData custom.SubsData
+	logger.SubscriberLog.Infoln("Registering a new user with supi %s ...", ueId)
 
 	filterUeIdOnly := bson.M{"ueId": ueId}
 	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
@@ -110,10 +106,10 @@ func PostSubscriberByID(ueId string, servingPlmnId string) {
 }
 
 // PatchSubscriberByID subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
-func PatchSubscriberByID(ueId string, servingPlmnId string) custom.SubsData {
+func PatchSubscriberByID(ueId string, servingPlmnId string) SubsData {
 	logger.FreecliLog.Infoln("Updating Subscriber Data", ueId)
 
-	var subsData custom.SubsData
+	var subsData SubsData
 
 	filterUeIdOnly := bson.M{"ueId": ueId}
 	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
@@ -146,8 +142,7 @@ func PatchSubscriberByID(ueId string, servingPlmnId string) custom.SubsData {
 }
 
 // DeleteSubscriberByID deletes a subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
-func DeleteSubscriberByID(ueId string, servingPlmnId string) bool {
-	logger.FreecliLog.Infoln("Delete One Subscriber Data")
+func DeleteSubscriberByID(ueId string, servingPlmnId string) {
 
 	filterUeIdOnly := bson.M{"ueId": ueId}
 	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
@@ -159,11 +154,10 @@ func DeleteSubscriberByID(ueId string, servingPlmnId string) bool {
 	MongoDBLibrary.RestfulAPIDeleteOne(amPolicyDataColl, filterUeIdOnly)
 	MongoDBLibrary.RestfulAPIDeleteOne(smPolicyDataColl, filterUeIdOnly)
 
-	return true
 }
 
-func TestData() custom.SubsData {
-	var subsData custom.SubsData
+func TestData() {
+	var subsData SubsData
 
 	authSubsData := models.AuthenticationSubscription{
 		AuthenticationManagementField: "8000",
@@ -305,7 +299,7 @@ func TestData() custom.SubsData {
 	servingPlmnId := "20893"
 	ueId := "imsi-2089300007487"
 
-	subsData = custom.SubsData{
+	subsData = SubsData{
 		PlmnID:                            servingPlmnId,
 		UeId:                              ueId,
 		AuthenticationSubscription:        authSubsData,
@@ -316,5 +310,5 @@ func TestData() custom.SubsData {
 		SmPolicyData:                      smPolicyData,
 	}
 
-	return subsData
+	PostSubscriberByID(ueId, servingPlmnId, subsData)
 }

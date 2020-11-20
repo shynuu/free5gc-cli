@@ -1,4 +1,4 @@
-package custom
+package api
 
 import "free5gc-cli/lib/openapi/models"
 
