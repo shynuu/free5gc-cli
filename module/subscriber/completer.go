@@ -13,9 +13,9 @@ var SubscriberSuggestion = []prompt.Suggest{
 }
 
 var userSuggestion = []prompt.Suggest{
-	{Text: "random", Description: "Register a number of subscribers with a randomly generated supi for a specific plmn"},
+	{Text: "random", Description: "Generate a fixed number of random supi and add them to the plmn"},
 	{Text: "register", Description: "Register a new subscriber with a specific supi and plmn"},
-	{Text: "delete", Description: "Delete an exising subscriber"},
+	{Text: "delete", Description: "Delete an exising subscriber based on supi and plmn"},
 	{Text: "list", Description: "List all the registered subscribers"},
 	{Text: "flush", Description: "Remove all the registered subscribers from the database"},
 }
@@ -89,7 +89,7 @@ func completerUser(in prompt.Document) []prompt.Suggest {
 		if l > 2 && l < 4 {
 			a = in.GetWordBeforeCursor()
 			return prompt.FilterHasPrefix([]prompt.Suggest{
-				{Text: "--count", Description: "Specify the number of subscribers to generate"},
+				{Text: "--range", Description: "Specify the number of subscribers to generate"},
 			}, a, true)
 		}
 

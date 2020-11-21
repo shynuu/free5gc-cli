@@ -79,8 +79,6 @@ func GetSubscriberByID(ueId string, servingPlmnId string) SubsData {
 // PostSubscriberByID subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
 func PostSubscriberByID(ueId string, servingPlmnId string, subsData SubsData) {
 
-	logger.SubscriberLog.Infoln("Registering a new user with supi", ueId)
-
 	filterUeIdOnly := bson.M{"ueId": ueId}
 	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
 
