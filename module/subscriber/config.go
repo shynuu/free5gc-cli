@@ -3,6 +3,7 @@ package subscriber
 type Config struct {
 	Info          *Info          `yaml:"info"`
 	Configuration *Configuration `yaml:"configuration"`
+	PLMN          *PLMN          `yaml:"plmn"`
 }
 
 type Info struct {
@@ -17,4 +18,8 @@ type Configuration struct {
 type Mongodb struct {
 	Name string `yaml:"name"`
 	Url  string `yaml:"url"`
+}
+
+type PLMN struct {
+	Plmn []string `yaml:"value"`
 }

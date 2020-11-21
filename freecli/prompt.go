@@ -20,7 +20,7 @@ func InitializePrompt() {
 		IsModule:   false,
 		Prefix:     "freecli> ",
 		Suggestion: &MainSuggestion,
-		Title:      "freecli - A CLI tool for free5gc v.3.0.4",
+		Title:      "freecli - A CLI tool for free5gc",
 	}
 
 }

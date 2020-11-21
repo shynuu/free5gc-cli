@@ -6,3 +6,8 @@ configuration:
   mongodb:
     name: free5gc
     url: mongodb://localhost:27017
+
+plmn:
+  value:
+    - 20893
+    - 20810

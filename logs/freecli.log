@@ -843,3 +843,473 @@ time="2020-11-20T14:20:45+01:00" level=info msg="Exiting Module..." category=Fre
 time="2020-11-20T14:20:47+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
 time="2020-11-20T14:21:15+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
 time="2020-11-20T14:21:18+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T17:38:08+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T17:38:08+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T17:38:08+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:27:50+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:27:50+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:27:52+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:27:52+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:41:34+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T18:41:35+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:41:50+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:45:44+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T18:45:44+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:45:44+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:45:53+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:45:53+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:45:55+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:45:55+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:46:57+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T18:46:59+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:47:04+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T18:47:04+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:47:04+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:50:46+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T18:50:48+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:50:51+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T18:50:51+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:50:51+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:51:16+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T18:51:17+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:51:43+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:51:47+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T18:51:47+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:51:47+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:51:56+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T18:51:58+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:52:02+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T18:52:02+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:52:02+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:52:41+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T18:52:42+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T18:52:45+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T18:52:45+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T18:52:45+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T19:00:06+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T19:00:07+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T19:01:04+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T19:01:04+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T19:01:04+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T19:06:44+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T19:06:45+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T19:06:48+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T19:06:48+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T19:06:48+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T19:07:13+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T19:07:14+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T19:07:18+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T19:07:18+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T19:07:18+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T19:53:29+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T19:53:31+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T20:11:43+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T20:11:43+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T20:11:43+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T20:11:46+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T20:11:46+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T20:12:18+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T20:12:19+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T20:12:22+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T20:12:22+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T20:12:22+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:10:22+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T23:10:24+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T23:11:31+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T23:11:31+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:11:31+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:15:25+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:15:25+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:23:31+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:23:31+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:48:01+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T23:48:04+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T23:48:10+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T23:48:10+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:48:10+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:56:01+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T23:56:02+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T23:56:10+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T23:56:10+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:56:10+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:59:12+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-20T23:59:13+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-20T23:59:21+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-20T23:59:21+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-20T23:59:21+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:37:08+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T00:37:10+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T00:37:14+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T00:37:14+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:37:14+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:38:39+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T00:38:40+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T00:38:44+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T00:38:44+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:38:44+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:39:33+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T00:39:35+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T00:39:40+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T00:39:40+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:39:40+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:55:20+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T00:55:22+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T00:55:28+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T00:55:28+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:55:28+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:55:43+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T00:55:44+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T00:55:50+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T00:55:50+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:55:50+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:56:07+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:56:07+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:56:11+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T00:56:11+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:16:53+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T15:16:54+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T15:16:59+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:16:59+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:16:59+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:17:07+01:00" level=info msg="Registering a new user with supi %s ... dzazd" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:21:31+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:21:31+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:21:31+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:21:40+01:00" level=info msg="Registering a new user with supi %s ... 298392839283" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:22:17+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T15:22:19+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T15:22:24+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:22:24+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:22:24+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:22:33+01:00" level=info msg="Removing user 298392839283 from 20983\n------------------------" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:31:55+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:31:55+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:31:55+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:32:14+01:00" level=info msg="Registering a new user with supi %s ... 0909090909" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:32:23+01:00" level=info msg="Removing user 0909090909 from 90909\n------------------------" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:34:12+01:00" level=info msg="Registering a new user with supi %s ... 343434" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:36:57+01:00" level=info msg="Removing user 343434 from 343434\n------------------------" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:37:02+01:00" level=info msg="Registering a new user with supi %s ... 343434" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:39:24+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:39:24+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:39:24+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:40:50+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T15:40:50+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T15:40:54+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:40:54+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:40:54+01:00" level=fatal msg="[Configuration] yaml: unmarshal errors:\n  line 23: cannot unmarshal !!str `msisdn-...` into []string\n  line 91: cannot unmarshal !!str `internet` into models.DnnInfo\n  line 94: cannot unmarshal !!str `internet` into models.DnnInfo" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:42:45+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:42:45+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:42:45+01:00" level=fatal msg="[Configuration] yaml: unmarshal errors:\n  line 91: cannot unmarshal !!str `internet` into models.DnnInfo\n  line 94: cannot unmarshal !!str `internet` into models.DnnInfo" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:44:17+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:44:17+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:44:17+01:00" level=fatal msg="[Configuration] yaml: unmarshal errors:\n  line 90: cannot unmarshal !!str `internet` into []models.DnnInfo\n  line 92: cannot unmarshal !!str `internet` into []models.DnnInfo" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:44:42+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:44:42+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:44:42+01:00" level=fatal msg="[Configuration] yaml: unmarshal errors:\n  line 91: cannot unmarshal !!str `internet` into models.DnnInfo\n  line 94: cannot unmarshal !!str `internet` into models.DnnInfo" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:47:13+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:47:13+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:47:13+01:00" level=fatal msg="[Configuration] yaml: unmarshal errors:\n  line 91: cannot unmarshal !!str `internet` into models.DnnInfo\n  line 94: cannot unmarshal !!str `internet` into models.DnnInfo" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:47:42+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:47:42+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:47:42+01:00" level=fatal msg="[Configuration] yaml: unmarshal errors:\n  line 91: cannot unmarshal !!str `internet` into models.DnnInfo\n  line 94: cannot unmarshal !!str `internet` into models.DnnInfo" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:50:14+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:50:14+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:50:14+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:50:28+01:00" level=info msg="Removing user 343434 from 343434\n------------------------" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:50:31+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T15:50:31+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T15:50:36+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:50:36+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:50:36+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:50:46+01:00" level=info msg="Registering a new user with supi %s ... 101010" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:53:49+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T15:53:50+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T15:53:55+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:53:55+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:54:53+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T15:54:55+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T15:55:00+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T15:55:00+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T15:55:00+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:00:29+01:00" level=info msg="Removing user 101010 from PLMN 20200\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:00:31+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T16:00:32+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T16:00:35+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T16:00:35+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:00:35+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:00:44+01:00" level=info msg="Registering a new user with supi %s ... 101010" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:04:09+01:00" level=info msg="Removing user 101010 from PLMN 101010\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:04:11+01:00" level=info msg="Registering a new user with supi %s ... 101010" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:04:25+01:00" level=info msg="Removing user 101010 from PLMN 101010\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:04:26+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T16:04:27+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T16:04:30+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T16:04:30+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:04:30+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:04:39+01:00" level=info msg="Registering a new user with supi 4309403" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:07:00+01:00" level=info msg="Removing user 4309403 from PLMN 30498034\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:07:15+01:00" level=info msg="Registering a new user with supi 4309403" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:08:48+01:00" level=info msg="Removing user 4309403 from PLMN 30498034\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:08:50+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T16:08:50+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T16:08:55+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T16:08:55+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:08:55+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:09:03+01:00" level=info msg="Registering a new user with supi 1919191" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:17:19+01:00" level=info msg="Removing user 1919191 from PLMN 191991\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:17:21+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T16:17:22+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T16:17:26+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T16:17:26+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:17:26+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:17:32+01:00" level=info msg="Registering a new user with supi 290292" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:18:33+01:00" level=info msg="Removing 1 user\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:18:33+01:00" level=info msg="Removing 290292 20929 from user" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:19:35+01:00" level=info msg="Registering a new user with supi 2222" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:19:41+01:00" level=info msg="Removing 1 user\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:19:41+01:00" level=info msg="Removing 2222 2222 from user" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:20:14+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T16:20:15+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T16:20:20+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T16:20:20+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:20:20+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:20:57+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T16:20:58+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T16:21:03+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T16:21:03+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:03+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:07+01:00" level=info msg="Found 0 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:16+01:00" level=info msg="Registering a new user with supi 2020" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:18+01:00" level=info msg="Found 1 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:26+01:00" level=info msg="Found 1 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:29+01:00" level=info msg="Removing 1 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:29+01:00" level=info msg="Removing 2020 2020 from user" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:21:39+01:00" level=info msg="Registering a new user with supi 1212" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:22:59+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T16:23:00+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T16:23:04+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T16:23:04+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T16:23:04+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T17:16:09+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T17:16:10+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T17:16:13+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T17:16:13+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T17:16:13+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T17:16:21+01:00" level=info msg="Removing 1 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T17:16:21+01:00" level=info msg="Removing 1212 1212 from user" category="Subscriber Module" component=Freecli
+time="2020-11-21T17:16:26+01:00" level=info msg="No user to remove" category="Subscriber Module" component=Freecli
+time="2020-11-21T17:16:34+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T17:16:36+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T18:57:18+01:00" level=info msg="Registering a new user with supi DZAD" category="Subscriber Module" component=Freecli
+time="2020-11-21T18:57:26+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T18:57:27+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T18:57:32+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T18:57:32+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T18:57:32+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T18:59:48+01:00" level=info msg="Registering a new user with supi imsi-208930000000" category="Subscriber Module" component=Freecli
+time="2020-11-21T18:59:57+01:00" level=info msg="Found 2 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:00:02+01:00" level=info msg="Removing user DZAD from PLMN dzadaz\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:00:14+01:00" level=info msg="Removing user imsi-208930000000 from PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:04:22+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:04:24+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:04:28+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:04:28+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:04:28+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:08:45+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:08:46+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:08:49+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:08:49+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:08:49+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:09:27+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:09:28+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:09:32+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:09:32+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:09:32+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:22:43+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:22:44+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:22:52+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:22:52+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:22:52+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:23:00+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T19:23:00+01:00" level=info msg="Register new user youssouf in PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:23:00+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:23:08+01:00" level=info msg="Removing user youssouf from PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:23:57+01:00" level=info msg="Found 0 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:24:16+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T19:24:16+01:00" level=info msg="Register new user youssouf in PLMN 20!93\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:24:16+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:24:24+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T19:24:24+01:00" level=info msg="Register new user youssouf in PLMN 20!93\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:24:24+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:24:29+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T19:24:29+01:00" level=info msg="Register new user youssouf in PLMN 20!93\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:24:29+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:24:36+01:00" level=info msg="Found 1 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:11+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:25:12+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:25:16+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:25:16+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:16+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:22+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T19:25:22+01:00" level=info msg="Register new user youssouf in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:22+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:27+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T19:25:27+01:00" level=info msg="Register new user youssouf in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:27+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:30+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T19:25:30+01:00" level=info msg="Register new user youssouf in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:30+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:48+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:25:48+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:25:53+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:25:53+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:53+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:59+01:00" level=info msg="Getting subscriber information 209" category=Freecli component=Freecli
+time="2020-11-21T19:25:59+01:00" level=info msg="Register new user 209 in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:25:59+01:00" level=info msg="Registering a new user with supi 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:26:01+01:00" level=info msg="Getting subscriber information 209" category=Freecli component=Freecli
+time="2020-11-21T19:26:01+01:00" level=info msg="Register new user 209 in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:26:01+01:00" level=info msg="Registering a new user with supi 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:28:02+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:28:04+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:28:08+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:28:08+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:28:08+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:28:14+01:00" level=info msg="Found 3 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:28:21+01:00" level=info msg="Getting subscriber information 209" category=Freecli component=Freecli
+time="2020-11-21T19:28:21+01:00" level=info msg="Register new user 209 in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:28:21+01:00" level=info msg="Registering a new user with supi 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:28:27+01:00" level=info msg="Getting subscriber information 209" category=Freecli component=Freecli
+time="2020-11-21T19:28:27+01:00" level=info msg="Register new user 209 in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:28:27+01:00" level=info msg="Registering a new user with supi 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:29:17+01:00" level=info msg="Removing 3 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:29:17+01:00" level=info msg="Removing youssouf 20!93 from user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:29:17+01:00" level=info msg="Removing youssouf 209 from user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:29:17+01:00" level=info msg="Removing 209 209 from user" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:30:16+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:30:16+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:30:19+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:30:19+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:30:19+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:30:25+01:00" level=info msg="Getting subscriber information 209" category=Freecli component=Freecli
+time="2020-11-21T19:30:25+01:00" level=info msg="Register new user 209 in PLMN 209\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:30:25+01:00" level=info msg="Registering a new user with supi 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:33:35+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:33:37+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:33:41+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:33:41+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:33:41+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:34:03+01:00" level=info msg="Getting subscriber information 10" category=Freecli component=Freecli
+time="2020-11-21T19:34:03+01:00" level=info msg="Register new user 10 in PLMN 10\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:34:03+01:00" level=info msg="Registering a new user with supi 10" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:34:05+01:00" level=info msg="Getting subscriber information 10" category=Freecli component=Freecli
+time="2020-11-21T19:34:05+01:00" level=info msg="Existiog user with supi 10 in PLMN 10\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:41:07+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T19:41:09+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T19:41:14+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T19:41:14+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T19:41:14+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:08:36+01:00" level=info msg="Found 2 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:08:42+01:00" level=info msg="Getting subscriber information youssouf" category=Freecli component=Freecli
+time="2020-11-21T20:08:42+01:00" level=info msg="Register new user youssouf in PLMN mdr\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:08:42+01:00" level=info msg="Registering a new user with supi youssouf" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:08:45+01:00" level=info msg="Found 3 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:13:09+01:00" level=info msg="Found 3 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:03+01:00" level=info msg="Found 3 user" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:09+01:00" level=info msg="Getting subscriber information 10" category=Freecli component=Freecli
+time="2020-11-21T20:14:09+01:00" level=info msg="Existiog user with supi 10 in PLMN 10\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:11+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:14:12+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:14:16+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:14:16+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:16+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:17+01:00" level=info msg="Found 3 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:17+01:00" level=info msg="209 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:17+01:00" level=info msg="10 10" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:17+01:00" level=info msg="youssouf mdr" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:14:25+01:00" level=info msg="Getting subscriber information 10" category=Freecli component=Freecli
+time="2020-11-21T20:14:25+01:00" level=info msg="Existing subscriber with supi 10 in PLMN 10\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:15:56+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:15:57+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:16:00+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:16:00+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:16:00+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:17:01+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:17:02+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:17:06+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:17:06+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:17:06+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:18:23+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:18:24+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:18:28+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:18:28+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:18:28+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:19:13+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:19:13+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:19:17+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:19:17+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:19:17+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:19:27+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:19:28+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:19:46+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:19:46+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:19:46+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:21:27+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:21:27+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:21:33+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:21:33+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:21:33+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:22:30+01:00" level=info msg="Exiting Module..." category=Freecli component=Freecli
+time="2020-11-21T20:22:31+01:00" level=info msg="Exiting Freecli..." category=Freecli component=Freecli
+time="2020-11-21T20:22:36+01:00" level=info msg="Loading subscriber module..." category=Freecli component=Freecli
+time="2020-11-21T20:22:36+01:00" level=info msg="Successfully load module configuration config/subscriber.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:22:36+01:00" level=info msg="Successfully load ue configuration config/subscriber_ue.yaml" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:22:44+01:00" level=info msg="Getting subscriber information 23" category=Freecli component=Freecli
+time="2020-11-21T20:22:44+01:00" level=info msg="Register new subscriber 23 in PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:22:44+01:00" level=info msg="Registering a new user with supi 23" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:22:47+01:00" level=info msg="Getting subscriber information 23" category=Freecli component=Freecli
+time="2020-11-21T20:22:47+01:00" level=info msg="Existing subscriber with supi 23 in PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:04+01:00" level=info msg="Getting subscriber information popo" category=Freecli component=Freecli
+time="2020-11-21T20:42:04+01:00" level=info msg="Register new subscriber popo in PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:04+01:00" level=info msg="Registering a new user with supi popo" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:11+01:00" level=info msg="Found 5 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:11+01:00" level=info msg="209 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:11+01:00" level=info msg="10 10" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:11+01:00" level=info msg="youssouf mdr" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:11+01:00" level=info msg="23 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:11+01:00" level=info msg="popo 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:13+01:00" level=info msg="Found 5 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:13+01:00" level=info msg="209 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:13+01:00" level=info msg="10 10" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:13+01:00" level=info msg="youssouf mdr" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:13+01:00" level=info msg="23 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:42:13+01:00" level=info msg="popo 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:38+01:00" level=info msg="Getting subscriber information 10" category=Freecli component=Freecli
+time="2020-11-21T20:49:38+01:00" level=info msg="Existing subscriber with supi 10 in PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:40+01:00" level=info msg="Found 5 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:40+01:00" level=info msg="209 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:40+01:00" level=info msg="10 10" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:40+01:00" level=info msg="youssouf mdr" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:40+01:00" level=info msg="23 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:40+01:00" level=info msg="popo 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:42+01:00" level=info msg="Found 5 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:42+01:00" level=info msg="209 209" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:42+01:00" level=info msg="10 10" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:42+01:00" level=info msg="youssouf mdr" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:42+01:00" level=info msg="23 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:42+01:00" level=info msg="popo 20893" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:57+01:00" level=info msg="Removing 5 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:57+01:00" level=info msg="Removing 209 209 from subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:57+01:00" level=info msg="Removing 10 10 from subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:57+01:00" level=info msg="Removing youssouf mdr from subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:57+01:00" level=info msg="Removing 23 20893 from subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:49:57+01:00" level=info msg="Removing popo 20893 from subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:50:02+01:00" level=info msg="Found 0 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:53:25+01:00" level=info msg="Found 0 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:53:27+01:00" level=info msg="Found 0 subscriber" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:53:32+01:00" level=info msg="Getting subscriber information 10" category=Freecli component=Freecli
+time="2020-11-21T20:53:32+01:00" level=info msg="Register new subscriber 10 in PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:53:32+01:00" level=info msg="Registering a new user with supi 10" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:53:45+01:00" level=info msg="Removing user 10 from PLMN 20893\n---" category="Subscriber Module" component=Freecli
+time="2020-11-21T20:53:46+01:00" level=info msg="Found 0 subscriber" category="Subscriber Module" component=Freecli

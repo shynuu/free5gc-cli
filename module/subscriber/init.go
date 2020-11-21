@@ -2,6 +2,8 @@ package subscriber
 
 import (
 	"free5gc-cli/lib/MongoDBLibrary"
+
+	"github.com/c-bata/go-prompt"
 )
 
 // Initialize the module
@@ -17,6 +19,12 @@ func Initialize() {
 
 	DefaultUEConfigPath := "config/" + MODULE_UE_NAME + ".yaml"
 	InitializeUEConfiguration(DefaultUEConfigPath, false)
+
+	var l []prompt.Suggest
+	for _, plmn := range SubscriberConfig.PLMN.Plmn {
+		l = append(l, prompt.Suggest{Text: plmn, Description: ""})
+	}
+	plmnSuggestion = &l
 
 }
 

@@ -30,8 +30,6 @@ func GetSubscribers() []SubsListIE {
 // GetSubscriberByID returns the subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
 func GetSubscriberByID(ueId string, servingPlmnId string) SubsData {
 
-	logger.FreecliLog.Infoln("Getting subscriber information", ueId)
-
 	var subsData SubsData
 
 	filterUeIdOnly := bson.M{"ueId": ueId}
@@ -39,7 +37,7 @@ func GetSubscriberByID(ueId string, servingPlmnId string) SubsData {
 
 	authSubsDataInterface := MongoDBLibrary.RestfulAPIGetOne(authSubsDataColl, filterUeIdOnly)
 	amDataDataInterface := MongoDBLibrary.RestfulAPIGetOne(amDataColl, filter)
-	smDataDataInterface := MongoDBLibrary.RestfulAPIGetOne(smDataColl, filter)
+	smDataDataInterface := MongoDBLibrary.RestfulAPIGetMany(smDataColl, filter)
 	smfSelDataInterface := MongoDBLibrary.RestfulAPIGetOne(smfSelDataColl, filter)
 	amPolicyDataInterface := MongoDBLibrary.RestfulAPIGetOne(amPolicyDataColl, filterUeIdOnly)
 	smPolicyDataInterface := MongoDBLibrary.RestfulAPIGetOne(smPolicyDataColl, filterUeIdOnly)
@@ -48,8 +46,14 @@ func GetSubscriberByID(ueId string, servingPlmnId string) SubsData {
 	json.Unmarshal(mapToByte(authSubsDataInterface), &authSubsData)
 	var amDataData models.AccessAndMobilitySubscriptionData
 	json.Unmarshal(mapToByte(amDataDataInterface), &amDataData)
-	var smDataData models.SessionManagementSubscriptionData
-	json.Unmarshal(mapToByte(smDataDataInterface), &smDataData)
+
+	smDataDataLength := len(smDataDataInterface)
+	var smDataData []models.SessionManagementSubscriptionData
+	smDataData = make([]models.SessionManagementSubscriptionData, smDataDataLength, smDataDataLength)
+	for i, sm := range smDataDataInterface {
+		json.Unmarshal(mapToByte(sm), &smDataData[i])
+	}
+
 	var smfSelData models.SmfSelectionSubscriptionData
 	json.Unmarshal(mapToByte(smfSelDataInterface), &smfSelData)
 	var amPolicyData models.AmPolicyData
@@ -75,7 +79,7 @@ func GetSubscriberByID(ueId string, servingPlmnId string) SubsData {
 // PostSubscriberByID subscriber by IMSI(ueId) and PlmnID(servingPlmnId)
 func PostSubscriberByID(ueId string, servingPlmnId string, subsData SubsData) {
 
-	logger.SubscriberLog.Infoln("Registering a new user with supi %s ...", ueId)
+	logger.SubscriberLog.Infoln("Registering a new user with supi", ueId)
 
 	filterUeIdOnly := bson.M{"ueId": ueId}
 	filter := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId}
@@ -85,12 +89,17 @@ func PostSubscriberByID(ueId string, servingPlmnId string, subsData SubsData) {
 	amDataBsonM := toBsonM(subsData.AccessAndMobilitySubscriptionData)
 	amDataBsonM["ueId"] = ueId
 	amDataBsonM["servingPlmnId"] = servingPlmnId
-	smDataBsonM := toBsonM(subsData.SessionManagementSubscriptionData)
-	smDataBsonM["ueId"] = ueId
-	smDataBsonM["servingPlmnId"] = servingPlmnId
 	smfSelSubsBsonM := toBsonM(subsData.SmfSelectionSubscriptionData)
 	smfSelSubsBsonM["ueId"] = ueId
 	smfSelSubsBsonM["servingPlmnId"] = servingPlmnId
+	for _, sm := range subsData.SessionManagementSubscriptionData {
+		smDataBsonM := toBsonM(sm)
+		smDataSnssaiBsonM := toBsonM(sm.SingleNssai)
+		filterSnssai := bson.M{"ueId": ueId, "servingPlmnId": servingPlmnId, "singleNssai": smDataSnssaiBsonM}
+		smDataBsonM["ueId"] = ueId
+		smDataBsonM["servingPlmnId"] = servingPlmnId
+		MongoDBLibrary.RestfulAPIPost(smDataColl, filterSnssai, smDataBsonM)
+	}
 	amPolicyDataBsonM := toBsonM(subsData.AmPolicyData)
 	amPolicyDataBsonM["ueId"] = ueId
 	smPolicyDataBsonM := toBsonM(subsData.SmPolicyData)
@@ -98,7 +107,6 @@ func PostSubscriberByID(ueId string, servingPlmnId string, subsData SubsData) {
 
 	MongoDBLibrary.RestfulAPIPost(authSubsDataColl, filterUeIdOnly, authSubsBsonM)
 	MongoDBLibrary.RestfulAPIPost(amDataColl, filter, amDataBsonM)
-	MongoDBLibrary.RestfulAPIPost(smDataColl, filter, smDataBsonM)
 	MongoDBLibrary.RestfulAPIPost(smfSelDataColl, filter, smfSelSubsBsonM)
 	MongoDBLibrary.RestfulAPIPost(amPolicyDataColl, filterUeIdOnly, amPolicyDataBsonM)
 	MongoDBLibrary.RestfulAPIPost(smPolicyDataColl, filterUeIdOnly, smPolicyDataBsonM)
@@ -149,7 +157,7 @@ func DeleteSubscriberByID(ueId string, servingPlmnId string) {
 
 	MongoDBLibrary.RestfulAPIDeleteOne(authSubsDataColl, filterUeIdOnly)
 	MongoDBLibrary.RestfulAPIDeleteOne(amDataColl, filter)
-	MongoDBLibrary.RestfulAPIDeleteOne(smDataColl, filter)
+	MongoDBLibrary.RestfulAPIDeleteMany(smDataColl, filter)
 	MongoDBLibrary.RestfulAPIDeleteOne(smfSelDataColl, filter)
 	MongoDBLibrary.RestfulAPIDeleteOne(amPolicyDataColl, filterUeIdOnly)
 	MongoDBLibrary.RestfulAPIDeleteOne(smPolicyDataColl, filterUeIdOnly)
@@ -214,7 +222,7 @@ func TestData() {
 		},
 	}
 
-	smDataData := models.SessionManagementSubscriptionData{
+	smDataData := []models.SessionManagementSubscriptionData{{
 		SingleNssai: &models.Snssai{
 			Sst: 1,
 			Sd:  "010203",
@@ -242,7 +250,7 @@ func TestData() {
 				},
 			},
 		},
-	}
+	}}
 
 	smfSelData := models.SmfSelectionSubscriptionData{
 		SubscribedSnssaiInfos: map[string]models.SnssaiInfo{
