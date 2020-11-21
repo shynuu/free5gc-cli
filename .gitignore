@@ -16,5 +16,5 @@
 
 .vscode
 
-logs/*
+*.log
 db/
