@@ -1,8 +1,8 @@
 package freecli
 
 import (
+	"free5gc-cli/module/gnb"
 	"free5gc-cli/module/subscriber"
-	"strings"
 
 	"github.com/c-bata/go-prompt"
 )
@@ -23,8 +23,9 @@ func Completer(in prompt.Document) []prompt.Suggest {
 		return subscriber.CompleterSubscriber(in)
 	}
 
-	if strings.HasPrefix(w, "subscriber") {
-		return subscriber.CompleterSubscriber(in)
+	if PromptConfig.IsModule && PromptConfig.Module == gnb.MODULE_GNB {
+		return gnb.CompleterGNB(in)
 	}
+
 	return prompt.FilterHasPrefix(*PromptConfig.Suggestion, w, true)
 }

@@ -1,9 +1,46 @@
 package gnb
 
-import "github.com/c-bata/go-prompt"
+import (
+	"strings"
+
+	"github.com/c-bata/go-prompt"
+)
 
 var GNBSuggestion = []prompt.Suggest{
-	{Text: "pdu", Description: "Manage the PDU sessions established"},
-	{Text: "qos", Description: "Manage the QoS of the PDU session"},
+	{Text: "ue", Description: "Manage registration and deregistration of UEs"},
+	{Text: "pdu", Description: "Manage PDU sessions"},
+	{Text: "qos", Description: "Apply DSCP PHB to PDU sessions"},
 	{Text: "exit", Description: "Exit the module"},
+}
+
+func completerPDU(in prompt.Document) []prompt.Suggest {
+	return nil
+}
+
+func completerQOS(in prompt.Document) []prompt.Suggest {
+	return nil
+}
+
+func completerUE(in prompt.Document) []prompt.Suggest {
+	return nil
+}
+
+func CompleterGNB(in prompt.Document) []prompt.Suggest {
+	a := in.TextBeforeCursor()
+	var split = strings.Split(a, " ")
+	w := in.GetWordBeforeCursor()
+	if len(split) > 1 {
+		var v = split[0]
+		if v == "pdu" {
+			return completerPDU(in)
+		}
+		if v == "qos" {
+			return completerQOS(in)
+		}
+		if v == "ue" {
+			return completerUE(in)
+		}
+		return prompt.FilterHasPrefix(GNBSuggestion, v, true)
+	}
+	return prompt.FilterHasPrefix(GNBSuggestion, w, true)
 }

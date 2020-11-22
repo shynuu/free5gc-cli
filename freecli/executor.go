@@ -31,7 +31,7 @@ func Executor(in string) {
 	}
 
 	if strings.HasPrefix(in, "gnb") {
-		logger.FreecliLog.Infoln("Loading g-nb module...")
+		logger.FreecliLog.Infoln("Loading gNB module...")
 		PromptConfig.Suggestion = &gnb.GNBSuggestion
 		PromptConfig.IsEnable = true
 		PromptConfig.Prefix = "gnb# "

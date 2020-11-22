@@ -1,6 +1,8 @@
 # Freecli - An interactive CLI for free5GC
 
 ![free5gc-cli](https://img.shields.io/badge/Freecli-5G-blue?logo=go)
+![free5gc-3.0.4](https://img.shields.io/badge/Tested-free5gc%20v3.0.4-red)
+
 
 ![freecli-interactive-cli](https://user-images.githubusercontent.com/41422704/99889610-220d3580-2c57-11eb-9133-f4a1daaa9258.gif)
 
@@ -25,6 +27,7 @@ Freecli is an interactive cli utility to manage free5gc. It currently includes t
 
 - Subscriber: manage the subscriber of free5gc in a fashion way
 - 5G gNB: emulate a 5G gNB **/!\ Still under development**
+- QoS: apply DSCP field to packets
 
 ## Download and build
 
@@ -73,7 +76,7 @@ subscriber# exit
 
 ### Subscriber module
 
-This module is used to add, delete and flush subscribers of free5gc database. It has 2 configuration files. `subscriber.yaml` holds the configuration of the module and `subsriber_ue.yaml` holds the global configuration of the subscribers to add.
+This module is used to add, delete and flush subscribers of free5gc database. It has 2 configuration files. `subscriber.yaml` holds the configuration of the module and `subscriber_ue.yaml` holds the global configuration of the subscribers to add.
 
 #### Add a fixed number of subscribers
 

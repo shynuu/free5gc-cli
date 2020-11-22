@@ -1,6 +1,6 @@
 info:
   version: 1.0.0
-  description: freecli subscriber module configuration
+  description: "Freecli - subscriber module"
 
 configuration:
   mongodb:
