@@ -77,7 +77,6 @@ This module is used to add, delete and flush subscribers of free5gc database. It
 
 #### Add a fixed number of subscribers
 
-command
 ```
 subscriber# user random --range <number_to_add> --plmn <plmnid>
 ```
@@ -89,7 +88,6 @@ subscriber# user random --range 10 --plmn 20893
 
 #### Add a subscriber with a specific supi to a plmn
 
-command
 ```
 subscriber# user register --supi <supi> --plmn <plmnid>
 ```
@@ -101,7 +99,6 @@ subscriber# user register --supi imsi-2089300000013 --plmn 20893
 
 #### List all the subscribers
 
-command
 ```
 subscriber# user list
 ```
@@ -110,7 +107,6 @@ Note: this will also populate the auto-complete for the delete command
 
 #### Delete a subscriber from a plmn
 
-command
 ```
 subscriber# user delete <supi>/<plmnId>
 ```
@@ -122,7 +118,6 @@ subscriber# user delete imsi-2089300000000/20893
 
 #### Flush the database from every subscriber
 
-command
 ```
 subscriber# user flush
 ```
