@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"strings"
 
-	"free5gc/lib/ngap/logger"
+	"free5gc-cli/lib/ngap/logger"
 )
 
 func UEAmbrToInt64(modelAmbr string) int64 {

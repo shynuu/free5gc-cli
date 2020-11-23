@@ -3,13 +3,12 @@ package nasConvert
 import (
 	"encoding/binary"
 	"fmt"
+	"free5gc-cli/lib/nas/logger"
+	"free5gc-cli/lib/nas/nasMessage"
+	"free5gc-cli/lib/nas/nasType"
+	"free5gc-cli/lib/openapi/models"
 	"strconv"
 	"strings"
-
-	"free5gc/lib/nas/logger"
-	"free5gc/lib/nas/nasMessage"
-	"free5gc/lib/nas/nasType"
-	"free5gc/lib/openapi/models"
 )
 
 func ModelsToSessionAMBR(ambr *models.Ambr) (sessAmbr nasType.SessionAMBR) {

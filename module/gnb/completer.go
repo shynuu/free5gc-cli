@@ -8,10 +8,21 @@ import (
 
 var GNBSuggestion = []prompt.Suggest{
 	{Text: "ue", Description: "Manage registration and deregistration of UEs"},
+	{Text: "pdu-session", Description: "Manage PDU sessions"},
+	{Text: "qos", Description: "Apply DSCP PHB to PDU sessions"},
+	{Text: "exit", Description: "Exit the gNB module"},
+}
+
+var PHBSuggestion = []prompt.Suggest{
+	{Text: "ue", Description: "Manage registration and deregistration of UEs"},
 	{Text: "pdu", Description: "Manage PDU sessions"},
 	{Text: "qos", Description: "Apply DSCP PHB to PDU sessions"},
-	{Text: "exit", Description: "Exit the module"},
+	{Text: "exit", Description: "Exit the gNB module"},
 }
+
+var supiSuggestion = &[]prompt.Suggest{}
+var plmnSuggestion = &[]prompt.Suggest{}
+var snssaiSuggestion = &[]prompt.Suggest{}
 
 func completerPDU(in prompt.Document) []prompt.Suggest {
 	return nil

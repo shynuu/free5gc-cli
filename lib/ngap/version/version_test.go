@@ -1,7 +1,7 @@
 package version_test
 
 import (
-	"free5gc/lib/ngap/version"
+	"free5gc-cli/lib/ngap/version"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

@@ -1,7 +1,7 @@
 package nasConvert
 
 import (
-	"free5gc/lib/nas/nasMessage"
+	"free5gc-cli/lib/nas/nasMessage"
 )
 
 // TS 24.008 10.5.7.4a

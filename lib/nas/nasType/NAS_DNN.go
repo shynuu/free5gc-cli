@@ -1,7 +1,7 @@
 package nasType
 
 import (
-	"free5gc/lib/util_3gpp"
+	"free5gc-cli/lib/util_3gpp"
 )
 
 // DNN 9.11.2.1A

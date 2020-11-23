@@ -1,7 +1,7 @@
 package version_test
 
 import (
-	"free5gc/lib/nas/version"
+	"free5gc-cli/lib/nas/version"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

@@ -1,7 +1,7 @@
 package version_test
 
 import (
-	"free5gc/lib/milenage/version"
+	"free5gc-cli/lib/milenage/version"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )

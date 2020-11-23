@@ -2,8 +2,8 @@ package ngap
 
 import (
 	"fmt"
-	"free5gc/lib/aper"
-	"free5gc/lib/ngap/ngapType"
+	"free5gc-cli/lib/aper"
+	"free5gc-cli/lib/ngap/ngapType"
 	"reflect"
 	"strings"
 )

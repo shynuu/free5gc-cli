@@ -1,7 +1,7 @@
 package Nsmf_PDUSession
 
 import (
-	"free5gc/lib/openapi/models"
+	"free5gc-cli/lib/openapi/models"
 	"net/http"
 )
 

@@ -3,7 +3,7 @@ package nasMessage
 import (
 	"bytes"
 	"encoding/binary"
-	"free5gc/lib/nas/nasType"
+	"free5gc-cli/lib/nas/nasType"
 )
 
 type RegistrationComplete struct {

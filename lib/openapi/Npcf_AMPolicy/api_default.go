@@ -12,8 +12,8 @@ package Npcf_AMPolicy
 import (
 	"context"
 	"fmt"
-	"free5gc/lib/openapi"
-	"free5gc/lib/openapi/models"
+	"free5gc-cli/lib/openapi"
+	"free5gc-cli/lib/openapi/models"
 	"io/ioutil"
 	"net/http"
 	"net/url"

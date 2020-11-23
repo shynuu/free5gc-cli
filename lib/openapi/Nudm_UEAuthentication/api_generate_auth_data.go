@@ -10,8 +10,8 @@
 package Nudm_UEAuthentication
 
 import (
-	"free5gc/lib/openapi"
-	"free5gc/lib/openapi/models"
+	"free5gc-cli/lib/openapi"
+	"free5gc-cli/lib/openapi/models"
 
 	"context"
 	"fmt"

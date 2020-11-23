@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"free5gc/lib/nas/nasMessage"
+	"free5gc-cli/lib/nas/nasMessage"
 )
 
 // Message TODO：description

@@ -1,7 +1,7 @@
 package security_test
 
 import (
-	"free5gc/lib/nas/security"
+	"free5gc-cli/lib/nas/security"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

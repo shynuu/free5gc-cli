@@ -3,7 +3,6 @@ info:
   description: "Freecli - gNB module"
 
 configuration:
-  ranName: gNB
   amfInterface:
     ipv4Addr: "127.0.0.1"
     port: 38412
@@ -17,9 +16,6 @@ configuration:
     ipv4Addr: "10.200.200.1"
     port: 2152
   ueSubnet: "60.60.0.0/24"
-  plmn:
-    mcc: "208"
-    mnc: "93"
   security:
     networkName: 5G:mnc093.mcc208.3gppnetwork.org
     k: 5122250214c33e723a5dd523fc145fc0
@@ -27,17 +23,12 @@ configuration:
     op: c9e8763286b5b9ffbdf56e1297d0887b
     sqn: 16f3b3f70fc2
   snssai:
-    sst: 1
-    sd: "010203"
+    - sst: 1
+      sd: "112233"
+    - sst: 1
+      sd: "010203"
   ue:
-    - SUPI: imsi-2089300007487
-      ipv4: 60.60.0.1
-    - SUPI: imsi-2089300007486
-      ipv4: 60.60.0.2
-  sbi:
-    scheme: http
-    ipv4Addr: 127.0.0.1
-    port: 32000
-  networkName:
-    full: free5GC
-    short: free
+    - supi: imsi-2089300007487
+      plmn: 20893
+    - supi: imsi-2089300007486
+      plmn: 20893

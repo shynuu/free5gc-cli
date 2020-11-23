@@ -2,10 +2,9 @@ package nasConvert
 
 import (
 	"encoding/hex"
+	"free5gc-cli/lib/nas/logger"
+	"free5gc-cli/lib/openapi/models"
 	"strconv"
-
-	"free5gc/lib/nas/logger"
-	"free5gc/lib/openapi/models"
 )
 
 func PlmnIDToNas(plmnID models.PlmnId) []uint8 {

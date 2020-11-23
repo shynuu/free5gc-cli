@@ -1,6 +1,6 @@
 package ngapType
 
-// Need to import "free5gc/lib/aper" if it uses "aper"
+// Need to import "free5gc-cli/lib/aper" if it uses "aper"
 
 const (
 	GlobalRANNodeIDPresentNothing int = iota /* No components present */
