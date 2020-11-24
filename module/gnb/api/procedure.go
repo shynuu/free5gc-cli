@@ -7,10 +7,19 @@ import (
 	"free5gc-cli/lib/nas/nasType"
 	"free5gc-cli/lib/nas/security"
 	"free5gc-cli/lib/ngap"
+	"free5gc-cli/lib/ngap/ngapType"
+	"free5gc-cli/lib/openapi/models"
 	"free5gc-cli/logger"
+	"net"
+	"strconv"
+
+	"github.com/ishidawataru/sctp"
 )
 
-func Registration(ueId string, plmn string, sst int, sd string) bool {
+var amfConn *sctp.SCTPConn
+var upfConn *net.UDPConn
+
+func Registration(ueId string, plmn string) *RanUeContext {
 
 	var n int
 	var sendMsg []byte
@@ -21,9 +30,11 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 		APIConfig.Configuration.NGRANInterface.IPv4Addr,
 		APIConfig.Configuration.AmfInterface.Port,
 		APIConfig.Configuration.NGRANInterface.Port)
+	amfConn = conn
+
 	if err != nil {
 		logger.GNBLog.Errorln("Error connecting to the AMF")
-		return false
+		return nil
 	}
 
 	// send NGSetupRequest Msg
@@ -31,7 +42,7 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	_, err = conn.Write(sendMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error sending NGSetup")
-		return false
+		return nil
 	}
 
 	// receive NGSetupResponse Msg
@@ -39,7 +50,7 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	ngapPdu, err := ngap.Decoder(recvMsg[:n])
 	if err != nil {
 		logger.GNBLog.Errorln("Error decoding NGAP")
-		return false
+		return nil
 	}
 
 	// New UE
@@ -62,24 +73,28 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	sendMsg, err = GetInitialUEMessage(ue.RanUeNgapId, registrationRequest, "")
 	if err != nil {
 		logger.GNBLog.Errorln("Error building Initial UE Message")
-		return false
+		return nil
 	}
 	_, err = conn.Write(sendMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error sending Initial UE Message")
-		return false
+		return nil
 	}
 
 	// receive NAS Authentication Request Msg
 	n, err = conn.Read(recvMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error reading NAS Authentication Request Msg")
-		return false
+		return nil
 	}
 	ngapPdu, err = ngap.Decoder(recvMsg[:n])
 	if err != nil {
 		logger.GNBLog.Errorln("Error decoding NAS Authentication Request Msg")
-		return false
+		return nil
+	}
+	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage {
+		logger.GNBLog.Errorln("Error No NGAP Initiating Message received.")
+		return nil
 	}
 
 	// Calculate for RES*
@@ -92,26 +107,30 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
 	if err != nil {
 		logger.GNBLog.Errorln("Error building NAS UplinkNASTransport")
-		return false
+		return nil
 	}
 	_, err = conn.Write(sendMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error sending NAS UplinkNASTransport")
-		return false
+		return nil
 	}
 
 	// receive NAS Security Mode Command Msg
 	n, err = conn.Read(recvMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error reading NAS Security Mode Command Msg")
-		return false
+		return nil
 	}
 	ngapPdu, err = ngap.Decoder(recvMsg[:n])
 	if err != nil {
 		logger.GNBLog.Errorln("Error decoding NAS Security Mode Command Msg")
-		return false
+		return nil
 	}
 	nasPdu = GetNasPdu(ue, ngapPdu.InitiatingMessage.Value.DownlinkNASTransport)
+	if nasPdu.GmmHeader.GetMessageType() != nas.MsgTypeSecurityModeCommand {
+		logger.GNBLog.Errorln("No Security Mode Command received. Message: " + strconv.Itoa(int(nasPdu.GmmHeader.GetMessageType())))
+		return nil
+	}
 
 	// send NAS Security Mode Complete Msg
 	registrationRequestWith5GMM := nasTestpacket.GetRegistrationRequest(nasMessage.RegistrationType5GSInitialRegistration,
@@ -120,12 +139,12 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCipheredWithNew5gNasSecurityContext, true, true)
 	if err != nil {
 		logger.GNBLog.Errorln("Error encoding NAS PDU with Security")
-		return false
+		return nil
 	}
 	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
 	if err != nil {
 		logger.GNBLog.Errorln("Error sending NAS PDU with Security")
-		return false
+		return nil
 	}
 	_, err = conn.Write(sendMsg)
 
@@ -133,12 +152,17 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	n, err = conn.Read(recvMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error reading ngap Initial Context Setup Request Msg")
-		return false
+		return nil
 	}
 	ngapPdu, err = ngap.Decoder(recvMsg[:n])
 	if err != nil {
 		logger.GNBLog.Errorln("Error decoding ngap Initial Context Setup Request Msg")
-		return false
+		return nil
+	}
+	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage ||
+		ngapPdu.InitiatingMessage.ProcedureCode.Value != ngapType.ProcedureCodeInitialContextSetup {
+		logger.GNBLog.Errorln("Error No InitialContextSetup received.")
+		return nil
 	}
 
 	// send ngap Initial Context Setup Response Msg
@@ -146,7 +170,7 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	_, err = conn.Write(sendMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error sending ngap Initial Context Setup Response Msg")
-		return false
+		return nil
 	}
 
 	// send NAS Registration Complete Msg
@@ -154,22 +178,24 @@ func Registration(ueId string, plmn string, sst int, sd string) bool {
 	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
 	if err != nil {
 		logger.GNBLog.Errorln("Error encoding NAS Registration Complete Msg with Security")
-		return false
+		return nil
 	}
 
 	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
 	if err != nil {
 		logger.GNBLog.Errorln("Error building NAS Registration Complete Msg with Security")
-		return false
+		return nil
 	}
 
 	_, err = conn.Write(sendMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error sending NAS Registration Complete Msg with Security")
-		return false
+		return nil
 	}
 
-	return true
+	conn.Close()
+
+	return ue
 
 }
 
@@ -177,16 +203,64 @@ func DeRegistration(ueId string, plmn string, sst int, sd string) {
 
 }
 
-func PDUSessionRequest(ueId string, plmn string, sst int, sd string, sessionId int) {
+func PDUSessionRequest(ue *RanUeContext, sst int32, sd string, sessionId uint8, dnn string) {
 
 	// RAN connect to UPF
-	// upfConn, err := ConnectToUpf(APIConfig.Configuration.GTPInterface.IPv4Addr,
-	// 	APIConfig.Configuration.UpfInterface.IPv4Addr,
-	// 	APIConfig.Configuration.GTPInterface.Port,
-	// 	APIConfig.Configuration.UpfInterface.Port)s
+	conn, err := ConnectToUpf(APIConfig.Configuration.GTPInterface.IPv4Addr,
+		APIConfig.Configuration.UpfInterface.IPv4Addr,
+		APIConfig.Configuration.GTPInterface.Port,
+		APIConfig.Configuration.UpfInterface.Port)
+	upfConn = conn
+
+	var n int
+	var sendMsg []byte
+	var recvMsg = make([]byte, 2048)
+
+	sNssai := models.Snssai{
+		Sst: sst,
+		Sd:  sd,
+	}
+
+	pdu := nasTestpacket.GetUlNasTransport_PduSessionEstablishmentRequest(sessionId, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
+	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
+	if err != nil {
+		logger.GNBLog.Errorln("Error encoding PduSessionEstablishmentRequest")
+		return
+	}
+	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending PduSessionEstablishmentRequest")
+		return
+	}
+
+	// receive 12. NGAP-PDU Session Resource Setup Request(DL nas transport((NAS msg-PDU session setup Accept)))
+	n, err = amfConn.Read(recvMsg)
+	ngapPdu, err := ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding NGAP-PDU Session Resource Setup Request")
+		return
+	}
+	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage ||
+		ngapPdu.InitiatingMessage.ProcedureCode.Value != ngapType.ProcedureCodePDUSessionResourceSetup {
+		logger.GNBLog.Errorln("Error No PDUSessionResourceSetup received")
+		return
+	}
+
+	// send 14. NGAP-PDU Session Resource Setup Response
+	sendMsg, err = GetPDUSessionResourceSetupResponse(ue.AmfUeNgapId, ue.RanUeNgapId, APIConfig.Configuration.NGRANInterface.IPv4Addr)
+	if err != nil {
+		logger.GNBLog.Errorln("Error encoding NGAP-PDU Session Resource Setup Response")
+		return
+	}
+	_, err = conn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding NGAP-PDU Session Resource Setup Response")
+		return
+	}
 
 }
 
-func PDUSessionRelease(ueId string, plmn string, sst int, sd string, sessionId int) {
+func PDUSessionRelease(ueId string, plmn string, sst int32, sd string, sessionId uint8, dnn string) {
 
 }

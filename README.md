@@ -27,7 +27,7 @@ Freecli is an interactive cli utility to manage free5gc. It currently includes t
 
 - Subscriber: manage the subscriber of free5gc in a fashion way
 - 5G gNB: emulate a 5G gNB **/!\ Still under development**
-- QoS: apply DSCP field to packets
+- QoS: apply DSCP field to packets **/!\ Still under development**
 
 ## Download and build
 
