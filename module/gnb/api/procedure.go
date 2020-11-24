@@ -280,7 +280,9 @@ func Registration(ueId string, plmn string) (*RanUeContext, error) {
 		return nil, err
 	}
 
-	time.Sleep(100 * time.Millisecond)
+	_, err = amfConn.Read(recvMsg)
+
+	time.Sleep(500 * time.Millisecond)
 
 	amfConn.Close()
 	amfConn = nil
