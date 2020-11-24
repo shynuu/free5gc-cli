@@ -12,7 +12,7 @@ import (
 func Executor(in string) {
 
 	if PromptConfig.Module == gnb.MODULE_GNB {
-
+		gnb.Executor(in)
 	}
 
 	if PromptConfig.Module == subscriber.MODULE_SUBSCRIBER {
@@ -51,7 +51,11 @@ func Executor(in string) {
 			logger.FreecliLog.Infoln("Exiting Module...")
 			return
 		}
-		logger.FreecliLog.Infoln("Exiting Freecli...")
+		logger.FreecliLog.Infoln("Releasing gNB module resources")
+		gnb.Exit()
+		logger.FreecliLog.Infoln("Releasing subscriber module resources")
+		subscriber.Exit()
+		logger.FreecliLog.Infoln("Bye Bye !")
 		os.Exit(0)
 	}
 

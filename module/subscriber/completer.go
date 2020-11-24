@@ -53,19 +53,16 @@ func completerUser(in prompt.Document) []prompt.Suggest {
 		}
 
 		if l >= 6 {
-			a = in.GetWordBeforeCursor()
 			return prompt.FilterHasPrefix(*plmnSuggestion, a, true)
 		}
 
 		if l > 2 && l < 4 {
-			a = in.GetWordBeforeCursor()
 			return prompt.FilterHasPrefix([]prompt.Suggest{
 				{Text: "--supi", Description: "Specify the supi of the user"},
 			}, a, true)
 		}
 
 		if l > 4 && l < 6 {
-			a = in.GetWordBeforeCursor()
 			return prompt.FilterHasPrefix([]prompt.Suggest{
 				{Text: "--plmn", Description: "Specify the plmn id of the network"},
 			}, a, true)
@@ -82,19 +79,16 @@ func completerUser(in prompt.Document) []prompt.Suggest {
 		}
 
 		if l >= 6 {
-			a = in.GetWordBeforeCursor()
 			return prompt.FilterHasPrefix(*plmnSuggestion, a, true)
 		}
 
 		if l > 2 && l < 4 {
-			a = in.GetWordBeforeCursor()
 			return prompt.FilterHasPrefix([]prompt.Suggest{
 				{Text: "--range", Description: "Specify the number of subscribers to generate"},
 			}, a, true)
 		}
 
 		if l > 4 {
-			a = in.GetWordBeforeCursor()
 			return prompt.FilterHasPrefix([]prompt.Suggest{
 				{Text: "--plmn", Description: "Specify the plmn id of the network"},
 			}, a, true)

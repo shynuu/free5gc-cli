@@ -17,8 +17,6 @@ var MainSuggestion = []prompt.Suggest{
 
 // Completer is responsible for the autocompletion of the CLI
 func Completer(in prompt.Document) []prompt.Suggest {
-	w := in.TextBeforeCursor()
-
 	if PromptConfig.IsModule && PromptConfig.Module == subscriber.MODULE_SUBSCRIBER {
 		return subscriber.CompleterSubscriber(in)
 	}
@@ -26,6 +24,8 @@ func Completer(in prompt.Document) []prompt.Suggest {
 	if PromptConfig.IsModule && PromptConfig.Module == gnb.MODULE_GNB {
 		return gnb.CompleterGNB(in)
 	}
+
+	w := in.TextBeforeCursor()
 
 	return prompt.FilterHasPrefix(*PromptConfig.Suggestion, w, true)
 }

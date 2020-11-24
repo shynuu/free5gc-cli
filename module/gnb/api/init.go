@@ -1,5 +1,5 @@
 package api
 
-func Initialize(path string) {
-	InitConfigFactory(path, false)
+func Initialize(path string, force bool) {
+	InitConfigFactory(path, force)
 }

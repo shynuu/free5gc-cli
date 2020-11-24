@@ -42,4 +42,13 @@ func Reload() {
 	DefaultUEConfigPath := "config/" + MODULE_UE_NAME + ".yaml"
 	InitializeUEConfiguration(DefaultUEConfigPath, true)
 
+	var l []prompt.Suggest
+	for _, plmn := range SubscriberConfig.PLMN.Plmn {
+		l = append(l, prompt.Suggest{Text: plmn, Description: ""})
+	}
+	plmnSuggestion = &l
+
 }
+
+// Exit and free the resources used by the module
+func Exit() {}

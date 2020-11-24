@@ -20,6 +20,7 @@
     - [Delete a subscriber from a plmn](#delete-a-subscriber-from-a-plmn)
     - [Flush the database from every subscriber](#flush-the-database-from-every-subscriber)
   - [gNB module](#gnb-module)
+  - [QoS module](#qos-module)
 - [Acknowledgment](#acknowledgment)
 
 ## Hardware and Software requirements
@@ -83,7 +84,7 @@ subscriber# exit
 
 This module is used to add, delete and flush subscribers of free5gc database. It has 2 configuration files. `subscriber.yaml` holds the configuration of the module and `subscriber_ue.yaml` holds the global configuration of the subscribers to add.
 
-You can reload the module with the command `subscriber# configuration reload`
+You can reload the module configuration files with the command `subscriber# configuration reload`
 
 #### Add a fixed number of subscribers
 
@@ -133,6 +134,10 @@ subscriber# user flush
 ```
 
 ### gNB module
+
+Currently under development
+
+### QoS module
 
 Currently under development
 
