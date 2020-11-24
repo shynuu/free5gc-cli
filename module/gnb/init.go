@@ -26,7 +26,7 @@ func Initialize() {
 	}
 	snssaiSuggestion = &l
 
-	gnb = &GNB{}
+	gnb = NewGNB()
 
 }
 
