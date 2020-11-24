@@ -13,6 +13,7 @@ import (
 	"free5gc-cli/logger"
 	"net"
 	"strconv"
+	"time"
 
 	"github.com/ishidawataru/sctp"
 
@@ -279,7 +280,10 @@ func Registration(ueId string, plmn string) (*RanUeContext, error) {
 		return nil, err
 	}
 
+	time.Sleep(100 * time.Millisecond)
+
 	amfConn.Close()
+	amfConn = nil
 
 	return ue, nil
 
