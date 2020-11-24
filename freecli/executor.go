@@ -37,6 +37,7 @@ func Executor(in string) {
 		PromptConfig.Prefix = "gnb# "
 		PromptConfig.IsModule = true
 		PromptConfig.Module = gnb.MODULE_GNB
+		gnb.Initialize()
 		return
 	}
 

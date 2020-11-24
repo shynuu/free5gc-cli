@@ -13,7 +13,7 @@ var GNBConfig *Config
 func checkErr(err error) {
 	if err != nil {
 		err = fmt.Errorf("[Configuration] %s", err.Error())
-		logger.SubscriberLog.Fatal(err)
+		logger.GNBLog.Fatal(err)
 	}
 }
 
@@ -31,5 +31,5 @@ func InitConfigFactory(f string, force bool) {
 
 	err = yaml.Unmarshal([]byte(content), &GNBConfig)
 	checkErr(err)
-	logger.SubscriberLog.Infof("Successfully load gNB module configuration %s", f)
+	logger.GNBLog.Infof("Successfully load gNB module configuration %s", f)
 }

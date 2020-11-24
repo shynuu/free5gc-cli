@@ -78,6 +78,8 @@ subscriber# exit
 
 This module is used to add, delete and flush subscribers of free5gc database. It has 2 configuration files. `subscriber.yaml` holds the configuration of the module and `subscriber_ue.yaml` holds the global configuration of the subscribers to add.
 
+You can reload the module with the command `configuration reload`
+
 #### Add a fixed number of subscribers
 
 ```
