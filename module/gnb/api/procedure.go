@@ -23,24 +23,34 @@ import (
 var amfConn *sctp.SCTPConn
 var upfConn *net.UDPConn
 
-func checkAmfConnection() (*sctp.SCTPConn, error) {
+func checkAmfConnection() error {
 	if amfConn == nil {
-		return ConnectToAmf(APIConfig.Configuration.AmfInterface.IPv4Addr,
+		amfC, err := ConnectToAmf(APIConfig.Configuration.AmfInterface.IPv4Addr,
 			APIConfig.Configuration.NGRANInterface.IPv4Addr,
 			APIConfig.Configuration.AmfInterface.Port,
 			APIConfig.Configuration.NGRANInterface.Port)
+		if err != nil {
+			return err
+		}
+		amfConn = amfC
+		return nil
 	}
-	return amfConn, nil
+	return nil
 }
 
-func checkUpfConnection() (*net.UDPConn, error) {
+func checkUpfConnection() error {
 	if upfConn == nil {
-		return ConnectToUpf(APIConfig.Configuration.GTPInterface.IPv4Addr,
+		upfC, err := ConnectToUpf(APIConfig.Configuration.GTPInterface.IPv4Addr,
 			APIConfig.Configuration.UpfInterface.IPv4Addr,
 			APIConfig.Configuration.GTPInterface.Port,
 			APIConfig.Configuration.UpfInterface.Port)
+		if err != nil {
+			return err
+		}
+		upfConn = upfC
+		return nil
 	}
-	return upfConn, nil
+	return nil
 }
 
 func TestPing(sourceIp string, destinationIp string) error {
@@ -106,7 +116,7 @@ func Registration(ueId string, plmn string) (*RanUeContext, error) {
 	var recvMsg = make([]byte, 2048)
 
 	// RAN connect to AMF
-	_, err := checkAmfConnection()
+	err := checkAmfConnection()
 
 	if err != nil {
 		logger.GNBLog.Errorln("Error connecting to the AMF")
@@ -281,13 +291,13 @@ func DeRegistration(ueId string, plmn string, sst int, sd string) {
 
 func PDUSessionRequest(ue *RanUeContext, sst int32, sd string, sessionId uint8, dnn string) error {
 
-	_, err := checkAmfConnection()
+	err := checkAmfConnection()
 	if err != nil {
 		logger.GNBLog.Errorln("Error connecting to the AMF")
 		return err
 	}
 
-	_, err = checkUpfConnection()
+	err = checkUpfConnection()
 	if err != nil {
 		logger.GNBLog.Errorln("Error connecting to the UPF")
 		return err
