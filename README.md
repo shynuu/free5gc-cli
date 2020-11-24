@@ -2,14 +2,15 @@
 
 ![free5gc-cli](https://img.shields.io/badge/Freecli-5G-blue?logo=go)
 ![free5gc-3.0.4](https://img.shields.io/badge/Tested-free5gc%20v3.0.4-red)
-
+![Linux](https://img.shields.io/badge/OS-Linux-g)
 
 ![freecli-interactive-cli](https://user-images.githubusercontent.com/41422704/99889610-220d3580-2c57-11eb-9133-f4a1daaa9258.gif)
 
 
+- [Hardware and Software requirements](#hardware-and-software-requirements)
 - [Description](#description)
 - [Download and build](#download-and-build)
-- [Configuration](#configuration)
+- [Configuration of Freecli](#configuration-of-freecli)
 - [Run Freecli](#run-freecli)
 - [Modules](#modules)
   - [Subscriber module](#subscriber-module)
@@ -21,13 +22,17 @@
   - [gNB module](#gnb-module)
 - [Acknowledgment](#acknowledgment)
 
+## Hardware and Software requirements
+
+This project is tested against an Ubuntu 18.04 LTS VM with the linux kernel 5.0.23-generic. Check each module documentation for additional software requirements.
+
 ## Description
 
 Freecli is an interactive cli utility to manage free5gc. It currently includes the following modules:
 
 - Subscriber: manage the subscriber of free5gc in a fashion way
-- 5G gNB: emulate a 5G gNB **/!\ Still under development**
-- QoS: apply DSCP field to packets **/!\ Still under development**
+- 5G gNB: emulate a 5G gNB. *Requires root privileges and gtp kernel linux module* **/!\ Still under development**
+- QoS: apply DSCP field to packets *Requires iptable and iptable-extension u32* **/!\ Still under development**
 
 ## Download and build
 
@@ -48,7 +53,7 @@ cd free5gc-cli
 go run freecli.go
 ```
 
-## Configuration
+## Configuration of Freecli
 
 Freecli uses free5gc lib under the hood with some modifications. Each freecli module is located into the `module` folder. Each module has its own configuration files located in the `config` folder. Each module is described below.
 
