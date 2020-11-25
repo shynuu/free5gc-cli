@@ -3,6 +3,7 @@ package freecli
 import (
 	"free5gc-cli/logger"
 	"free5gc-cli/module/gnb"
+	"free5gc-cli/module/qos"
 	"free5gc-cli/module/subscriber"
 	"os"
 	"strings"
@@ -38,6 +39,17 @@ func Executor(in string) {
 		PromptConfig.IsModule = true
 		PromptConfig.Module = gnb.MODULE_GNB
 		gnb.Initialize()
+		return
+	}
+
+	if strings.HasPrefix(in, "qos") {
+		logger.FreecliLog.Infoln("Loading QoS module...")
+		PromptConfig.Suggestion = &qos.QOSSuggestion
+		PromptConfig.IsEnable = true
+		PromptConfig.Prefix = "qos# "
+		PromptConfig.IsModule = true
+		PromptConfig.Module = qos.MODULE_QOS
+		qos.Initialize()
 		return
 	}
 

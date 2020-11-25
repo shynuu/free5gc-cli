@@ -46,10 +46,8 @@ func (g *GNB) AddUE(ue *api.RanUeContext) {
 	var uei = UEI{UE: ue}
 	tmp := append(*g.UE, uei)
 	g.UE = &tmp
-
 	text := fmt.Sprintf("%s", ue.Supi)
-	description := fmt.Sprintf("Deregister user with supi %s", ue.Supi)
-	l := append(*RegisteredSuggestion, prompt.Suggest{Text: text, Description: description})
+	l := append(*RegisteredSuggestion, prompt.Suggest{Text: text, Description: ""})
 	RegisteredSuggestion = &l
 }
 

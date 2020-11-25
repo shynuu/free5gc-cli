@@ -1,0 +1,5 @@
+package qos
+
+func Initialize() {
+
+}

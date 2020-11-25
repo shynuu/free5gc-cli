@@ -29,7 +29,7 @@ var ueSuggestion = []prompt.Suggest{
 }
 
 // pdu-session list
-// pdu-session request --supi POPOD --plmn 20893
+// pdu-session request --user imsiXXXXX --snssai 01010101 --dnn internet
 // pdu-session
 // ===> ipv4, qos profile, sessionid
 // pdu-session release --session <session_id>
