@@ -15,16 +15,16 @@ func Initialize() {
 
 	var s []prompt.Suggest
 	for _, ue := range *GNBConfig.Configuration.UEList {
-		s = append(s, prompt.Suggest{Text: fmt.Sprintf("%s/%s", ue.Supi, ue.PLMN), Description: ""})
+		s = append(s, prompt.Suggest{Text: fmt.Sprintf("%s", ue.Supi), Description: ""})
 	}
-	userSuggestion = &s
+	UserSuggestion = &s
 
 	var l []prompt.Suggest
 	for _, sn := range *GNBConfig.Configuration.Snssai {
 		snssai := fmt.Sprintf("%02d%s", sn.Sst, sn.Sd)
 		l = append(l, prompt.Suggest{Text: snssai, Description: ""})
 	}
-	snssaiSuggestion = &l
+	SnssaiSuggestion = &l
 
 	gnb = NewGNB()
 
@@ -38,16 +38,15 @@ func Reload() {
 
 	var s []prompt.Suggest
 	for _, ue := range *GNBConfig.Configuration.UEList {
-		s = append(s, prompt.Suggest{Text: fmt.Sprintf("%s/%s", ue.Supi, ue.PLMN), Description: ""})
+		s = append(s, prompt.Suggest{Text: fmt.Sprintf("%s", ue.Supi), Description: ""})
 	}
-	userSuggestion = &s
-
+	UserSuggestion = &s
 	var l []prompt.Suggest
 	for _, sn := range *GNBConfig.Configuration.Snssai {
 		snssai := fmt.Sprintf("%02d%s", sn.Sst, sn.Sd)
 		l = append(l, prompt.Suggest{Text: snssai, Description: ""})
 	}
-	snssaiSuggestion = &l
+	SnssaiSuggestion = &l
 
 }
 

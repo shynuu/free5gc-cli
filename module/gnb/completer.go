@@ -9,7 +9,7 @@ import (
 // qos add --session 10 --protocol tcp --destination-port 80 --phb
 
 var GNBSuggestion = []prompt.Suggest{
-	{Text: "ue", Description: "Manage registration and deregistration of UEs"},
+	{Text: "user", Description: "Manage registration and deregistration of UEs"},
 	{Text: "pdu-session", Description: "Manage PDU sessions"},
 	{Text: "configuration", Description: "Manage the configuration of the gNB module"},
 	{Text: "exit", Description: "Exit the gNB module"},
@@ -69,8 +69,9 @@ var PHBSuggestion = []prompt.Suggest{
 	{Text: "ef", Description: "Apply EF with DSCP value 101110"},
 }
 
-var userSuggestion = &[]prompt.Suggest{}
-var snssaiSuggestion = &[]prompt.Suggest{}
+var UserSuggestion = &[]prompt.Suggest{}
+var RegisteredSuggestion = &[]prompt.Suggest{}
+var SnssaiSuggestion = &[]prompt.Suggest{}
 
 func completerPDU(in prompt.Document) []prompt.Suggest {
 	a := in.GetWordBeforeCursor()
@@ -95,7 +96,18 @@ func completerUE(in prompt.Document) []prompt.Suggest {
 			}, a, true)
 		}
 		if l > 3 && l < 5 {
-			return prompt.FilterHasPrefix(*userSuggestion, a, true)
+			return prompt.FilterHasPrefix(*UserSuggestion, a, true)
+		}
+	}
+	if d[1] == "deregister" {
+		l := len(d)
+		if l > 2 && l < 4 {
+			return prompt.FilterHasPrefix([]prompt.Suggest{
+				{Text: "--user", Description: "Specify the user to deregister"},
+			}, a, true)
+		}
+		if l > 3 && l < 5 {
+			return prompt.FilterHasPrefix(*RegisteredSuggestion, a, true)
 		}
 	}
 	return prompt.FilterHasPrefix(ueSuggestion, a, true)
@@ -127,7 +139,7 @@ func CompleterGNB(in prompt.Document) []prompt.Suggest {
 		if v == "qos" {
 			return completerQOS(in)
 		}
-		if v == "ue" {
+		if v == "user" {
 			return completerUE(in)
 		}
 		if v == "configuration" {

@@ -15,7 +15,7 @@ configuration:
   gtpInterface:
     ipv4Addr: "10.200.200.1"
     port: 2152
-  ueSubnet: "60.60.0.0/24"
+  ueSubnet: "60.60.0.0/16"
   security:
     networkName: 5G:mnc093.mcc208.3gppnetwork.org
     k: 5122250214c33e723a5dd523fc145fc0

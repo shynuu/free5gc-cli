@@ -2,6 +2,7 @@ package api
 
 import (
 	"encoding/hex"
+	"errors"
 	"free5gc-cli/lib/nas"
 	"free5gc-cli/lib/nas/nasMessage"
 	"free5gc-cli/lib/nas/nasTestpacket"
@@ -110,7 +111,7 @@ func TestPing(sourceIp string, destinationIp string) error {
 
 }
 
-func Registration(ueId string, plmn string) (*RanUeContext, error) {
+func Registration(ueId string) (*RanUeContext, error) {
 
 	var n int
 	var sendMsg []byte
@@ -216,7 +217,7 @@ func Registration(ueId string, plmn string) (*RanUeContext, error) {
 	nasPdu = GetNasPdu(ue, ngapPdu.InitiatingMessage.Value.DownlinkNASTransport)
 	if nasPdu.GmmHeader.GetMessageType() != nas.MsgTypeSecurityModeCommand {
 		logger.GNBLog.Errorln("No Security Mode Command received. Message: " + strconv.Itoa(int(nasPdu.GmmHeader.GetMessageType())))
-		return nil, err
+		return nil, errors.New("No Security Mode Command received. Message: " + strconv.Itoa(int(nasPdu.GmmHeader.GetMessageType())))
 	}
 
 	// send NAS Security Mode Complete Msg
@@ -248,8 +249,8 @@ func Registration(ueId string, plmn string) (*RanUeContext, error) {
 	}
 	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage ||
 		ngapPdu.InitiatingMessage.ProcedureCode.Value != ngapType.ProcedureCodeInitialContextSetup {
-		logger.GNBLog.Errorln("Error No InitialContextSetup received.")
-		return nil, err
+		logger.GNBLog.Errorln("Error No InitialContextSetup received")
+		return nil, errors.New("Error No InitialContextSetup received")
 	}
 
 	// send ngap Initial Context Setup Response Msg
@@ -280,17 +281,118 @@ func Registration(ueId string, plmn string) (*RanUeContext, error) {
 		return nil, err
 	}
 
-	time.Sleep(500 * time.Millisecond)
+	time.Sleep(1 * time.Second)
 
 	return ue, nil
 
 }
 
-func DeRegistration(ueId string, plmn string, sst int, sd string) {
+func DeRegistration(ue *RanUeContext) error {
+
+	var n int
+	var sendMsg []byte
+	var recvMsg = make([]byte, 2048)
+
+	// send NAS Deregistration Request (UE Originating)
+	mobileIdentity5GS := nasType.MobileIdentity5GS{
+		Len:    11, // 5g-guti
+		Buffer: []uint8{0x02, 0x02, 0xf8, 0x39, 0xca, 0xfe, 0x00, 0x00, 0x00, 0x00, 0x01},
+	}
+	pdu := nasTestpacket.GetDeregistrationRequest(nasMessage.AccessType3GPP, 0, 0x04, mobileIdentity5GS)
+	pdu, err := EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
+	if err != nil {
+		logger.GNBLog.Errorln("Error encoding Deregistration NAS with Security")
+		return err
+	}
+	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
+	if err != nil {
+		logger.GNBLog.Errorln("Error building Deregistration NAS")
+		return err
+	}
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending Deregistration NAS to AMF")
+		return err
+	}
+
+	time.Sleep(500 * time.Millisecond)
+
+	// receive Deregistration Accept
+	n, err = amfConn.Read(recvMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error reading AMF Deregistration Accept")
+		return err
+	}
+	ngapPdu, err := ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding AMF Deregistration Accept")
+		return err
+	}
+
+	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage ||
+		ngapPdu.InitiatingMessage.ProcedureCode.Value != ngapType.ProcedureCodeDownlinkNASTransport {
+		logger.GNBLog.Errorln("Error No DownlinkNASTransport received")
+		return errors.New("Error No DownlinkNASTransport received")
+	}
+
+	nasPdu := GetNasPdu(ue, ngapPdu.InitiatingMessage.Value.DownlinkNASTransport)
+	if nasPdu == nil {
+		logger.GNBLog.Errorln("Error NAS PDU is nil")
+		return errors.New("Error NAS PDU is nil")
+	}
+
+	if nasPdu.GmmMessage == nil {
+		logger.GNBLog.Errorln("Error GMM Message is nil")
+		return errors.New("Error GMM Message is nil")
+	}
+
+	if nasPdu.GmmHeader.GetMessageType() != nas.MsgTypeDeregistrationAcceptUEOriginatingDeregistration {
+		logger.GNBLog.Errorln("Error Received wrong GMM message")
+		return errors.New("Error Received wrong GMM message")
+	}
+
+	// receive ngap UE Context Release Command
+	n, err = amfConn.Read(recvMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error reading UE Context Release Command")
+		return err
+	}
+
+	ngapPdu, err = ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding UE Context Release Command")
+		return err
+	}
+
+	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage ||
+		ngapPdu.InitiatingMessage.ProcedureCode.Value != ngapType.ProcedureCodeUEContextRelease {
+		logger.GNBLog.Errorln("Error No UEContextReleaseCommand received")
+		return errors.New("Error No UEContextReleaseCommand received")
+	}
+
+	// send ngap UE Context Release Complete
+	sendMsg, err = GetUEContextReleaseComplete(ue.AmfUeNgapId, ue.RanUeNgapId, nil)
+	if err != nil {
+		logger.GNBLog.Errorln("Error building ngap UE Context Release Complete")
+		return err
+	}
+
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending ngap UE Context Release Complete")
+		return err
+	}
+
+	time.Sleep(time.Second * 1)
+	return nil
 
 }
 
 func PDUSessionRequest(ue *RanUeContext, sst int32, sd string, sessionId uint8, dnn string) error {
+
+	var n int
+	var sendMsg []byte
+	var recvMsg = make([]byte, 2048)
 
 	err := checkAmfConnection()
 	if err != nil {
@@ -303,10 +405,6 @@ func PDUSessionRequest(ue *RanUeContext, sst int32, sd string, sessionId uint8, 
 		logger.GNBLog.Errorln("Error connecting to the UPF")
 		return err
 	}
-
-	var n int
-	var sendMsg []byte
-	var recvMsg = make([]byte, 2048)
 
 	sNssai := models.Snssai{
 		Sst: sst,
@@ -351,10 +449,85 @@ func PDUSessionRequest(ue *RanUeContext, sst int32, sd string, sessionId uint8, 
 		return err
 	}
 
+	time.Sleep(time.Second * 1)
+
 	return nil
 
 }
 
-func PDUSessionRelease(ueId string, plmn string, sst int32, sd string, sessionId uint8, dnn string) {
+func PDUSessionRelease(ue *RanUeContext, sst int32, sd string, sessionId uint8, dnn string) error {
+
+	var sendMsg []byte
+
+	err := checkAmfConnection()
+	if err != nil {
+		logger.GNBLog.Errorln("Error connecting to the AMF")
+		return err
+	}
+
+	err = checkUpfConnection()
+	if err != nil {
+		logger.GNBLog.Errorln("Error connecting to the UPF")
+		return err
+	}
+
+	sNssai := models.Snssai{
+		Sst: sst,
+		Sd:  sd,
+	}
+
+	// Send Pdu Session Establishment Release Request
+	pdu := nasTestpacket.GetUlNasTransport_PduSessionReleaseRequest(sessionId)
+	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
+	if err != nil {
+		logger.GNBLog.Errorln("Error encoding NPdu Session Establishment Release Request")
+		return err
+	}
+	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
+	if err != nil {
+		logger.GNBLog.Errorln("Error building NPdu Session Establishment Release Request")
+		return err
+	}
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending NPdu Session Establishment Release Request")
+		return err
+	}
+
+	time.Sleep(1000 * time.Millisecond)
+	// send N2 Resource Release Ack(PDUSession Resource Release Response
+	sendMsg, err = GetPDUSessionResourceReleaseResponse(ue.AmfUeNgapId, ue.RanUeNgapId)
+	if err != nil {
+		logger.GNBLog.Errorln("Error building N2 Resource Release Ack(PDUSession Resource Release Response")
+		return err
+	}
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending N2 Resource Release Ack(PDUSession Resource Release Response")
+		return err
+	}
+
+	// wait 10 ms
+	time.Sleep(1000 * time.Millisecond)
+
+	//send N1 PDU Session Release Ack PDU session release complete
+	pdu = nasTestpacket.GetUlNasTransport_PduSessionReleaseComplete(sessionId, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
+	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
+	if err != nil {
+		logger.GNBLog.Errorln("Error encoding N1 PDU Session Release Ack PDU session release complete")
+		return err
+	}
+	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
+	if err != nil {
+		logger.GNBLog.Errorln("Error building N1 PDU Session Release Ack PDU session release complete")
+		return err
+	}
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending N1 PDU Session Release Ack PDU session release complete")
+		return err
+	}
+
+	return nil
 
 }

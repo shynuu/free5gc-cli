@@ -31,13 +31,17 @@ func executorUE(in string) {
 		}
 		u := cmd[3]
 		ueInfo := strings.Split(u, "/")
-		ue, err := api.Registration(ueInfo[0], ueInfo[1])
-		if err != nil {
-			logger.GNBLog.Errorln(fmt.Sprintf("Error registering supi %s on plmn %s", ueInfo[0], ueInfo[1]))
+		if gnb.AlreadyRegister(ueInfo[0]) {
+			logger.GNBLog.Infoln(fmt.Sprintf("Supi %s already registered on the network", ueInfo[0]))
 			return
 		}
-		l := append(*gnb.UE, *ue)
-		gnb.UE = &l
+		ue, err := api.Registration(ueInfo[0])
+		if err != nil {
+			logger.GNBLog.Errorln(fmt.Sprintf("Error registering supi %s", ueInfo[0]))
+			return
+		}
+		gnb.AddUE(ue)
+
 		return
 	}
 
@@ -50,7 +54,7 @@ func Executor(in string) {
 		executorConfiguration(in)
 	}
 
-	if strings.HasPrefix(in, "ue") {
+	if strings.HasPrefix(in, "user") {
 		executorUE(in)
 	}
 
