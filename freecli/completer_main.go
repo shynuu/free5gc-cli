@@ -2,6 +2,7 @@ package freecli
 
 import (
 	"free5gc-cli/module/gnb"
+	"free5gc-cli/module/nf"
 	"free5gc-cli/module/qos"
 	"free5gc-cli/module/subscriber"
 
@@ -13,12 +14,17 @@ const MODULE_MAIN = 0x00
 var MainSuggestion = []prompt.Suggest{
 	{Text: "subscriber", Description: "Load the subscriber module"},
 	{Text: "gnb", Description: "Load the gNB emulator module"},
-	{Text: "qos", Description: "Load the QoS  module"},
+	{Text: "qos", Description: "Load the QoS module"},
+	{Text: "nf", Description: "Load the Network Function module"},
 	{Text: "exit", Description: "Exit freecli"},
 }
 
 // Completer is responsible for the autocompletion of the CLI
 func Completer(in prompt.Document) []prompt.Suggest {
+	if PromptConfig.IsModule && PromptConfig.Module == nf.MODULE_NF {
+		return nf.CompleterNF(in)
+	}
+
 	if PromptConfig.IsModule && PromptConfig.Module == subscriber.MODULE_SUBSCRIBER {
 		return subscriber.CompleterSubscriber(in)
 	}

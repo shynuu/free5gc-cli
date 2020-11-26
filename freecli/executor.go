@@ -3,6 +3,7 @@ package freecli
 import (
 	"free5gc-cli/logger"
 	"free5gc-cli/module/gnb"
+	"free5gc-cli/module/nf"
 	"free5gc-cli/module/qos"
 	"free5gc-cli/module/subscriber"
 	"os"
@@ -12,6 +13,9 @@ import (
 // Executor parse the CLI and executes the dedicated procedures
 func Executor(in string) {
 
+	if PromptConfig.Module == nf.MODULE_NF {
+		nf.Executor(in)
+	}
 	if PromptConfig.Module == gnb.MODULE_GNB {
 		gnb.Executor(in)
 	}
@@ -53,6 +57,17 @@ func Executor(in string) {
 		return
 	}
 
+	if strings.HasPrefix(in, "nf") {
+		logger.FreecliLog.Infoln("Loading Network Function module...")
+		PromptConfig.Suggestion = &nf.NFSuggestion
+		PromptConfig.IsEnable = true
+		PromptConfig.Prefix = "network-function# "
+		PromptConfig.IsModule = true
+		PromptConfig.Module = nf.MODULE_NF
+		nf.Initialize()
+		return
+	}
+
 	if in == "exit" {
 		if PromptConfig.IsModule {
 			PromptConfig.Suggestion = &MainSuggestion
@@ -67,6 +82,8 @@ func Executor(in string) {
 		gnb.Exit()
 		logger.FreecliLog.Infoln("Releasing subscriber module resources")
 		subscriber.Exit()
+		logger.FreecliLog.Infoln("Releasing network function module resources")
+		nf.Exit()
 		logger.FreecliLog.Infoln("Bye Bye !")
 		os.Exit(0)
 	}

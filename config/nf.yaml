@@ -1,0 +1,8 @@
+info:
+  version: 1.0.0
+  description: "Freecli - NF module"
+
+configuration:
+  mongodb:
+    name: free5gc
+    url: mongodb://172.16.100.30:27018
