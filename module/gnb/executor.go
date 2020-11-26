@@ -1,9 +1,6 @@
 package gnb
 
 import (
-	"fmt"
-	"free5gc-cli/logger"
-	"free5gc-cli/module/gnb/api"
 	"strings"
 )
 
@@ -25,28 +22,29 @@ func executorUE(in string) {
 	}
 
 	first := cmd[1]
+
 	if first == "register" {
 		if l < 4 {
 			return
 		}
 		u := cmd[3]
 		ueInfo := strings.Split(u, "/")
-		if gnb.AlreadyRegister(ueInfo[0]) {
-			logger.GNBLog.Infoln(fmt.Sprintf("Supi %s already registered on the network", ueInfo[0]))
-			return
-		}
-		ue, err := api.Registration(ueInfo[0])
+		err := gnb.Register(ueInfo[0])
 		if err != nil {
-			logger.GNBLog.Errorln(fmt.Sprintf("Error registering supi %s", ueInfo[0]))
 			return
 		}
-		gnb.AddUE(ue)
-
 		return
 	}
 
-	if first == "" {
-
+	if first == "deregister" {
+		if l < 4 {
+			return
+		}
+		ue := cmd[3]
+		err := gnb.Deregister(ue)
+		if err != nil {
+			return
+		}
 	}
 
 }
