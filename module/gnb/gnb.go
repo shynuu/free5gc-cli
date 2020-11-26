@@ -20,11 +20,17 @@ func removeIndex(s []prompt.Suggest, index int, length int) []prompt.Suggest {
 	return append(s[:index], s[index+1:]...)
 }
 
-var gnb *GNB
-
-type UEI struct {
-	UE *api.RanUeContext
+func removeFromUE(s []api.RanUeContext, index int, length int) []api.RanUeContext {
+	if length == 1 {
+		return []api.RanUeContext{}
+	}
+	if index == length-1 {
+		return append(s[:index-1])
+	}
+	return append(s[:index], s[index+1:]...)
 }
+
+var gnb *GNB
 
 type PDUSession struct {
 	SessionID uint8
@@ -35,7 +41,7 @@ type PDUSession struct {
 }
 
 type GNB struct {
-	UE          *[]UEI
+	UE          *[]api.RanUeContext
 	PDUSessions *[]PDUSession
 	SessionID   uint8
 	Ipv4        net.IP
@@ -43,7 +49,7 @@ type GNB struct {
 
 func (g *GNB) AlreadyRegister(supi string) bool {
 	for _, ue := range *g.UE {
-		if supi == ue.UE.Supi {
+		if supi == ue.Supi {
 			return true
 		}
 	}
@@ -54,8 +60,7 @@ func (g *GNB) AddUE(ue *api.RanUeContext) {
 	if g.AlreadyRegister(ue.Supi) {
 		return
 	}
-	var uei = UEI{UE: ue}
-	tmp := append(*g.UE, uei)
+	tmp := append(*g.UE, *ue)
 	g.UE = &tmp
 	text := fmt.Sprintf("%s", ue.Supi)
 	l := append(*RegisteredSuggestion, prompt.Suggest{Text: text, Description: ""})
@@ -77,13 +82,16 @@ func (g *GNB) Register(supi string) error {
 }
 
 func (g *GNB) Deregister(supi string) error {
-	for _, ue := range *g.UE {
-		if ue.UE.Supi == supi {
-			err := api.DeRegistration(ue.UE)
+	for j, ue := range *g.UE {
+		if ue.Supi == supi {
+			err := api.DeRegistration(&ue)
 			if err != nil {
 				logger.GNBLog.Errorln(fmt.Sprintf("Error for unregister user with supi %s", supi))
 				return err
 			}
+			ue := removeFromUE(*g.UE, j, len(*g.UE))
+			g.UE = &ue
+
 			for i, sugg := range *RegisteredSuggestion {
 				if sugg.Text == supi {
 					l := removeIndex(*RegisteredSuggestion, i, len(*RegisteredSuggestion))
@@ -100,6 +108,6 @@ func (g *GNB) Deregister(supi string) error {
 func NewGNB() *GNB {
 	tmp := strings.Split(GNBConfig.Configuration.UESubnet, "/")
 	var gnb = GNB{Ipv4: net.ParseIP(tmp[0])}
-	gnb.UE = &[]UEI{}
+	gnb.UE = &[]api.RanUeContext{}
 	return &gnb
 }
