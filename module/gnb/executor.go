@@ -45,6 +45,10 @@ func executorUE(in string) {
 		return
 	}
 
+	if first == "" {
+
+	}
+
 }
 
 // Executor parse CLI

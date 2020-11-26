@@ -4,16 +4,16 @@ info:
 
 configuration:
   amfInterface:
-    ipv4Addr: "127.0.0.1"
+    ipv4Addr: "172.16.10.2"
     port: 38412
   upfInterface:
-    ipv4Addr: "10.200.200.102"
+    ipv4Addr: "172.16.10.2"
     port: 2152
   ngranInterface:
-    ipv4Addr: "127.0.0.1"
+    ipv4Addr: "172.16.10.3"
     port: 9487
   gtpInterface:
-    ipv4Addr: "10.200.200.1"
+    ipv4Addr: "172.16.10.3"
     port: 2152
   ueSubnet: "60.60.0.0/16"
   security:
