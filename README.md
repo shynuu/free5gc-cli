@@ -12,7 +12,7 @@ Freecli is an interactive cli utility to test and manage free5gc. It currently i
 - 5G gNB: emulate a 5G gNB.
 - QoS: apply DSCP PHB to packets.
 
-Check the [wiki](https://github.com/Srajdax/free5gc-cli/wiki) for documentation
+Check the [WIKI](https://github.com/Srajdax/free5gc-cli/wiki) for documentation
 
 ## Acknowledgment
 
