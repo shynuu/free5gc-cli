@@ -26,27 +26,45 @@ func Initialize() {
 	}
 	SnssaiSuggestion = &l
 
+	var q []prompt.Suggest
+	for _, dnn := range GNBConfig.Configuration.DNN {
+		dnna := fmt.Sprintf("%s", dnn)
+		q = append(q, prompt.Suggest{Text: dnna, Description: ""})
+	}
+	DNNSuggestion = &q
+
 	gnb = NewGNB()
 
 }
 
 // Reload the module
 func Reload() {
+
 	DefaultCLIConfigPath := "config/" + MODULE_NAME + ".yaml"
-	InitConfigFactory(DefaultCLIConfigPath, true)
-	api.Initialize(DefaultCLIConfigPath, true)
+	InitConfigFactory(DefaultCLIConfigPath, false)
+	api.Initialize(DefaultCLIConfigPath, false)
 
 	var s []prompt.Suggest
 	for _, ue := range *GNBConfig.Configuration.UEList {
 		s = append(s, prompt.Suggest{Text: fmt.Sprintf("%s", ue.Supi), Description: ""})
 	}
 	UserSuggestion = &s
+
 	var l []prompt.Suggest
 	for _, sn := range *GNBConfig.Configuration.Snssai {
 		snssai := fmt.Sprintf("%02d%s", sn.Sst, sn.Sd)
 		l = append(l, prompt.Suggest{Text: snssai, Description: ""})
 	}
 	SnssaiSuggestion = &l
+
+	var q []prompt.Suggest
+	for _, dnn := range GNBConfig.Configuration.DNN {
+		dnna := fmt.Sprintf("%s", dnn)
+		q = append(l, prompt.Suggest{Text: dnna, Description: ""})
+	}
+	DNNSuggestion = &q
+
+	gnb = NewGNB()
 
 }
 

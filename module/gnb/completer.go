@@ -28,12 +28,6 @@ var ueSuggestion = []prompt.Suggest{
 	{Text: "list", Description: "List the registered UE"},
 }
 
-// pdu-session list
-// pdu-session request --user imsiXXXXX --snssai 01010101 --dnn internet
-// pdu-session
-// ===> ipv4, qos profile, sessionid
-// pdu-session release --session <session_id>
-// pdu-session
 var pduSuggestion = []prompt.Suggest{
 	{Text: "request", Description: "Establish a new PDU session for a registered UE"},
 	{Text: "release", Description: "Release an existing PDU session"},
@@ -72,15 +66,64 @@ var PHBSuggestion = []prompt.Suggest{
 var UserSuggestion = &[]prompt.Suggest{}
 var RegisteredSuggestion = &[]prompt.Suggest{}
 var SnssaiSuggestion = &[]prompt.Suggest{}
+var DNNSuggestion = &[]prompt.Suggest{}
+var PDUSuggestion = &[]prompt.Suggest{}
 
+// pdu-session list
+// pdu-session request --user imsiXXXXX --snssai 01010101 --dnn internet
+// pdu-session
+// ===> ipv4, qos profile, sessionid
+// pdu-session release --session <session_id>
+// pdu-session
 func completerPDU(in prompt.Document) []prompt.Suggest {
 	a := in.GetWordBeforeCursor()
 	a = strings.TrimSpace(a)
-	// d := strings.Split(in.TextBeforeCursor(), " ")
-	// if d[1] == "delete" {
-	// 	a = in.GetWordBeforeCursor()
-	// 	return prompt.FilterHasPrefix(*supiSuggestion, a, true)
-	// }
+	d := strings.Split(in.TextBeforeCursor(), " ")
+	l := len(d)
+
+	if d[1] == "list" {
+		return prompt.FilterHasPrefix(*SnssaiSuggestion, a, true)
+	}
+
+	if d[1] == "request" {
+		if l == 3 {
+			return prompt.FilterHasPrefix([]prompt.Suggest{
+				{Text: "--user", Description: "Specify the user"},
+			}, a, true)
+		}
+		if l == 4 {
+			return prompt.FilterHasPrefix(*RegisteredSuggestion, a, true)
+		}
+		if l == 5 {
+			return prompt.FilterHasPrefix([]prompt.Suggest{
+				{Text: "--snssai", Description: "Specify the SNSSAI for the PDU Session"},
+			}, a, true)
+		}
+		if l == 6 {
+			return prompt.FilterHasPrefix(*SnssaiSuggestion, a, true)
+		}
+		if l == 7 {
+			return prompt.FilterHasPrefix([]prompt.Suggest{
+				{Text: "--dnn", Description: "Specify the data network associated to the SNSSAI"},
+			}, a, true)
+		}
+		if l == 8 {
+			return prompt.FilterHasPrefix(*DNNSuggestion, a, true)
+		}
+		if l > 8 {
+			return []prompt.Suggest{}
+		}
+		return []prompt.Suggest{}
+	}
+
+	if d[1] == "release" {
+		return prompt.FilterHasPrefix(*SnssaiSuggestion, a, true)
+	}
+
+	if d[1] == "qos" {
+		return prompt.FilterHasPrefix(*SnssaiSuggestion, a, true)
+	}
+
 	return prompt.FilterHasPrefix(pduSuggestion, a, true)
 }
 

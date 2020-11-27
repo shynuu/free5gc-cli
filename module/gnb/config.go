@@ -14,6 +14,7 @@ type Configuration struct {
 	UESubnet string    `yaml:"ueSubnet,omitempty"`
 	UEList   *[]UE     `yaml:"ue,omitempty"`
 	Snssai   *[]Snssai `yaml:"snssai,omitempty"`
+	DNN      []string  `yaml:"dnn,omitempty"`
 }
 
 type UE struct {
