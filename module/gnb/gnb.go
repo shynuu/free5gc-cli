@@ -251,7 +251,11 @@ func (g *GNB) PDURelease(supi string, sessionid string) error {
 func NewGNB() *GNB {
 	tmp := strings.Split(GNBConfig.Configuration.UESubnet, "/")
 	ipv4 := net.ParseIP(tmp[0]).To4()
-	var gnb = GNB{Ipv4: &ipv4, SessionID: 9}
-	gnb.UE = &[]api.RanUeContext{}
+	var gnb = GNB{
+		Ipv4:        &ipv4,
+		SessionID:   9,
+		PDUSessions: &[]PDUSession{},
+		UE:          &[]api.RanUeContext{},
+	}
 	return &gnb
 }

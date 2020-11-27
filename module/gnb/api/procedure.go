@@ -452,7 +452,6 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 	}
 
 	time.Sleep(time.Second * 1)
-
 	return nil
 
 }
