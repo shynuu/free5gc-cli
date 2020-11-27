@@ -24,27 +24,33 @@ import (
 var amfConn *sctp.SCTPConn
 var upfConn *net.UDPConn
 
-func AmfConnection() error {
-	amfC, err := ConnectToAmf(APIConfig.Configuration.AmfInterface.IPv4Addr,
-		APIConfig.Configuration.NGRANInterface.IPv4Addr,
-		APIConfig.Configuration.AmfInterface.Port,
-		APIConfig.Configuration.NGRANInterface.Port)
-	if err != nil {
-		return err
+func checkAmfConnection() error {
+	if amfConn == nil {
+		amfC, err := ConnectToAmf(APIConfig.Configuration.AmfInterface.IPv4Addr,
+			APIConfig.Configuration.NGRANInterface.IPv4Addr,
+			APIConfig.Configuration.AmfInterface.Port,
+			APIConfig.Configuration.NGRANInterface.Port)
+		if err != nil {
+			return err
+		}
+		amfConn = amfC
+		return nil
 	}
-	amfConn = amfC
 	return nil
 }
 
-func UpfConnection() error {
-	upfC, err := ConnectToUpf(APIConfig.Configuration.GTPInterface.IPv4Addr,
-		APIConfig.Configuration.UpfInterface.IPv4Addr,
-		APIConfig.Configuration.GTPInterface.Port,
-		APIConfig.Configuration.UpfInterface.Port)
-	if err != nil {
-		return err
+func checkUpfConnection() error {
+	if upfConn == nil {
+		upfC, err := ConnectToUpf(APIConfig.Configuration.GTPInterface.IPv4Addr,
+			APIConfig.Configuration.UpfInterface.IPv4Addr,
+			APIConfig.Configuration.GTPInterface.Port,
+			APIConfig.Configuration.UpfInterface.Port)
+		if err != nil {
+			return err
+		}
+		upfConn = upfC
+		return nil
 	}
-	upfConn = upfC
 	return nil
 }
 
@@ -111,8 +117,7 @@ func Registration(ueId string) (*RanUeContext, error) {
 	var recvMsg = make([]byte, 2048)
 
 	// RAN connect to AMF
-	err := AmfConnection()
-	defer amfConn.Close()
+	err := checkAmfConnection()
 
 	if err != nil {
 		logger.GNBLog.Errorln("Error connecting to the AMF")
@@ -283,9 +288,6 @@ func Registration(ueId string) (*RanUeContext, error) {
 
 func DeRegistration(ue *RanUeContext) error {
 
-	err := AmfConnection()
-	defer amfConn.Close()
-
 	var n int
 	var sendMsg []byte
 	var recvMsg = make([]byte, 2048)
@@ -296,7 +298,7 @@ func DeRegistration(ue *RanUeContext) error {
 		Buffer: []uint8{0x02, 0x02, 0xf8, 0x39, 0xca, 0xfe, 0x00, 0x00, 0x00, 0x00, 0x01},
 	}
 	pdu := nasTestpacket.GetDeregistrationRequest(nasMessage.AccessType3GPP, 0, 0x04, mobileIdentity5GS)
-	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
+	pdu, err := EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
 	if err != nil {
 		logger.GNBLog.Errorln("Error encoding Deregistration NAS with Security")
 		return err
@@ -391,22 +393,15 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 	var sendMsg []byte
 	var recvMsg = make([]byte, 2048)
 
-	err := AmfConnection()
-	defer amfConn.Close()
-
-	// send NGSetupRequest Msg
-	sendMsg, err = GetNGSetupRequest([]byte("\x00\x01\x02"), 24, "free5gc")
-	_, err = amfConn.Write(sendMsg)
+	err := checkAmfConnection()
 	if err != nil {
-		logger.GNBLog.Errorln("Error sending NGSetup")
+		logger.GNBLog.Errorln("Error connecting to the AMF")
 		return err
 	}
 
-	// receive NGSetupResponse Msg
-	n, err = amfConn.Read(recvMsg)
-	ngapPdu, err := ngap.Decoder(recvMsg[:n])
+	err = checkUpfConnection()
 	if err != nil {
-		logger.GNBLog.Errorln("Error decoding NGAP")
+		logger.GNBLog.Errorln("Error connecting to the UPF")
 		return err
 	}
 
@@ -427,7 +422,7 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 
 	// receive 12. NGAP-PDU Session Resource Setup Request(DL nas transport((NAS msg-PDU session setup Accept)))
 	n, err = amfConn.Read(recvMsg)
-	ngapPdu, err = ngap.Decoder(recvMsg[:n])
+	ngapPdu, err := ngap.Decoder(recvMsg[:n])
 	if err != nil {
 		logger.GNBLog.Errorln("Error decoding NGAP-PDU Session Resource Setup Request")
 		return err
@@ -460,8 +455,17 @@ func PDUSessionRelease(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 
 	var sendMsg []byte
 
-	err := AmfConnection()
-	defer amfConn.Close()
+	err := checkAmfConnection()
+	if err != nil {
+		logger.GNBLog.Errorln("Error connecting to the AMF")
+		return err
+	}
+
+	err = checkUpfConnection()
+	if err != nil {
+		logger.GNBLog.Errorln("Error connecting to the UPF")
+		return err
+	}
 
 	sNssai := *convertSnssai(snssai)
 
