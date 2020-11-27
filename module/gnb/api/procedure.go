@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/hex"
 	"errors"
+	"fmt"
 	"free5gc-cli/lib/nas"
 	"free5gc-cli/lib/nas/nasMessage"
 	"free5gc-cli/lib/nas/nasTestpacket"
@@ -389,6 +390,10 @@ func DeRegistration(ue *RanUeContext) error {
 
 func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn string) error {
 
+	fmt.Println(snssai)
+	fmt.Println(sessionId)
+	fmt.Println(dnn)
+
 	var n int
 	var sendMsg []byte
 	var recvMsg = make([]byte, 2048)
@@ -413,6 +418,7 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 		logger.GNBLog.Errorln("Error encoding PduSessionEstablishmentRequest")
 		return err
 	}
+
 	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
 	_, err = amfConn.Write(sendMsg)
 	if err != nil {

@@ -69,4 +69,6 @@ func Reload() {
 }
 
 // Exit and free the resources used by the module
-func Exit() {}
+func Exit() {
+
+}
