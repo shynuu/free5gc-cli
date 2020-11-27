@@ -394,6 +394,22 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 	err := AmfConnection()
 	defer amfConn.Close()
 
+	// send NGSetupRequest Msg
+	sendMsg, err = GetNGSetupRequest([]byte("\x00\x01\x02"), 24, "free5gc")
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending NGSetup")
+		return err
+	}
+
+	// receive NGSetupResponse Msg
+	n, err = amfConn.Read(recvMsg)
+	ngapPdu, err := ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding NGAP")
+		return err
+	}
+
 	sNssai := *convertSnssai(snssai)
 
 	pdu := nasTestpacket.GetUlNasTransport_PduSessionEstablishmentRequest(sessionId, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
@@ -411,7 +427,7 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 
 	// receive 12. NGAP-PDU Session Resource Setup Request(DL nas transport((NAS msg-PDU session setup Accept)))
 	n, err = amfConn.Read(recvMsg)
-	ngapPdu, err := ngap.Decoder(recvMsg[:n])
+	ngapPdu, err = ngap.Decoder(recvMsg[:n])
 	if err != nil {
 		logger.GNBLog.Errorln("Error decoding NGAP-PDU Session Resource Setup Request")
 		return err
