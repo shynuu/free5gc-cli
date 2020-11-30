@@ -1,6 +1,7 @@
 package gnb
 
 import (
+	"fmt"
 	"free5gc-cli/logger"
 	"net"
 	"os"
@@ -58,10 +59,14 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, gnb *GNB) (
 	runIP("link", "set", "dev", iface.Name(), "up")
 
 	var GNBAddr = net.UDPAddr{IP: net.ParseIP(gnbIP), Port: gnbPort}
-	var UPFAddr = net.UDPAddr{IP: net.ParseIP(upfIP), Port: upfPort}
+	// var UPFAddr = net.UDPAddr{IP: net.ParseIP(upfIP), Port: upfPort}
 
-	// Connect to maradonn
-	upfConn, err := net.DialUDP("udp", &GNBAddr, &UPFAddr)
+	// Connect to the UPF
+	upfAddress, err := net.ResolveUDPAddr("udp", upfIP)
+	if err != nil {
+		return nil, err
+	}
+	upfConn, err := net.DialUDP("udp", &GNBAddr, upfAddress)
 	if err != nil {
 		return nil, err
 	}
@@ -90,10 +95,10 @@ func (r *GTPRouter) Encapsulate() {
 	opts := gopacket.SerializeOptions{} // See SerializeOptions for more details.
 	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeIPv4, &ipv4)
 	decoded := []gopacket.LayerType{}
-
 	for {
 		// read the packet coming from the TUN interface
 		n, err := r.Iface.Read(packet)
+		fmt.Println("Reading")
 		if err != nil {
 			break
 		}
