@@ -64,10 +64,12 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, gnb *GNB) (
 	// Connect to the UPF
 	upfAddress, err := net.ResolveUDPAddr("udp", upfIP)
 	if err != nil {
+		logger.GNBLog.Errorln("Impossible to resolve UPF address")
 		return nil, err
 	}
 	upfConn, err := net.DialUDP("udp", &GNBAddr, upfAddress)
 	if err != nil {
+		logger.GNBLog.Errorln("Impossible to Dial UPF")
 		return nil, err
 	}
 
