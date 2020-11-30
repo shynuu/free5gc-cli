@@ -262,6 +262,7 @@ func NewGNB() *GNB {
 		SessionID:   9,
 		PDUSessions: &[]PDUSession{},
 		UE:          &[]api.RanUeContext{},
+		IPMAP:       make(map[string]uint32),
 	}
 	return &gnb
 }
