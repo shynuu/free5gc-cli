@@ -63,7 +63,7 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, gnb *GNB) (
 
 	// Connect to the UPF
 	fmt.Println(upfIP)
-	upfAddress, err := net.ResolveUDPAddr("udp", upfIP)
+	upfAddress, err := net.ResolveUDPAddr("udp", fmt.Sprintf("%s:%d", upfIP, upfPort))
 	if err != nil {
 		logger.GNBLog.Errorln("Impossible to resolve UPF address")
 		logger.GNBLog.Errorln(err)
