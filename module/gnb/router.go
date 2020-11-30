@@ -104,11 +104,13 @@ func (r *GTPRouter) Encapsulate() {
 		n, err := r.Iface.Read(packet)
 		fmt.Println("Reading")
 		if err != nil {
+			logger.GNBLog.Errorln("Error reading the TUN interface input")
 			break
 		}
 		// build the ipv4 header
 		err = parser.DecodeLayers(packet[:n], &decoded)
 		if err != nil {
+			logger.GNBLog.Errorln("Error decoding Layers")
 			break
 		}
 		gtp = layers.GTPv1U{
@@ -118,6 +120,7 @@ func (r *GTPRouter) Encapsulate() {
 		}
 		err = gtp.SerializeTo(buf, opts)
 		if err != nil {
+			logger.GNBLog.Errorln("Error Serializing the packet Layers")
 			break
 		}
 		pkt := append(buf.Bytes(), packet[:n]...)
