@@ -24,6 +24,10 @@ func Executor(in string) {
 		subscriber.Executor(in)
 	}
 
+	if PromptConfig.Module == qos.MODULE_QOS {
+		qos.Executor(in)
+	}
+
 	if strings.HasPrefix(in, "subscriber") {
 		logger.FreecliLog.Infoln("Loading subscriber module...")
 		PromptConfig.Suggestion = &subscriber.SubscriberSuggestion
@@ -80,10 +84,6 @@ func Executor(in string) {
 		}
 		logger.FreecliLog.Infoln("Releasing gNB module resources")
 		gnb.Exit()
-		logger.FreecliLog.Infoln("Releasing subscriber module resources")
-		subscriber.Exit()
-		logger.FreecliLog.Infoln("Releasing network function module resources")
-		nf.Exit()
 		logger.FreecliLog.Infoln("Bye Bye !")
 		os.Exit(0)
 	}

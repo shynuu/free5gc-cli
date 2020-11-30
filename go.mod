@@ -13,8 +13,10 @@ require (
 	github.com/gin-gonic/gin v1.6.3
 	github.com/ishidawataru/sctp v0.0.0-20191218070446-00ab2ac2db07
 	github.com/sirupsen/logrus v1.7.0
+	github.com/songgao/water v0.0.0-20200317203138-2b4b6d7c09d8
 	github.com/stretchr/testify v1.6.1
 	go.mongodb.org/mongo-driver v1.4.3
 	golang.org/x/net v0.0.0-20200202094626-16171245cfb2
+	golang.org/x/sys v0.0.0-20201126233918-771906719818 // indirect
 	gopkg.in/yaml.v2 v2.2.8
 )

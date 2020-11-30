@@ -1,0 +1,13 @@
+info:
+  version: 1.0.0
+  description: "Freecli - QoS module"
+
+configuration:
+  ip:
+    - 172.16.10.3
+    - 172.16.10.2
+  port:
+    - 80
+    - 8080
+    - 443
+    - 5060

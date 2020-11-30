@@ -35,3 +35,4 @@ configuration:
       plmn: 20893
     - supi: imsi-2089300007486
       plmn: 20893
+  tun: tun_gnb

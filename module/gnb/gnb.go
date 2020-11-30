@@ -82,11 +82,11 @@ func (g *GNB) DecrementSessionId() {
 }
 
 func (g *GNB) IncrementTEID() {
-	g.TEID++
+	g.TEID += 2
 }
 
 func (g *GNB) DecrementTEID() {
-	g.TEID--
+	g.TEID -= 2
 }
 
 func (g *GNB) AlreadyRegister(supi string) bool {
@@ -161,7 +161,7 @@ func (g *GNB) AddPDU(pdu PDUSession) {
 	tmp := append(*g.PDUSessions, pdu)
 	g.PDUSessions = &tmp
 
-	l := append(*PDUSuggestion, prompt.Suggest{Text: fmt.Sprintf("%s-%d", pdu.Supi, pdu.SessionID)})
+	l := append(*PDUSuggestion, prompt.Suggest{Text: fmt.Sprintf("%s/%d", pdu.Supi, pdu.SessionID)})
 	PDUSuggestion = &l
 }
 
@@ -176,7 +176,7 @@ func (g *GNB) DeletePDU(pdu PDUSession) {
 	}
 
 	for i, pduu := range *PDUSuggestion {
-		if pduu.Text == fmt.Sprintf("%s-%d", pdu.Supi, pdu.SessionID) {
+		if pduu.Text == fmt.Sprintf("%s/%d", pdu.Supi, pdu.SessionID) {
 			l := removeIndex(*PDUSuggestion, i, len(*PDUSuggestion))
 			PDUSuggestion = &l
 			break
