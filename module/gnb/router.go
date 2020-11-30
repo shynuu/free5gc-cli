@@ -53,9 +53,9 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, gnb *GNB) (
 
 	logger.GNBLog.Infoln("TUN Interface allocated:", iface.Name())
 	// set interface parameters
-	runIP("sudo", "link", "set", "dev", iface.Name(), "mtu", MTU)
-	runIP("sudo", "addr", "add", GNBConfig.Configuration.GTPInterface.Ipv4, "dev", iface.Name())
-	runIP("sudo", "link", "set", "dev", iface.Name(), "up")
+	runIP("link", "set", "dev", iface.Name(), "mtu", MTU)
+	runIP("addr", "add", GNBConfig.Configuration.GTPInterface.Ipv4, "dev", iface.Name())
+	runIP("link", "set", "dev", iface.Name(), "up")
 
 	var GNBAddr = net.UDPAddr{IP: net.ParseIP(gnbIP), Port: gnbPort}
 	var UPFAddr = net.UDPAddr{IP: net.ParseIP(upfIP), Port: upfPort}
