@@ -102,7 +102,7 @@ func (r *GTPRouter) Encapsulate() {
 	for {
 		// read the packet coming from the TUN interface
 		n, err := r.Iface.Read(packet)
-		fmt.Println("Reading")
+		fmt.Println(fmt.Sprintf("Reading %d bytes", n))
 		if err != nil {
 			logger.GNBLog.Errorln("Error reading the TUN interface input")
 			break
