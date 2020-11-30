@@ -13,7 +13,7 @@ configuration:
     ipv4Addr: "172.16.10.3"
     port: 9487
   gtpInterface:
-    ipv4Addr: "172.16.10.3"
+    ipv4Addr: "172.16.10.4"
     port: 2152
   ueSubnet: "60.60.0.0"
   security:

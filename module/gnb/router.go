@@ -24,7 +24,7 @@ func runIP(args ...string) {
 	cmd.Stdin = os.Stdin
 	err := cmd.Run()
 	if nil != err {
-		logger.GNBLog.Errorln("Error running /sbin/ip:", err)
+		logger.GNBLog.Errorln("Error running ip command:", err)
 	}
 	return
 }
