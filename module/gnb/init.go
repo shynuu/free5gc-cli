@@ -34,6 +34,17 @@ func Initialize() {
 	DNNSuggestion = &q
 
 	gnb = NewGNB()
+	gtpRouter, err := NewRouter(GNBConfig.Configuration.UpfInterface.IPv4Addr,
+		GNBConfig.Configuration.UpfInterface.Port,
+		GNBConfig.Configuration.GTPInterface.Ipv4,
+		GNBConfig.Configuration.GTPInterface.Port,
+		gnb,
+	)
+	if err != nil {
+		panic("Impossible to start the gNB router")
+	}
+	go gtpRouter.Encapsulate()
+	go gtpRouter.Desencapsulate()
 
 }
 
@@ -65,10 +76,11 @@ func Reload() {
 	DNNSuggestion = &q
 
 	gnb = NewGNB()
+	gtpRouter.GNB = gnb
 
 }
 
 // Exit and free the resources used by the module
 func Exit() {
-
+	gtpRouter.Close()
 }

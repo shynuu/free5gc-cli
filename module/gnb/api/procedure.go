@@ -40,21 +40,6 @@ func checkAmfConnection() error {
 	return nil
 }
 
-func checkUpfConnection() error {
-	if upfConn == nil {
-		upfC, err := ConnectToUpf(APIConfig.Configuration.GTPInterface.IPv4Addr,
-			APIConfig.Configuration.UpfInterface.IPv4Addr,
-			APIConfig.Configuration.GTPInterface.Port,
-			APIConfig.Configuration.UpfInterface.Port)
-		if err != nil {
-			return err
-		}
-		upfConn = upfC
-		return nil
-	}
-	return nil
-}
-
 func TestPing(sourceIp string, destinationIp string) error {
 	gtpHdr, err := hex.DecodeString("32ff00340000000100000000")
 	if err != nil {
@@ -404,12 +389,6 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 		return err
 	}
 
-	err = checkUpfConnection()
-	if err != nil {
-		logger.GNBLog.Errorln("Error connecting to the UPF")
-		return err
-	}
-
 	sNssai := *convertSnssai(snssai)
 
 	pdu := nasTestpacket.GetUlNasTransport_PduSessionEstablishmentRequest(sessionId, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
@@ -463,12 +442,6 @@ func PDUSessionRelease(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 	err := checkAmfConnection()
 	if err != nil {
 		logger.GNBLog.Errorln("Error connecting to the AMF")
-		return err
-	}
-
-	err = checkUpfConnection()
-	if err != nil {
-		logger.GNBLog.Errorln("Error connecting to the UPF")
 		return err
 	}
 

@@ -59,6 +59,7 @@ type GNB struct {
 	SessionID   uint8
 	Ipv4        *net.IP
 	TEID        uint32
+	IPMAP       map[string]uint32
 }
 
 func (g *GNB) IncrementIP() {
@@ -163,6 +164,9 @@ func (g *GNB) AddPDU(pdu PDUSession) {
 
 	l := append(*PDUSuggestion, prompt.Suggest{Text: fmt.Sprintf("%s/%d", pdu.Supi, pdu.SessionID)})
 	PDUSuggestion = &l
+
+	g.IPMAP[pdu.Ipv4.String()] = pdu.TEID
+
 }
 
 func (g *GNB) DeletePDU(pdu PDUSession) {
@@ -182,6 +186,8 @@ func (g *GNB) DeletePDU(pdu PDUSession) {
 			break
 		}
 	}
+
+	delete(g.IPMAP, pdu.Ipv4.String())
 
 }
 

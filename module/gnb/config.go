@@ -17,6 +17,7 @@ type Configuration struct {
 	DNN          []string     `yaml:"dnn,omitempty"`
 	TUN          string       `yaml:"tun,omitempty"`
 	GTPInterface GTPInterface `yaml:"gtpInterface,omitempty"`
+	UpfInterface UpfInterface `yaml:"upfInterface,omitempty"`
 }
 
 type UE struct {
@@ -32,4 +33,9 @@ type Snssai struct {
 type GTPInterface struct {
 	Ipv4 string `yaml:"ipv4Addr,omitempty"`
 	Port int    `yaml:"port,omitempty"`
+}
+
+type UpfInterface struct {
+	IPv4Addr string `yaml:"ipv4Addr,omitempty"`
+	Port     int    `yaml:"port,omitempty"`
 }
