@@ -110,7 +110,7 @@ func (r *GTPRouter) Encapsulate() {
 		}
 		// build the ipv4 header
 		err = parser.DecodeLayers(packet[:n], &decoded)
-		if len(decoded) < 1 {
+		if len(decoded) > 1 {
 			// find the teid
 			logger.GNBLog.Infoln("UPF Packet")
 			teid, err := r.GNB.GetTEID(ipv4.SrcIP)
