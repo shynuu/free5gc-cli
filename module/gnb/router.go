@@ -163,19 +163,22 @@ func (r *GTPRouter) Desencapsulate() {
 
 	for {
 		n, err := r.UpfConn.Read(buf)
-		fmt.Println(fmt.Sprintf("Reading %d bytes on receiving socket", n))
 		if err != nil {
-			break
+			logger.GNBLog.Errorln("Error reading the UPF incoming packet")
+			panic("Error reading the UPF incoming packet")
 		}
+		fmt.Println(fmt.Sprintf("Reading %d bytes on receiving socket", n))
 
 		err = parser.DecodeLayers(buf[:n], &decoded)
-		if err != nil {
-			break
+		if len(decoded) > 0 {
+
+			fmt.Println(gtp.LayerPayload())
+			fmt.Println(len(gtp.LayerPayload()))
+			r.IfaceMutex.Lock()
+			r.Iface.Write(payload)
+			r.IfaceMutex.Unlock()
 		}
 
-		r.IfaceMutex.Lock()
-		r.Iface.Write(payload)
-		r.IfaceMutex.Unlock()
 	}
 
 }
