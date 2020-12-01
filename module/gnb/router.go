@@ -116,6 +116,7 @@ func (r *GTPRouter) Encapsulate() {
 			teid, err := r.GNB.GetTEID(ipv4.SrcIP)
 			if err == nil {
 				gtp = layers.GTPv1U{
+					Version:       0x01,
 					TEID:          teid,
 					MessageType:   0xFF,
 					MessageLength: uint16(n),
