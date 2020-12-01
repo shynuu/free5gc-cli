@@ -139,6 +139,7 @@ func (r *GTPRouter) Encapsulate() {
 					break
 				}
 				pkt := append(buf.Bytes(), packet[:n]...)
+				fmt.Println(len(pkt))
 				n, err = r.UpfConn.WriteToUDP(pkt, r.UpfAddress)
 			}
 		}
