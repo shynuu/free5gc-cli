@@ -142,9 +142,7 @@ func (r *GTPRouter) Encapsulate() {
 					break
 				}
 				pkt := append(buf.Bytes(), packet[:n]...)
-				r.UPFMutex.Lock()
 				n, err = r.UpfConn.Write(pkt)
-				r.UPFMutex.Unlock()
 			}
 		}
 	}
@@ -165,9 +163,7 @@ func (r *GTPRouter) Desencapsulate() {
 	decoded := []gopacket.LayerType{}
 
 	for {
-		r.UPFMutex.Lock()
 		n, _, err := r.UpfConn.ReadFromUDP(buf)
-		r.UPFMutex.Unlock()
 		if err != nil {
 			break
 		}
