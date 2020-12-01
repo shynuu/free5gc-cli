@@ -95,10 +95,11 @@ func (r *GTPRouter) Encapsulate() {
 	packet := make([]byte, BUFFERSIZE)
 	var ipv4 layers.IPv4
 	var gtp layers.GTPv1U
+	var icmpv4 layers.ICMPv4
 	var payload gopacket.Payload
 	buf := gopacket.NewSerializeBuffer()
 	opts := gopacket.SerializeOptions{} // See SerializeOptions for more details.
-	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeIPv4, &ipv4, &payload)
+	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeIPv4, &ipv4, &payload, &icmpv4)
 	decoded := []gopacket.LayerType{}
 	for {
 		// read the packet coming from the TUN interface
@@ -130,6 +131,7 @@ func (r *GTPRouter) Encapsulate() {
 			}
 		} else {
 			logger.GNBLog.Infoln(err)
+			logger.GNBLog.Infoln(len(decoded))
 			logger.GNBLog.Infoln("Not a 5G UPF Packet")
 		}
 
