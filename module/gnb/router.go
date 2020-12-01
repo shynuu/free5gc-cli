@@ -157,8 +157,7 @@ func (r *GTPRouter) Desencapsulate() {
 
 	buf := make([]byte, BUFFERSIZE)
 	var gtp layers.GTPv1U
-	var payload gopacket.Payload
-	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeGTPv1U, &gtp, &payload)
+	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeGTPv1U, &gtp)
 	decoded := []gopacket.LayerType{}
 
 	for {
@@ -172,10 +171,8 @@ func (r *GTPRouter) Desencapsulate() {
 		err = parser.DecodeLayers(buf[:n], &decoded)
 		if len(decoded) > 0 {
 
-			fmt.Println(gtp.LayerPayload())
-			fmt.Println(len(gtp.LayerPayload()))
 			r.IfaceMutex.Lock()
-			r.Iface.Write(payload)
+			r.Iface.Write(gtp.LayerPayload())
 			r.IfaceMutex.Unlock()
 		}
 
