@@ -114,9 +114,7 @@ func (r *GTPRouter) Encapsulate() {
 
 	for {
 		// read the packet coming from the TUN interface
-		r.IfaceMutex.Lock()
 		n, err := r.Iface.Read(packet)
-		r.IfaceMutex.Unlock()
 		fmt.Println(fmt.Sprintf("Reading %d bytes", n))
 		if err != nil {
 			logger.GNBLog.Errorln("Error reading the TUN interface input")
@@ -170,10 +168,7 @@ func (r *GTPRouter) Desencapsulate() {
 
 		err = parser.DecodeLayers(buf[:n], &decoded)
 		if len(decoded) > 0 {
-
-			r.IfaceMutex.Lock()
 			r.Iface.Write(gtp.LayerPayload())
-			r.IfaceMutex.Unlock()
 		}
 
 	}
