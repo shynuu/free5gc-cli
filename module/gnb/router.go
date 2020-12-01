@@ -115,7 +115,6 @@ func (r *GTPRouter) Encapsulate() {
 	for {
 		// read the packet coming from the TUN interface
 		n, err := r.Iface.Read(packet)
-		fmt.Println(fmt.Sprintf("Reading %d bytes", n))
 		if err != nil {
 			logger.GNBLog.Errorln("Error reading the TUN interface input")
 			panic("Impossible to read the TUN interface")
@@ -124,7 +123,6 @@ func (r *GTPRouter) Encapsulate() {
 		err = parser.DecodeLayers(packet[:n], &decoded)
 		if len(decoded) > 0 {
 			// find the teid
-			logger.GNBLog.Infoln("UPF Packet")
 			teid, err := r.GNB.GetTEID(ipv4.SrcIP)
 			if err == nil {
 				gtp = layers.GTPv1U{
@@ -165,7 +163,6 @@ func (r *GTPRouter) Desencapsulate() {
 			logger.GNBLog.Errorln("Error reading the UPF incoming packet")
 			panic("Error reading the UPF incoming packet")
 		}
-		fmt.Println(fmt.Sprintf("Reading %d bytes on receiving socket", n))
 
 		err = parser.DecodeLayers(buf[:n], &decoded)
 		if len(decoded) > 0 {
