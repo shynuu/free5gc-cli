@@ -164,6 +164,7 @@ func (r *GTPRouter) Desencapsulate() {
 
 	for {
 		n, _, err := r.UpfConn.ReadFromUDP(buf)
+		fmt.Println(fmt.Sprintf("Reading %d bytes on receiving socket", n))
 		if err != nil {
 			break
 		}
