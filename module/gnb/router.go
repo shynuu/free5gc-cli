@@ -170,7 +170,6 @@ func (r *GTPRouter) Desencapsulate() {
 		err = parser.DecodeLayers(buf[:n], &decoded)
 		if len(decoded) > 0 {
 			r.Iface.Write(gtp.LayerPayload())
-			buf.Clear()
 		}
 
 	}
