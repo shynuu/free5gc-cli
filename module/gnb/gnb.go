@@ -214,10 +214,9 @@ func (g *GNB) PDURequest(supi string, snssai string, dnn string) error {
 		return err
 	}
 	g.IncrementIP()
-	g.IncrementTEID()
-
 	pdu := PDUSession{SessionID: g.SessionID, Snssai: snssai, TEID: g.TEID, Ipv4: *g.Ipv4, Supi: supi}
 	g.AddPDU(pdu)
+	g.IncrementTEID()
 
 	return nil
 }
@@ -271,6 +270,7 @@ func NewGNB() *GNB {
 		PDUSessions: &[]PDUSession{},
 		UE:          &[]api.RanUeContext{},
 		IPMAP:       make(map[string]uint32),
+		TEID:        1,
 	}
 	return &gnb
 }
