@@ -6,6 +6,7 @@ import (
 	"net"
 	"os"
 	"os/exec"
+	"sync"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
@@ -34,9 +35,11 @@ var gtpRouter *GTPRouter
 
 // GTPRouter provides the functionnality to encapsulate and desencapsulate packet using GTP protocol
 type GTPRouter struct {
-	GNB     *GNB
-	UpfConn *net.UDPConn
-	Iface   *water.Interface
+	GNB        *GNB
+	UpfConn    *net.UDPConn
+	Iface      *water.Interface
+	IfaceMutex *sync.Mutex
+	UPFMutex   *sync.Mutex
 }
 
 // NewRouter build a new router
@@ -62,7 +65,6 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 	// var UPFAddr = net.UDPAddr{IP: net.ParseIP(upfIP), Port: upfPort}
 
 	// Connect to the UPF
-	fmt.Println(upfIP)
 	upfAddress, err := net.ResolveUDPAddr("udp", fmt.Sprintf("%s:%d", upfIP, upfPort))
 	if err != nil {
 		logger.GNBLog.Errorln("Impossible to resolve UPF address")
@@ -77,7 +79,16 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 
 	runIP("route", "add", fmt.Sprintf("%s/16", subnet), "via", gnbIP)
 
-	var gtpRouter = GTPRouter{GNB: gnb, UpfConn: upfConn, Iface: iface}
+	var m1 sync.Mutex = sync.Mutex{}
+	var m2 sync.Mutex = sync.Mutex{}
+
+	var gtpRouter = GTPRouter{
+		GNB:        gnb,
+		UpfConn:    upfConn,
+		Iface:      iface,
+		IfaceMutex: &m1,
+		UPFMutex:   &m2,
+	}
 	return &gtpRouter, nil
 
 }
@@ -103,7 +114,9 @@ func (r *GTPRouter) Encapsulate() {
 	decoded := []gopacket.LayerType{}
 	for {
 		// read the packet coming from the TUN interface
+		r.IfaceMutex.Lock()
 		n, err := r.Iface.Read(packet)
+		r.IfaceMutex.Unlock()
 		fmt.Println(fmt.Sprintf("Reading %d bytes", n))
 		if err != nil {
 			logger.GNBLog.Errorln("Error reading the TUN interface input")
@@ -128,7 +141,9 @@ func (r *GTPRouter) Encapsulate() {
 					break
 				}
 				pkt := append(buf.Bytes(), packet[:n]...)
+				r.UPFMutex.Lock()
 				n, err = r.UpfConn.Write(pkt)
+				r.UPFMutex.Unlock()
 			}
 		}
 
@@ -150,7 +165,10 @@ func (r *GTPRouter) Desencapsulate() {
 	decoded := []gopacket.LayerType{}
 
 	for {
+
+		r.UPFMutex.Lock()
 		n, _, err := r.UpfConn.ReadFromUDP(buf)
+		r.UPFMutex.Unlock()
 		if err != nil {
 			break
 		}
@@ -160,7 +178,9 @@ func (r *GTPRouter) Desencapsulate() {
 			break
 		}
 
+		r.IfaceMutex.Lock()
 		r.Iface.Write(payload)
+		r.IfaceMutex.Unlock()
 	}
 
 }
