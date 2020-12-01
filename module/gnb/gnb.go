@@ -191,6 +191,14 @@ func (g *GNB) DeletePDU(pdu PDUSession) {
 
 }
 
+func (g *GNB) GetTEID(ip net.IP) (uint32, error) {
+	teid, ok := g.IPMAP[ip.String()]
+	if ok {
+		return teid, nil
+	}
+	return 0, errors.New("No TEID matching the IP")
+}
+
 func (g *GNB) PDURequest(supi string, snssai string, dnn string) error {
 
 	ue, err := g.GetUEContext(supi)

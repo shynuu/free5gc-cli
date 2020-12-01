@@ -109,22 +109,26 @@ func (r *GTPRouter) Encapsulate() {
 		}
 		// build the ipv4 header
 		err = parser.DecodeLayers(packet[:n], &decoded)
-		if err != nil {
-			logger.GNBLog.Errorln("Error decoding Layers")
-			break
+		if err == nil {
+			// find the teid
+			logger.GNBLog.Infoln("UPF Packet")
+			teid, err := r.GNB.GetTEID(ipv4.SrcIP)
+			if err == nil {
+				gtp = layers.GTPv1U{
+					TEID:          teid,
+					MessageType:   0xFF,
+					MessageLength: uint16(n),
+				}
+				err = gtp.SerializeTo(buf, opts)
+				if err != nil {
+					logger.GNBLog.Errorln("Error Serializing the packet Layers")
+					break
+				}
+				pkt := append(buf.Bytes(), packet[:n]...)
+				n, err = r.UpfConn.Write(pkt)
+			}
 		}
-		gtp = layers.GTPv1U{
-			TEID:          r.GNB.IPMAP[ipv4.SrcIP.String()],
-			MessageType:   0xFF,
-			MessageLength: uint16(n),
-		}
-		err = gtp.SerializeTo(buf, opts)
-		if err != nil {
-			logger.GNBLog.Errorln("Error Serializing the packet Layers")
-			break
-		}
-		pkt := append(buf.Bytes(), packet[:n]...)
-		n, err = r.UpfConn.Write(pkt)
+		logger.GNBLog.Infoln("Not a 5G UPF Packet")
 	}
 
 }
