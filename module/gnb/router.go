@@ -79,8 +79,8 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 
 	runIP("route", "add", fmt.Sprintf("%s/16", subnet), "via", gnbIP)
 
-	var m1 sync.Mutex = sync.Mutex{}
-	var m2 sync.Mutex = sync.Mutex{}
+	var m1 sync.Mutex
+	var m2 sync.Mutex
 
 	var gtpRouter = GTPRouter{
 		GNB:        gnb,
@@ -112,6 +112,7 @@ func (r *GTPRouter) Encapsulate() {
 	opts := gopacket.SerializeOptions{} // See SerializeOptions for more details.
 	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeIPv4, &ipv4)
 	decoded := []gopacket.LayerType{}
+
 	for {
 		// read the packet coming from the TUN interface
 		r.IfaceMutex.Lock()
@@ -146,7 +147,6 @@ func (r *GTPRouter) Encapsulate() {
 				r.UPFMutex.Unlock()
 			}
 		}
-
 	}
 
 }
@@ -165,7 +165,6 @@ func (r *GTPRouter) Desencapsulate() {
 	decoded := []gopacket.LayerType{}
 
 	for {
-
 		r.UPFMutex.Lock()
 		n, _, err := r.UpfConn.ReadFromUDP(buf)
 		r.UPFMutex.Unlock()
