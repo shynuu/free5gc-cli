@@ -129,6 +129,7 @@ func (r *GTPRouter) Encapsulate() {
 				n, err = r.UpfConn.Write(pkt)
 			}
 		} else {
+			logger.GNBLog.Infoln(err)
 			logger.GNBLog.Infoln("Not a 5G UPF Packet")
 		}
 
