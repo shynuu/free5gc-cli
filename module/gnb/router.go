@@ -139,8 +139,8 @@ func (r *GTPRouter) Encapsulate() {
 					break
 				}
 				pkt := append(buf.Bytes(), packet[:n]...)
-				fmt.Println(len(pkt))
 				n, err = r.UpfConn.WriteToUDP(pkt, r.UpfAddress)
+				buf.Clear()
 			}
 		}
 	}
@@ -170,6 +170,7 @@ func (r *GTPRouter) Desencapsulate() {
 		err = parser.DecodeLayers(buf[:n], &decoded)
 		if len(decoded) > 0 {
 			r.Iface.Write(gtp.LayerPayload())
+			buf.Clear()
 		}
 
 	}
