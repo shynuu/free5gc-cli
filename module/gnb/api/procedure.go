@@ -134,10 +134,10 @@ func Registration(ueId string) (*RanUeContext, error) {
 		APIConfig.Configuration.Security.OPC,
 		APIConfig.Configuration.Security.OP)
 
-	// send InitialUeMessage(Registration Request)(imsi- 208 93 00 00 74 87)
+	// send InitialUeMessage(Registration Request)(imsi- 02 08 93 00 00 74 87)
 	mobileIdentity5GS := nasType.MobileIdentity5GS{
 		Len:    12, // suci
-		Buffer: []uint8{0x01, 0x02, 0xf8, 0x39, 0xf0, 0xff, 0x00, 0x00, 0x01, 0x00, 0x47, 0x79},
+		Buffer: []uint8{0x01, 0x02, 0x08, 0x39, 0xf0, 0xff, 0x00, 0x00, 0x01, 0x00, 0x47, 0x79},
 	}
 
 	ueSecurityCapability := ue.GetUESecurityCapability()
