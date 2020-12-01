@@ -38,6 +38,7 @@ func Initialize() {
 		GNBConfig.Configuration.UpfInterface.Port,
 		GNBConfig.Configuration.GTPInterface.Ipv4,
 		GNBConfig.Configuration.GTPInterface.Port,
+		GNBConfig.Configuration.UESubnet,
 		gnb,
 	)
 	if err != nil {

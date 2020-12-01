@@ -40,7 +40,7 @@ type GTPRouter struct {
 }
 
 // NewRouter build a new router
-func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, gnb *GNB) (*GTPRouter, error) {
+func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet string, gnb *GNB) (*GTPRouter, error) {
 
 	config := water.Config{
 		DeviceType: water.TUN,
@@ -75,6 +75,8 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, gnb *GNB) (
 		return nil, err
 	}
 
+	runIP("route", "add", fmt.Sprintf("%s/16", subnet), "via", gnbIP)
+
 	var gtpRouter = GTPRouter{GNB: gnb, UpfConn: upfConn, Iface: iface}
 	return &gtpRouter, nil
 
@@ -95,10 +97,9 @@ func (r *GTPRouter) Encapsulate() {
 	packet := make([]byte, BUFFERSIZE)
 	var ipv4 layers.IPv4
 	var gtp layers.GTPv1U
-	var payload gopacket.Payload
 	buf := gopacket.NewSerializeBuffer()
 	opts := gopacket.SerializeOptions{} // See SerializeOptions for more details.
-	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeIPv4, &ipv4, &payload)
+	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeIPv4, &ipv4)
 	decoded := []gopacket.LayerType{}
 	for {
 		// read the packet coming from the TUN interface
@@ -106,7 +107,7 @@ func (r *GTPRouter) Encapsulate() {
 		fmt.Println(fmt.Sprintf("Reading %d bytes", n))
 		if err != nil {
 			logger.GNBLog.Errorln("Error reading the TUN interface input")
-			break
+			panic("Impossible to read the TUN interface")
 		}
 		// build the ipv4 header
 		err = parser.DecodeLayers(packet[:n], &decoded)
@@ -129,10 +130,6 @@ func (r *GTPRouter) Encapsulate() {
 				pkt := append(buf.Bytes(), packet[:n]...)
 				n, err = r.UpfConn.Write(pkt)
 			}
-		} else {
-			logger.GNBLog.Infoln(err)
-			logger.GNBLog.Infoln(len(decoded))
-			logger.GNBLog.Infoln("Not a 5G UPF Packet")
 		}
 
 	}

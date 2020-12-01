@@ -31,8 +31,10 @@ configuration:
     - internet
     - voip
   ue:
-    - supi: imsi-2089300007487
+    - supi: imsi-2089300000000
       plmn: 20893
-    - supi: imsi-2089300007486
+    - supi: imsi-2089300000001
+      plmn: 20893
+    - supi: imsi-2089300000002
       plmn: 20893
   tun: tun_gnb
