@@ -39,7 +39,7 @@ type GTPRouter struct {
 	UpfConn    *net.UDPConn
 	Iface      *water.Interface
 	IfaceMutex *sync.Mutex
-	UPFMutex   *sync.Mutex
+	UpfAddress *net.UDPAddr
 }
 
 // NewRouter build a new router
@@ -71,7 +71,7 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 		logger.GNBLog.Errorln(err)
 		return nil, err
 	}
-	upfConn, err := net.DialUDP("udp", &GNBAddr, upfAddress)
+	upfConn, err := net.ListenUDP("udp", &GNBAddr)
 	if err != nil {
 		logger.GNBLog.Errorln("Impossible to Dial UPF")
 		return nil, err
@@ -80,14 +80,13 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 	runIP("route", "add", fmt.Sprintf("%s/16", subnet), "via", gnbIP)
 
 	var m1 sync.Mutex
-	var m2 sync.Mutex
 
 	var gtpRouter = GTPRouter{
 		GNB:        gnb,
 		UpfConn:    upfConn,
 		Iface:      iface,
 		IfaceMutex: &m1,
-		UPFMutex:   &m2,
+		UpfAddress: upfAddress,
 	}
 	return &gtpRouter, nil
 
@@ -142,7 +141,7 @@ func (r *GTPRouter) Encapsulate() {
 					break
 				}
 				pkt := append(buf.Bytes(), packet[:n]...)
-				n, err = r.UpfConn.Write(pkt)
+				n, err = r.UpfConn.WriteToUDP(pkt, r.UpfAddress)
 			}
 		}
 	}
@@ -163,7 +162,7 @@ func (r *GTPRouter) Desencapsulate() {
 	decoded := []gopacket.LayerType{}
 
 	for {
-		n, _, err := r.UpfConn.ReadFromUDP(buf)
+		n, err := r.UpfConn.Read(buf)
 		fmt.Println(fmt.Sprintf("Reading %d bytes on receiving socket", n))
 		if err != nil {
 			break
