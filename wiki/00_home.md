@@ -23,12 +23,10 @@ go mod download
 go build -o freecli -x freecli.go
 ```
 
-or to run it like an interpreter would do
+Run it in sudo mode, QoS and gNB modules requires sudo privileges
 
-``` bash
-git clone https://github.com/Srajdax/free5gc-cli.git
-cd free5gc-cli
-go run freecli.go
+```bash
+sudo ./cli
 ```
 
 ## Configuration of Freecli
