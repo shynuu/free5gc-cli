@@ -13,7 +13,7 @@ import (
 // QOSSuggestion suggestions
 var QOSSuggestion = []prompt.Suggest{
 	{Text: "mark", Description: "Mark packet with DSCP based on packet match"},
-	{Text: "flush", Description: "Flush iptables table mangle"},
+	{Text: "flush", Description: "Flush iptables table mangle and chain POSTROUTING"},
 	// {Text: "list", Description: "List all rules"},
 	{Text: "configuration", Description: "Manage the module configuration"},
 	{Text: "exit", Description: "Exit the QoS module"},

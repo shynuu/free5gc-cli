@@ -57,8 +57,6 @@ func (u32 *U32) Run() error {
 	matches := u32.BuildMatches()
 	dscp := fmt.Sprintf("%d", u32.DSCP)
 	err = iptable.Append("mangle", "POSTROUTING", "-m", "u32", "--u32", matches, "-j", "DSCP", "--set-dscp", dscp)
-	// fmt.Println(cmd, dscp)
-	// err := runIptables("-t", "mangle", "-A", "POSTROUTING", "-m", "u32", "--u32", cmd, "-j", "DSCP", "--set-dscp", dscp)
 	return err
 }
 
