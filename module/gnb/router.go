@@ -44,7 +44,10 @@ type GTPRouter struct {
 func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet string, gnb *GNB) (*GTPRouter, error) {
 
 	config := water.Config{
-		DeviceType: water.TUN,
+		DeviceType:             water.TUN,
+		PlatformSpecificParams: water.PlatformSpecificParams{
+			// MultiQueue: true,
+		},
 	}
 	config.Name = GNBConfig.Configuration.TUN
 
@@ -87,10 +90,9 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 
 }
 
-// Close the connection with the UPF and Tun interface
+// Close the connection with the UPF and TUN interface
 func (r *GTPRouter) Close() {
 	r.UpfConn.Close()
-	r.Iface.Close()
 }
 
 // Encapsulate the packet using GTP protocol

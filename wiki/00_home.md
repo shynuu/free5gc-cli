@@ -26,7 +26,7 @@ go build -o freecli -x freecli.go
 Run it in sudo mode, QoS and gNB modules requires sudo privileges
 
 ```bash
-sudo ./cli
+sudo ./freecli
 ```
 
 ## Configuration of Freecli

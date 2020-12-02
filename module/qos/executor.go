@@ -47,8 +47,6 @@ func executorMark(in string) {
 		return
 	}
 
-	logger.GNBLog.Infoln("Generating the U32 command")
-
 	dscps := cmd[2]
 	dscp := QOSMAP[dscps]
 	destinationIP := cmd[4]
