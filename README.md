@@ -16,7 +16,7 @@ Freecli 5G is an interactive cli utility to test and experiment free5gc. It curr
 - Subscriber: manage the subscriber of free5gc in a fashion way
 - 5G gNB: emulate a 5G gNB
 - QoS: apply DSCP PHB to packets
-- NF: manage the CN Network Functions and also interact with the database
+- NF: manage the CN Network Functions and interact with the database
 
 Check the [WIKI](https://github.com/Srajdax/free5gc-cli/wiki) for more documentation
 
