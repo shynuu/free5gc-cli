@@ -69,7 +69,7 @@ func executorPDUSession(in string) {
 
 	first := cmd[1]
 
-	if first == "request" && l > 8 {
+	if first == "request" && l > 7 {
 		logger.GNBLog.Infoln(fmt.Sprintf("Establishing PDU Session for user %s with snssai %s and dnn %s", cmd[3], cmd[5], cmd[7]))
 		err := gnb.PDURequest(cmd[3], cmd[5], cmd[7])
 		if err != nil {
@@ -92,6 +92,20 @@ func executorPDUSession(in string) {
 
 }
 
+func executorQOS(in string) {
+
+	// pdu-sessions qos --session 24 --protocol tcp/udp --
+
+	cmd := strings.Split(strings.TrimSpace(in), " ")
+	l := len(cmd)
+
+	if l < 2 {
+		return
+	}
+
+	return
+}
+
 // Executor parse CLI
 func Executor(in string) {
 
@@ -108,6 +122,7 @@ func Executor(in string) {
 	}
 
 	if strings.HasPrefix(in, "qos") {
+		executorQOS(in)
 	}
 
 }

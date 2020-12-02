@@ -13,8 +13,8 @@ import (
 // QOSSuggestion suggestions
 var QOSSuggestion = []prompt.Suggest{
 	{Text: "mark", Description: "Mark packet with DSCP based on packet match"},
-	{Text: "delete", Description: "Delete a rule"},
-	{Text: "list", Description: "List all rules"},
+	{Text: "flush", Description: "Flush iptables table mangle"},
+	// {Text: "list", Description: "List all rules"},
 	{Text: "configuration", Description: "Manage the module configuration"},
 	{Text: "exit", Description: "Exit the QoS module"},
 }
@@ -25,6 +25,10 @@ var configurationSuggestion = []prompt.Suggest{
 
 // PHBSuggestion list all the PHB defined by RFC 2597, RFC 2598, RFC 3246,
 var PHBSuggestion = []prompt.Suggest{
+	{Text: "be", Description: "Apply Best Effort PHB with DSCP value 000000"},
+
+	{Text: "ef", Description: "Apply Expedited Forward PHB with DSCP value 101110"},
+
 	{Text: "cs1", Description: "Apply CS1 PHB with DSCP value 001000"},
 	{Text: "cs2", Description: "Apply CS2 PHB with DSCP value 010000"},
 	{Text: "cs3", Description: "Apply CS3 PHB with DSCP value 011000"},
@@ -45,10 +49,6 @@ var PHBSuggestion = []prompt.Suggest{
 	{Text: "af41", Description: "Apply AF41 PHB with DSCP value 100010"},
 	{Text: "af42", Description: "Apply AF42 PHB with DSCP value 100100"},
 	{Text: "af43", Description: "Apply AF43 PHB with DSCP value 100110"},
-
-	{Text: "be", Description: "Apply GetWordBeforeCursor PHB with DSCP value 000000"},
-
-	{Text: "ef", Description: "Apply EF with DSCP value 101110"},
 }
 
 // IPSuggestion holds the ip of the module
@@ -63,6 +63,7 @@ var TEIDSuggestion = &[]prompt.Suggest{}
 // PortSuggestion holds the TEID of the packets
 var PortSuggestion = &[]prompt.Suggest{}
 
+// completerConfiguration
 func completerConfiguration(in prompt.Document) []prompt.Suggest {
 	a := in.GetWordBeforeCursor()
 	a = strings.TrimSpace(a)
@@ -73,21 +74,9 @@ func completerConfiguration(in prompt.Document) []prompt.Suggest {
 	return prompt.FilterHasPrefix(configurationSuggestion, a, true)
 }
 
-// qos delete --rule 20
-// qos list
-func completerDelete(in prompt.Document) []prompt.Suggest {
-	a := in.GetWordBeforeCursor()
-	d := strings.Split(in.TextBeforeCursor(), " ")
-	l := len(d)
-	if l > 3 {
-		return []prompt.Suggest{}
-	}
-	if l == 3 {
-		return prompt.FilterHasPrefix(*RulesSuggestion, a, true)
-	}
-	return prompt.FilterHasPrefix([]prompt.Suggest{
-		{Text: "--rule", Description: "Specify the rule ID to delete"},
-	}, a, true)
+// qos flush
+func completerFlush(in prompt.Document) []prompt.Suggest {
+	return []prompt.Suggest{}
 }
 
 // mark --dscp 10 --source-ip 10.10.0.1 --destination-ip 10.10.0.1 --teid 00101010 --protocol tcp/udp --source-port 80 --destination-port 2000
@@ -177,6 +166,7 @@ func completerMark(in prompt.Document) []prompt.Suggest {
 	}, a, true)
 }
 
+// CompleterQOS shows the QOS module commands
 func CompleterQOS(in prompt.Document) []prompt.Suggest {
 	a := in.TextBeforeCursor()
 	var split = strings.Split(a, " ")
@@ -186,8 +176,8 @@ func CompleterQOS(in prompt.Document) []prompt.Suggest {
 		if v == "mark" {
 			return completerMark(in)
 		}
-		if v == "delete" {
-			return completerDelete(in)
+		if v == "flush" {
+			return completerFlush(in)
 		}
 		if v == "configuration" {
 			return completerConfiguration(in)

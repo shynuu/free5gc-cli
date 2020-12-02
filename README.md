@@ -11,7 +11,7 @@
 
 ![freecli-interactive-cli](https://user-images.githubusercontent.com/41422704/99889610-220d3580-2c57-11eb-9133-f4a1daaa9258.gif)
 
-Freecli is an interactive cli utility to test and manage free5gc. It currently includes the following modules:
+Freecli 5G is an interactive cli utility to test and experiment free5gc. It currently includes the following modules:
 
 - Subscriber: manage the subscriber of free5gc in a fashion way
 - 5G gNB: emulate a 5G gNB
@@ -20,6 +20,13 @@ Freecli is an interactive cli utility to test and manage free5gc. It currently i
 
 Check the [WIKI](https://github.com/Srajdax/free5gc-cli/wiki) for more documentation
 
-## Acknowledgment
+## To avoid any confusion
+
+Although this project uses free5gc libraries, it is not part of the official free5gc project. 
+I've developed it to simplify my 5G deployments/experiments and thought it was nice to share it. 
+
+All contributions are welcome !
+
+## Acknowledgments
 
 Thanks to the free5gc team for their efforts, their lib and their open source 5G Core Network

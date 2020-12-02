@@ -2,8 +2,22 @@ package u32
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
 	"strings"
 )
+
+func runIptables(args ...string) error {
+	cmd := exec.Command("iptables", args...)
+	cmd.Stderr = os.Stderr
+	cmd.Stdout = os.Stdout
+	cmd.Stdin = os.Stdin
+	err := cmd.Run()
+	if nil != err {
+		return err
+	}
+	return nil
+}
 
 // U32 struct
 type U32 struct {
@@ -35,11 +49,19 @@ func (u32 *U32) BuildMatches() string {
 	return u32.Matches
 }
 
-// BuildCommand generate the IPTABLES command
-func (u32 *U32) BuildCommand() string {
-	return fmt.Sprintf("sudo iptables -t mangle -A POSTROUTING -m u32 --u32 \"%s\" -j DSCP %d", u32.BuildMatches(), u32.DSCP)
+// Run run the iptables command and add the rule to mangle/POSTROUTING
+func (u32 *U32) Run() error {
+	err := runIptables("-t", "mangle", "-A", "POSTROUTING", "-m", "u32", "--u32", fmt.Sprintf("\"%s\"", u32.BuildMatches()), "-j", "DSCP", fmt.Sprintf("%d", u32.DSCP))
+	return err
 }
 
+// Flush delete all the rules of the mangle table
+func (u32 *U32) Flush() error {
+	err := runIptables("-t", "mangle", "-F")
+	return err
+}
+
+// NewU32 returns a new U32 Struct
 func NewU32(protocols *[]Protocol, dscp uint8) *U32 {
 	var u32 = U32{Protocols: *protocols, DSCP: dscp}
 	u32.BuildPacket()

@@ -32,7 +32,6 @@ func stringToUint8(number string) (uint8, error) {
 }
 
 // mark --set-dscp af12 --destination-ip 172.16.10.3 --source-ip 172.16.10.3 --teid 000 --protocol tcp --destination-port 23 --source-port 23
-
 func executorMark(in string) {
 	cmd := strings.Split(strings.TrimSpace(in), " ")
 	var sourcePort uint16 = 0
@@ -147,7 +146,13 @@ func executorMark(in string) {
 	packet = append(packet, packet2...)
 
 	var U32 = u32.NewU32(&packet, dscp)
-	U32.BuildCommand()
+	err = U32.Run()
+	if err != nil {
+		logger.QOSLog.Errorln("Impossible to add the QoS rule to iptables")
+		return
+	}
+	logger.QOSLog.Infoln("Successfully added QoS rule to iptables")
+	return
 
 }
 
@@ -159,7 +164,20 @@ func executorConfiguration(in string) {
 	}
 }
 
-// Executor parse CLI
+func executorFlush(in string) {
+	s := strings.TrimSpace(in)
+	if s == "qos flush" {
+		var U32 = &u32.U32{}
+		err := U32.Flush()
+		if err != nil {
+			logger.QOSLog.Errorln("Error flushing mangle table")
+		}
+		logger.QOSLog.Infoln("Successfully flushed mangle table")
+		return
+	}
+}
+
+// Executor parse CLI of QOS module
 func Executor(in string) {
 
 	if strings.HasPrefix(in, "configuration") {
@@ -168,6 +186,10 @@ func Executor(in string) {
 
 	if strings.HasPrefix(in, "mark") {
 		executorMark(in)
+	}
+
+	if strings.HasPrefix(in, "flush") {
+		executorFlush(in)
 	}
 
 	return

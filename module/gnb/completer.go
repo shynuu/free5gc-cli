@@ -6,8 +6,7 @@ import (
 	"github.com/c-bata/go-prompt"
 )
 
-// qos add --session 10 --protocol tcp --destination-port 80 --phb
-
+// GNBSuggestion qos add --session 10 --protocol tcp --destination-port 80 --phb
 var GNBSuggestion = []prompt.Suggest{
 	{Text: "user", Description: "Manage registration and deregistration of UEs"},
 	{Text: "pdu-session", Description: "Manage PDU sessions"},
@@ -37,6 +36,10 @@ var pduSuggestion = []prompt.Suggest{
 
 // PHBSuggestion list all the PHB defined by RFC 2597, RFC 2598, RFC 3246,
 var PHBSuggestion = []prompt.Suggest{
+	{Text: "be", Description: "Apply Best Effort PHB with DSCP value 000000"},
+
+	{Text: "ef", Description: "Apply Expedited Forward PHB with DSCP value 101110"},
+
 	{Text: "cs1", Description: "Apply CS1 PHB with DSCP value 001000"},
 	{Text: "cs2", Description: "Apply CS2 PHB with DSCP value 010000"},
 	{Text: "cs3", Description: "Apply CS3 PHB with DSCP value 011000"},
@@ -57,10 +60,6 @@ var PHBSuggestion = []prompt.Suggest{
 	{Text: "af41", Description: "Apply AF41 PHB with DSCP value 100010"},
 	{Text: "af42", Description: "Apply AF42 PHB with DSCP value 100100"},
 	{Text: "af43", Description: "Apply AF43 PHB with DSCP value 100110"},
-
-	{Text: "be", Description: "Apply GetWordBeforeCursor PHB with DSCP value 000000"},
-
-	{Text: "ef", Description: "Apply EF with DSCP value 101110"},
 }
 
 var UserSuggestion = &[]prompt.Suggest{}

@@ -6,7 +6,6 @@ import (
 	"net"
 	"os"
 	"os/exec"
-	"sync"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
@@ -38,7 +37,6 @@ type GTPRouter struct {
 	GNB        *GNB
 	UpfConn    *net.UDPConn
 	Iface      *water.Interface
-	IfaceMutex *sync.Mutex
 	UpfAddress *net.UDPAddr
 }
 
@@ -79,13 +77,10 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 
 	runIP("route", "add", fmt.Sprintf("%s/16", subnet), "via", gnbIP)
 
-	var m1 sync.Mutex
-
 	var gtpRouter = GTPRouter{
 		GNB:        gnb,
 		UpfConn:    upfConn,
 		Iface:      iface,
-		IfaceMutex: &m1,
 		UpfAddress: upfAddress,
 	}
 	return &gtpRouter, nil
@@ -150,7 +145,7 @@ func (r *GTPRouter) Desencapsulate() {
 
 	// Read the packet coming from the socket
 	// Desencapsulate the packet and remove GTP Header
-	// Write the answer to the TUN interface
+	// Write the packet to the TUN interface
 
 	buf := make([]byte, BUFFERSIZE)
 	var gtp layers.GTPv1U
