@@ -180,7 +180,11 @@ func completerPDU(in prompt.Document) []prompt.Suggest {
 			return []prompt.Suggest{}
 		}
 
-		return prompt.FilterHasPrefix(pduQoSSuggestion, a, true)
+		if l == 3 {
+			return prompt.FilterHasPrefix(pduQoSSuggestion, a, true)
+		}
+
+		return []prompt.Suggest{}
 
 	}
 

@@ -114,6 +114,10 @@ func executorPDUSession(in string) {
 		logger.GNBLog.Infoln(fmt.Sprintf("Successfully Releasing PDU Session for user %s with session %s", cmd[0], cmd[1]))
 	}
 
+	if first == "qos" {
+		executorQOS(in)
+	}
+
 	return
 
 }
@@ -124,14 +128,9 @@ func executorQOS(in string) {
 	cmd := strings.Split(strings.TrimSpace(in), " ")
 	l := len(cmd)
 
-	if l < 2 {
-		return
-	}
-
-	first := cmd[1]
 	second := cmd[2]
 
-	if first == "qos" && second == "add" {
+	if second == "add" {
 
 		var sourcePort uint16 = 0
 		var matchSourcePort bool = false
@@ -252,7 +251,7 @@ func executorQOS(in string) {
 		return
 	}
 
-	if first == "qos" && second == "flush" {
+	if second == "flush" {
 		var U32 = &u32.U32{}
 		err := U32.Flush()
 		if err != nil {
@@ -277,10 +276,6 @@ func Executor(in string) {
 
 	if strings.HasPrefix(in, "pdu-session") {
 		executorPDUSession(in)
-	}
-
-	if strings.HasPrefix(in, "qos") {
-		executorQOS(in)
 	}
 
 }
