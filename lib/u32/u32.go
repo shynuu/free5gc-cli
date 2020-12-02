@@ -51,10 +51,10 @@ func (u32 *U32) BuildMatches() string {
 
 // Run run the iptables command and add the rule to mangle/POSTROUTING
 func (u32 *U32) Run() error {
-	cmd := fmt.Sprintf("\"%s\"", u32.BuildMatches())
+	cmd := fmt.Sprintf(`"%s"`, u32.BuildMatches())
 	dscp := fmt.Sprintf("%d", u32.DSCP)
 	fmt.Println(cmd, dscp)
-	err := runIptables("-t", "mangle", "-A", "POSTROUTING", "-m", "u32", "--u32", cmd, "-j", "DSCP", dscp)
+	err := runIptables("-t", "mangle", "-A", "POSTROUTING", "-m", "u32", "--u32", cmd, "-j", "DSCP", "--set-dscp", dscp)
 	return err
 }
 
