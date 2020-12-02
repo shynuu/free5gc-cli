@@ -34,6 +34,11 @@ var pduSuggestion = []prompt.Suggest{
 	{Text: "qos", Description: "Apply DSCP PHB to PDU sessions"},
 }
 
+var pduQoSSuggestion = []prompt.Suggest{
+	{Text: "add", Description: "Add a new QoS rule for the PDU Session"},
+	{Text: "flush", Description: "Flush the QoS rules for every PDU Session"},
+}
+
 // PHBSuggestion list all the PHB defined by RFC 2597, RFC 2598, RFC 3246,
 var PHBSuggestion = []prompt.Suggest{
 	{Text: "be", Description: "Apply Best Effort PHB with DSCP value 000000"},
@@ -119,8 +124,64 @@ func completerPDU(in prompt.Document) []prompt.Suggest {
 		return prompt.FilterHasPrefix(*SnssaiSuggestion, a, true)
 	}
 
+	// pdu-sessions qos add --set-dscp 12 --session imsi11111/24 --protocol tcp/udp --destination-port 23 --source-port 23
+	// pdu-sessions qos flush
 	if d[1] == "qos" {
-		return prompt.FilterHasPrefix(*SnssaiSuggestion, a, true)
+
+		if l >= 3 && d[2] == "add" {
+			if l == 4 {
+				return prompt.FilterHasPrefix([]prompt.Suggest{
+					{Text: "--set-phb", Description: "Specify the DSCP field to be applied"},
+				}, a, true)
+			}
+
+			if l == 5 {
+				return prompt.FilterHasPrefix(PHBSuggestion, a, true)
+			}
+
+			if l == 6 {
+				return prompt.FilterHasPrefix([]prompt.Suggest{
+					{Text: "--session", Description: "Select the PDU Session to which apply the PHB"},
+				}, a, true)
+			}
+
+			if l == 7 {
+				return prompt.FilterHasPrefix(*PDUSuggestion, a, true)
+			}
+
+			if l == 8 {
+				return prompt.FilterHasPrefix([]prompt.Suggest{
+					{Text: "--protocol", Description: "Specify the protocol of the inner packet"},
+				}, a, true)
+			}
+
+			if l == 9 {
+				return prompt.FilterHasPrefix([]prompt.Suggest{
+					{Text: "tcp", Description: ""},
+					{Text: "udp", Description: ""},
+				}, a, true)
+			}
+
+			if l == 10 {
+				return prompt.FilterHasPrefix([]prompt.Suggest{
+					{Text: "--destination-port", Description: "Specify the destination port of the the inner packet"},
+				}, a, true)
+			}
+
+			if l == 12 {
+				return prompt.FilterHasPrefix([]prompt.Suggest{
+					{Text: "--source-port", Description: "Specify the source port of the the inner packet"},
+				}, a, true)
+			}
+
+		}
+
+		if l >= 3 && d[2] == "flush" {
+			return []prompt.Suggest{}
+		}
+
+		return prompt.FilterHasPrefix(pduQoSSuggestion, a, true)
+
 	}
 
 	return prompt.FilterHasPrefix(pduSuggestion, a, true)

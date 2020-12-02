@@ -149,7 +149,6 @@ func (r *GTPRouter) Encapsulate() {
 			}
 		}
 	}
-
 	r.WG.Done()
 }
 

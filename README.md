@@ -6,7 +6,7 @@
 <a href="https://github.com/srajdax/free5gc-cli/releases"><img src="https://img.shields.io/badge/Freecli%205G-v0.2-blue?logo=go" alt="Freecli 5G"/></a>
 <a href="https://github.com/free5gc/free5gc"><img src="https://img.shields.io/badge/Tested-free5gc%20v3.0.4-red" alt="Free5GC v3.0.4"/></a>
 <img src="https://img.shields.io/badge/OS-Linux-g" alt="OS Linux"/>
-<a href="https://github.com/srajdax/free5gc-cli/releases"><img src="https://img.shields.io/badge/license-Apache%202-lightgrey" alt="Apache 2 License"/></a>
+<a href="https://github.com/Srajdax/free5gc-cli/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202-lightgrey" alt="Apache 2 License"/></a>
 </p>
 
 ![freecli-interactive-cli](https://user-images.githubusercontent.com/41422704/99889610-220d3580-2c57-11eb-9133-f4a1daaa9258.gif)
