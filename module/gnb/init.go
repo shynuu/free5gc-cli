@@ -83,5 +83,7 @@ func Reload() {
 
 // Exit and free the resources used by the module
 func Exit() {
-	gtpRouter.Close()
+	if gtpRouter != nil {
+		gtpRouter.Close()
+	}
 }

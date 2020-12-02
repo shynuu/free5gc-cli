@@ -6,6 +6,7 @@ import (
 	"net"
 	"os"
 	"os/exec"
+	"sync"
 
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
@@ -38,6 +39,8 @@ type GTPRouter struct {
 	UpfConn    *net.UDPConn
 	Iface      *water.Interface
 	UpfAddress *net.UDPAddr
+	WG         *sync.WaitGroup
+	Bool       int
 }
 
 // NewRouter build a new router
@@ -77,6 +80,8 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 		logger.GNBLog.Errorln("Impossible to Dial UPF")
 		return nil, err
 	}
+	var wg sync.WaitGroup
+	wg.Add(2)
 
 	runIP("route", "add", fmt.Sprintf("%s/16", subnet), "via", gnbIP)
 
@@ -85,6 +90,8 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 		UpfConn:    upfConn,
 		Iface:      iface,
 		UpfAddress: upfAddress,
+		WG:         &wg,
+		Bool:       1,
 	}
 	return &gtpRouter, nil
 
@@ -92,7 +99,10 @@ func NewRouter(upfIP string, upfPort int, gnbIP string, gnbPort int, subnet stri
 
 // Close the connection with the UPF and TUN interface
 func (r *GTPRouter) Close() {
+	r.Bool--
+	r.WG.Wait()
 	r.UpfConn.Close()
+	r.Iface.Close()
 }
 
 // Encapsulate the packet using GTP protocol
@@ -108,8 +118,8 @@ func (r *GTPRouter) Encapsulate() {
 	opts := gopacket.SerializeOptions{} // See SerializeOptions for more details.
 	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeIPv4, &ipv4)
 	decoded := []gopacket.LayerType{}
-
-	for {
+	i := 0
+	for i < r.Bool {
 		// read the packet coming from the TUN interface
 		n, err := r.Iface.Read(packet)
 		if err != nil {
@@ -140,6 +150,7 @@ func (r *GTPRouter) Encapsulate() {
 		}
 	}
 
+	r.WG.Done()
 }
 
 // Desencapsulate the GTP packet: remove the GTP headers and route the packet
@@ -153,8 +164,8 @@ func (r *GTPRouter) Desencapsulate() {
 	var gtp layers.GTPv1U
 	parser := gopacket.NewDecodingLayerParser(layers.LayerTypeGTPv1U, &gtp)
 	decoded := []gopacket.LayerType{}
-
-	for {
+	i := 0
+	for i < r.Bool {
 		n, err := r.UpfConn.Read(buf)
 		if err != nil {
 			logger.GNBLog.Errorln("Error reading the UPF incoming packet")
@@ -167,5 +178,5 @@ func (r *GTPRouter) Desencapsulate() {
 		}
 
 	}
-
+	r.WG.Done()
 }
