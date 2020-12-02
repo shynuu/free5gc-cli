@@ -7,7 +7,7 @@ require (
 	github.com/antonfisher/nested-logrus-formatter v1.3.0
 	github.com/c-bata/go-prompt v0.2.5
 	github.com/calee0219/fatal v0.0.1
-	github.com/coreos/go-iptables v0.4.5 // indirect
+	github.com/coreos/go-iptables v0.4.5
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/evanphx/json-patch v4.9.0+incompatible
 	github.com/gin-gonic/gin v1.6.3

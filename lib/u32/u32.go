@@ -5,6 +5,8 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/coreos/go-iptables/iptables"
 )
 
 func runIptables(args ...string) error {
@@ -51,16 +53,19 @@ func (u32 *U32) BuildMatches() string {
 
 // Run run the iptables command and add the rule to mangle/POSTROUTING
 func (u32 *U32) Run() error {
-	cmd := fmt.Sprintf(`"%s"`, u32.BuildMatches())
+	iptable, err := iptables.New()
+	matches := fmt.Sprintf(`"%s"`, u32.BuildMatches())
 	dscp := fmt.Sprintf("%d", u32.DSCP)
-	fmt.Println(cmd, dscp)
-	err := runIptables("-t", "mangle", "-A", "POSTROUTING", "-m", "u32", "--u32", cmd, "-j", "DSCP", "--set-dscp", dscp)
+	err = iptable.AppendUnique("mangle", "POSTROUTING", "-m", "u32", "--u32", matches, "-j", "DSCP", "--set-dscp", dscp)
+	// fmt.Println(cmd, dscp)
+	// err := runIptables("-t", "mangle", "-A", "POSTROUTING", "-m", "u32", "--u32", cmd, "-j", "DSCP", "--set-dscp", dscp)
 	return err
 }
 
 // Flush delete all the rules of the mangle table
 func (u32 *U32) Flush() error {
-	err := runIptables("-t", "mangle", "-F")
+	iptable, err := iptables.New()
+	err = iptable.ClearChain("mangle", "POSTROUTING")
 	return err
 }
 
