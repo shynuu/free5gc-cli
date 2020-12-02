@@ -1,6 +1,7 @@
 package qos
 
 import (
+	"fmt"
 	"free5gc-cli/lib/u32"
 	"free5gc-cli/logger"
 	"strconv"
@@ -148,6 +149,7 @@ func executorMark(in string) {
 	var U32 = u32.NewU32(&packet, dscp)
 	err = U32.Run()
 	if err != nil {
+		fmt.Println(err)
 		logger.QOSLog.Errorln("Impossible to add the QoS rule to iptables")
 		return
 	}
@@ -166,7 +168,7 @@ func executorConfiguration(in string) {
 
 func executorFlush(in string) {
 	s := strings.TrimSpace(in)
-	if s == "qos flush" {
+	if s == "flush" {
 		var U32 = &u32.U32{}
 		err := U32.Flush()
 		if err != nil {
