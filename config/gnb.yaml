@@ -10,10 +10,10 @@ configuration:
     ipv4Addr: "172.16.10.2"
     port: 2152
   ngranInterface:
-    ipv4Addr: "172.16.10.3"
+    ipv4Addr: "172.16.20.2"
     port: 9487
   gtpInterface:
-    ipv4Addr: "172.16.10.4"
+    ipv4Addr: "172.16.20.3"
     port: 2152
   ueSubnet: "60.60.0.0"
   security:
