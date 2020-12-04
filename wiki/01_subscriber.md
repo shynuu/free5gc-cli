@@ -16,7 +16,6 @@ This module is used for subscriber management.
 
 ## Configuration files
 
-
 It has 2 configuration files.
 
 `subscriber.yaml` holds the configuration of the module

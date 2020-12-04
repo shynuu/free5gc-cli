@@ -1,9 +1,7 @@
 package api
 
 import (
-	"encoding/hex"
 	"errors"
-	"fmt"
 	"free5gc-cli/lib/nas"
 	"free5gc-cli/lib/nas/nasMessage"
 	"free5gc-cli/lib/nas/nasTestpacket"
@@ -17,9 +15,6 @@ import (
 	"time"
 
 	"github.com/ishidawataru/sctp"
-
-	"golang.org/x/net/icmp"
-	"golang.org/x/net/ipv4"
 )
 
 var amfConn *sctp.SCTPConn
@@ -40,63 +35,38 @@ func checkAmfConnection() error {
 	return nil
 }
 
-func TestPing(sourceIp string, destinationIp string) error {
-	gtpHdr, err := hex.DecodeString("32ff00340000000100000000")
+// NGSetup initalize the connection from the gNB to AMF
+func NGSetup() error {
+
+	var n int
+	var sendMsg []byte
+	var recvMsg = make([]byte, 2048)
+
+	// RAN connect to AMF
+	err := checkAmfConnection()
+
+	// send NGSetupRequest Msg
+	sendMsg, err = GetNGSetupRequest([]byte("\x00\x01\x02"), 24, "free5gc")
+	_, err = amfConn.Write(sendMsg)
 	if err != nil {
-		logger.GNBLog.Errorln("Error decoding GTP Header")
-		return err
-	}
-	icmpData, err := hex.DecodeString("8c870d0000000000101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f3031323334353637")
-	if err != nil {
-		logger.GNBLog.Errorln("Error decoding ICMP Data")
+		logger.GNBLog.Errorln("Error sending NGSetup")
 		return err
 	}
 
-	ipv4hdr := ipv4.Header{
-		Version:  4,
-		Len:      20,
-		Protocol: 1,
-		Flags:    0,
-		TotalLen: 48,
-		TTL:      64,
-		Src:      net.ParseIP(sourceIp).To4(),
-		Dst:      net.ParseIP(destinationIp).To4(),
-		ID:       1,
+	// receive NGSetupResponse Msg
+	n, err = amfConn.Read(recvMsg)
+	_, err = ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding NGAP")
+		return err
 	}
-	checksum := CalculateIpv4HeaderChecksum(&ipv4hdr)
-	ipv4hdr.Checksum = int(checksum)
 
-	v4HdrBuf, err := ipv4hdr.Marshal()
-	if err != nil {
-		logger.GNBLog.Errorln("Error Marshaling IP Header")
-		return err
-	}
-	tt := append(gtpHdr, v4HdrBuf...)
-
-	m := icmp.Message{
-		Type: ipv4.ICMPTypeEcho, Code: 0,
-		Body: &icmp.Echo{
-			ID: 12394, Seq: 1,
-			Data: icmpData,
-		},
-	}
-	b, err := m.Marshal(nil)
-	if err != nil {
-		logger.GNBLog.Errorln("Error ICMP Payload")
-		return err
-	}
-	b[2] = 0xaf
-	b[3] = 0x88
-	_, err = upfConn.Write(append(tt, b...))
-	if err != nil {
-		logger.GNBLog.Errorln("Error sending ICMP to UPF")
-		return err
-	}
-	return nil
+	return err
 
 }
 
-func Registration(ueId string) (*RanUeContext, error) {
+// Registration implements 3GPP Registration procedure
+func Registration(ueID string) (*RanUeContext, error) {
 
 	var n int
 	var sendMsg []byte
@@ -110,31 +80,15 @@ func Registration(ueId string) (*RanUeContext, error) {
 		return nil, err
 	}
 
-	// send NGSetupRequest Msg
-	sendMsg, err = GetNGSetupRequest([]byte("\x00\x01\x02"), 24, "free5gc")
-	_, err = amfConn.Write(sendMsg)
-	if err != nil {
-		logger.GNBLog.Errorln("Error sending NGSetup")
-		return nil, err
-	}
-
-	// receive NGSetupResponse Msg
-	n, err = amfConn.Read(recvMsg)
-	ngapPdu, err := ngap.Decoder(recvMsg[:n])
-	if err != nil {
-		logger.GNBLog.Errorln("Error decoding NGAP")
-		return nil, err
-	}
-
 	// New UE
 	// ue := test.NewRanUeContext("imsi-2089300007487", 1, security.AlgCiphering128NEA2, security.AlgIntegrity128NIA2)
-	ue := NewRanUeContext(ueId, 1, security.AlgCiphering128NEA0, security.AlgIntegrity128NIA2)
+	ue := NewRanUeContext(ueID, 1, security.AlgCiphering128NEA0, security.AlgIntegrity128NIA2)
 	ue.AmfUeNgapId = 1
 	ue.AuthenticationSubs = GetAuthSubscription(APIConfig.Configuration.Security.K,
 		APIConfig.Configuration.Security.OPC,
 		APIConfig.Configuration.Security.OP)
 
-	suci, err := supiToSuci(ueId)
+	suci, err := supiToSuci(ueID)
 	if err != nil {
 		logger.GNBLog.Errorln("Error encoding SUPI to SUCI")
 		return nil, err
@@ -154,6 +108,7 @@ func Registration(ueId string) (*RanUeContext, error) {
 		logger.GNBLog.Errorln("Error building Initial UE Message")
 		return nil, err
 	}
+
 	_, err = amfConn.Write(sendMsg)
 	if err != nil {
 		logger.GNBLog.Errorln("Error sending Initial UE Message")
@@ -166,7 +121,7 @@ func Registration(ueId string) (*RanUeContext, error) {
 		logger.GNBLog.Errorln("Error reading NAS Authentication Request Msg")
 		return nil, err
 	}
-	ngapPdu, err = ngap.Decoder(recvMsg[:n])
+	ngapPdu, err := ngap.Decoder(recvMsg[:n])
 	if err != nil {
 		logger.GNBLog.Errorln("Error decoding NAS Authentication Request Msg")
 		return nil, err
@@ -274,10 +229,11 @@ func Registration(ueId string) (*RanUeContext, error) {
 
 	time.Sleep(1 * time.Second)
 
-	return ue, nil
+	return ue, err
 
 }
 
+// DeRegistration implements 3GPP De-Registration Procedure
 func DeRegistration(ue *RanUeContext) error {
 
 	var n int
@@ -379,11 +335,8 @@ func DeRegistration(ue *RanUeContext) error {
 
 }
 
-func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn string) error {
-
-	fmt.Println(snssai)
-	fmt.Println(sessionId)
-	fmt.Println(dnn)
+// PDUSessionRequest implements the 3GPP PDU Session Request
+func PDUSessionRequest(ue *RanUeContext, snssai string, sessionID uint8, dnn string) error {
 
 	var n int
 	var sendMsg []byte
@@ -397,7 +350,7 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 
 	sNssai := *convertSnssai(snssai)
 
-	pdu := nasTestpacket.GetUlNasTransport_PduSessionEstablishmentRequest(sessionId, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
+	pdu := nasTestpacket.GetUlNasTransport_PduSessionEstablishmentRequest(sessionID, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
 	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
 	if err != nil {
 		logger.GNBLog.Errorln("Error encoding PduSessionEstablishmentRequest")
@@ -441,7 +394,8 @@ func PDUSessionRequest(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 
 }
 
-func PDUSessionRelease(ue *RanUeContext, snssai string, sessionId uint8, dnn string) error {
+// PDUSessionRelease implements the 3GPP PDU Session Release
+func PDUSessionRelease(ue *RanUeContext, snssai string, sessionID uint8, dnn string) error {
 
 	var sendMsg []byte
 
@@ -454,7 +408,7 @@ func PDUSessionRelease(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 	sNssai := *convertSnssai(snssai)
 
 	// Send Pdu Session Establishment Release Request
-	pdu := nasTestpacket.GetUlNasTransport_PduSessionReleaseRequest(sessionId)
+	pdu := nasTestpacket.GetUlNasTransport_PduSessionReleaseRequest(sessionID)
 	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
 	if err != nil {
 		logger.GNBLog.Errorln("Error encoding NPdu Session Establishment Release Request")
@@ -488,7 +442,7 @@ func PDUSessionRelease(ue *RanUeContext, snssai string, sessionId uint8, dnn str
 	time.Sleep(1000 * time.Millisecond)
 
 	//send N1 PDU Session Release Ack PDU session release complete
-	pdu = nasTestpacket.GetUlNasTransport_PduSessionReleaseComplete(sessionId, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
+	pdu = nasTestpacket.GetUlNasTransport_PduSessionReleaseComplete(sessionID, nasMessage.ULNASTransportRequestTypeInitialRequest, dnn, &sNssai)
 	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
 	if err != nil {
 		logger.GNBLog.Errorln("Error encoding N1 PDU Session Release Ack PDU session release complete")

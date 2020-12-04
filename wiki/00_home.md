@@ -1,4 +1,4 @@
-# Welcome to Freecli Wiki
+# Welcome to Freecli 5G Wiki
 
 Freecli is an interactive cli utility to manage and test free5gc. It provides auto-completion and a variety of modules
 

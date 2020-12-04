@@ -214,6 +214,9 @@ func (g *GNB) PDURequest(supi string, snssai string, dnn string) error {
 		return err
 	}
 	g.IncrementIP()
+	logger.GNBLog.Infoln(fmt.Sprintf("UE Information: IP address of UE %s", g.Ipv4.To4().String()))
+	logger.GNBLog.Infoln(fmt.Sprintf("UE Information: TEID %d", g.TEID))
+	logger.GNBLog.Infoln(fmt.Sprintf("UE Information: PDU Session ID %d", g.SessionID))
 	pdu := PDUSession{SessionID: g.SessionID, Snssai: snssai, TEID: g.TEID, Ipv4: *g.Ipv4, Supi: supi}
 	g.AddPDU(pdu)
 	g.IncrementTEID()

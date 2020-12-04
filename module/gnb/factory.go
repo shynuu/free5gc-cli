@@ -8,6 +8,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+// GNBConfig is the GNB configuration
 var GNBConfig *Config
 
 func checkErr(err error) {
