@@ -124,7 +124,7 @@ func executorPDUSession(in string) {
 
 func executorQOS(in string) {
 
-	// pdu-sessions qos add --set-dscp 12 --session 24 --protocol tcp/udp --destination-port 23 --source-port 23
+	// pdu-sessions qos add --set-dscp 12 --session imsmi/24 --protocol tcp/udp --destination-port 23 --source-port 23
 	cmd := strings.Split(strings.TrimSpace(in), " ")
 	l := len(cmd)
 
@@ -141,7 +141,7 @@ func executorQOS(in string) {
 		dscps := cmd[4]
 		dscp := QOSMAP[dscps]
 
-		split := strings.Split(cmd[6], "-")
+		split := strings.Split(cmd[6], "/")
 		session, err := stringToUint8(split[1])
 		if err != nil {
 			logger.GNBLog.Errorln("Impossible to convert session")
