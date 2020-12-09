@@ -121,7 +121,7 @@ func completerPDU(in prompt.Document) []prompt.Suggest {
 	}
 
 	if d[1] == "release" {
-		return prompt.FilterHasPrefix(*SnssaiSuggestion, a, true)
+		return prompt.FilterHasPrefix(*RegisteredSuggestion, a, true)
 	}
 
 	// pdu-sessions qos add --set-dscp 12 --session imsi11111/24 --protocol tcp/udp --destination-port 23 --source-port 23

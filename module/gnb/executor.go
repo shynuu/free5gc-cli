@@ -105,7 +105,7 @@ func executorPDUSession(in string) {
 	}
 
 	if first == "release" && l > 3 {
-		cmd = strings.Split(cmd[3], "-")
+		cmd = strings.Split(cmd[3], "/")
 		logger.GNBLog.Infoln(fmt.Sprintf("Releasing PDU Session for user %s with session %s", cmd[0], cmd[1]))
 		err := gnb.PDURelease(cmd[0], cmd[1])
 		if err != nil {
