@@ -335,6 +335,149 @@ func DeRegistration(ue *RanUeContext) error {
 
 }
 
+// GUTIRegistration is to be used after a successfully registeration procedure using SUPI and a successful de-registration procedure
+func GUTIRegistration(ue *RanUeContext) error {
+
+	var recvMsg = make([]byte, 2048)
+
+	mobileIdentity5GS := nasType.MobileIdentity5GS{
+		Len:    11, // 5g-guti
+		Buffer: []uint8{0x02, 0x02, 0xf8, 0x39, 0xca, 0xfe, 0x00, 0x00, 0x00, 0x00, 0x01},
+	}
+
+	ueSecurityCapability := ue.GetUESecurityCapability()
+	registrationRequest := nasTestpacket.GetRegistrationRequest(
+		nasMessage.RegistrationType5GSInitialRegistration, mobileIdentity5GS, nil, ueSecurityCapability, nil, nil, nil)
+	sendMsg, err := GetInitialUEMessage(ue.RanUeNgapId, registrationRequest, "")
+	if err != nil {
+		logger.GNBLog.Errorln("Error building Initial UE Message")
+		return err
+	}
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending Initial UE Message")
+		return err
+	}
+
+	// receive NAS Authentication Request Msg
+	n, err := amfConn.Read(recvMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error reading NAS Authentication Request Msg")
+		return err
+	}
+	ngapPdu, err := ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding NAS Authentication Request Msg")
+		return err
+	}
+	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage {
+		logger.GNBLog.Errorln("Error No NGAP Initiating Message received.")
+		return err
+	}
+
+	// Calculate for RES*
+	nasPdu := GetNasPdu(ue, ngapPdu.InitiatingMessage.Value.DownlinkNASTransport)
+	rand := nasPdu.AuthenticationRequest.GetRANDValue()
+	resStat := ue.DeriveRESstarAndSetKey(ue.AuthenticationSubs, rand[:], APIConfig.Configuration.Security.NetworkName)
+
+	// send NAS Authentication Response
+	pdu := nasTestpacket.GetAuthenticationResponse(resStat, "")
+	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
+	if err != nil {
+		logger.GNBLog.Errorln("Error building NAS UplinkNASTransport")
+		return err
+	}
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending NAS UplinkNASTransport")
+		return err
+	}
+
+	// receive NAS Security Mode Command Msg
+	n, err = amfConn.Read(recvMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error reading NAS Security Mode Command Msg")
+		return err
+	}
+	ngapPdu, err = ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding NAS Security Mode Command Msg")
+		return err
+	}
+	nasPdu = GetNasPdu(ue, ngapPdu.InitiatingMessage.Value.DownlinkNASTransport)
+	if nasPdu.GmmHeader.GetMessageType() != nas.MsgTypeSecurityModeCommand {
+		logger.GNBLog.Errorln("No Security Mode Command received. Message: " + strconv.Itoa(int(nasPdu.GmmHeader.GetMessageType())))
+		return errors.New("No Security Mode Command received. Message: " + strconv.Itoa(int(nasPdu.GmmHeader.GetMessageType())))
+	}
+
+	// send NAS Security Mode Complete Msg
+	registrationRequestWith5GMM := nasTestpacket.GetRegistrationRequest(nasMessage.RegistrationType5GSInitialRegistration,
+		mobileIdentity5GS, nil, ueSecurityCapability, ue.Get5GMMCapability(), nil, nil)
+	pdu = nasTestpacket.GetSecurityModeComplete(registrationRequestWith5GMM)
+	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCipheredWithNew5gNasSecurityContext, true, true)
+	if err != nil {
+		logger.GNBLog.Errorln("Error encoding NAS PDU with Security")
+		return err
+	}
+	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending NAS PDU with Security")
+		return err
+	}
+	_, err = amfConn.Write(sendMsg)
+
+	// receive ngap Initial Context Setup Request Msg
+	n, err = amfConn.Read(recvMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error reading ngap Initial Context Setup Request Msg")
+		return err
+	}
+	ngapPdu, err = ngap.Decoder(recvMsg[:n])
+	if err != nil {
+		logger.GNBLog.Errorln("Error decoding ngap Initial Context Setup Request Msg")
+		return err
+	}
+	if ngapPdu.Present != ngapType.NGAPPDUPresentInitiatingMessage ||
+		ngapPdu.InitiatingMessage.ProcedureCode.Value != ngapType.ProcedureCodeInitialContextSetup {
+		logger.GNBLog.Errorln("Error No InitialContextSetup received")
+		return errors.New("Error No InitialContextSetup received")
+	}
+
+	// send ngap Initial Context Setup Response Msg
+	sendMsg, err = GetInitialContextSetupResponse(ue.AmfUeNgapId, ue.RanUeNgapId)
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending ngap Initial Context Setup Response Msg")
+		return err
+	}
+
+	// send NAS Registration Complete Msg
+	pdu = nasTestpacket.GetRegistrationComplete(nil)
+	pdu, err = EncodeNasPduWithSecurity(ue, pdu, nas.SecurityHeaderTypeIntegrityProtectedAndCiphered, true, false)
+	if err != nil {
+		logger.GNBLog.Errorln("Error encoding NAS Registration Complete Msg with Security")
+		return err
+	}
+
+	sendMsg, err = GetUplinkNASTransport(ue.AmfUeNgapId, ue.RanUeNgapId, pdu)
+	if err != nil {
+		logger.GNBLog.Errorln("Error building NAS Registration Complete Msg with Security")
+		return err
+	}
+
+	_, err = amfConn.Write(sendMsg)
+	if err != nil {
+		logger.GNBLog.Errorln("Error sending NAS Registration Complete Msg with Security")
+		return err
+	}
+
+	time.Sleep(1 * time.Second)
+
+	//GUTI registration complete
+	return err
+
+}
+
 // PDUSessionRequest implements the 3GPP PDU Session Request
 func PDUSessionRequest(ue *RanUeContext, snssai string, sessionID uint8, dnn string) error {
 
